@@ -95,8 +95,11 @@ Phase 3 progress:
   generator kernels using them faulted illegal in RTL. After fix:
   random 997/997, crosswidth 248/248 x4 widths, multiwf 250/250,
   reset clean — zero mismatches; m3/m5/fp suites re-green.
-- Remaining: random FP differential campaigns, V_FMA.F32 single-rounding
-  path, VFCMP.* compare class, then M7 gate review -> tag gpu-m7-fp32.
+- V_FMA.F32: datapath+plumbing+golden+TB landed; campaign 57/60 @L8.
+  OPEN: 1-ulp deep-subnormal corner (dossier w/ repro+analysis:
+  reports/evidence/m7/fma_known_issue.md - resume via sv_emulate bisect).
+- Remaining: fix that corner, FP campaign 300-seed green,
+  VFCMP.* compare class, then M7 gate review -> tag gpu-m7-fp32.
 
 ## Repository location
 **/home/peter/Desktop/scigpu** (standalone since 2026-08-25, OI-007 closed).
