@@ -1,0 +1,9 @@
+M5 project-state cleanup (directive §5-10, §182):
+- CURRENT_WORK.md: M4 completion contradiction resolved; tag gpu-m4-scheduler recorded;
+  next authorized milestone = M5.
+- OPEN_ISSUES.md: OI-012 closed (M4 CU integration complete; evidence m4_summary.md);
+  OI-006/007/008/009 kept open (non-M5 blockers).
+- SCHED-001 status: DRAFT -> IMPLEMENTED -- M4 BASELINE.
+- ISA-001 Rev1.3 history back-filled (P15 bypass, assembler default PRED=15,
+  [pN] syntax, VMOD legality, inactive-lane predicate preservation).
+- duplicate repository copy removed from ipdev-remote (single canonical repo).

@@ -1,0 +1,2 @@
+[PASS] fault p15_reg_bounds: code=0x00 (expected 0x00)
+[PASS] fault p16_invalid_vmod: code=0x01 (expected 0x01)

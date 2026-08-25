@@ -1,0 +1,2 @@
+sby: NOT INSTALLED (using direct yosys-smtbmc fallback, directive §75)
+yosys-smtbmc: /usr/bin/yosys-smtbmc

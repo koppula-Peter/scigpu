@@ -1,0 +1,6 @@
+Vector predicate encoding corrected (ISA-001 Rev1.3):
+- enc_vrr/enc_vri default PRED=15 (bypass); [pN] suffix encodes PRED=n; [p15] rejected
+- golden effective_mask = EXEC | EXEC&P[pred] applied uniformly to all vector ops
+- VCMP writes preserve inactive-EXEC predicate bits (INV-002)
+- unsupported nonzero VMOD modifiers fault ILLEGAL_OPCODE
+Verified: M1 7/7 post-fix (post_predication_fix_m1.log); directed P13/P14 + width suite.

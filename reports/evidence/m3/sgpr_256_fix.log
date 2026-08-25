@@ -1,0 +1,3 @@
+SGPR_COUNT=256 bounds fix: widened 9-bit compares ({1'b0,idx} vs CNT9) in
+scigpu_sgpr_file.sv and control dst check. Same discipline applied to VGPR file.
+Unit/directed coverage: p15_reg_bounds, randomized campaigns at declared reqs<=256.

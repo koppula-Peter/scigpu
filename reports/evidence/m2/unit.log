@@ -1,0 +1,6 @@
+unit ALU vectors done
+unit FLAGS vectors done
+unit DECODER vectors done
+unit SGPR vectors done
+unit SGPR randomized done
+UNIT RESULT: PASS

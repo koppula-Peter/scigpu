@@ -1,0 +1,6 @@
+.reg vgpr_count=4 sgpr_count=64
+.kern p11 args=()
+p11:
+  NOP
+  NOP
+  RET_KERNEL_WF

@@ -1,0 +1,6 @@
+.reg vgpr_count=8 sgpr_count=16
+.kern p16 args=()
+p16:
+  V_LLANE v1
+  .word 0x0103020000000000
+  RET_KERNEL_WF

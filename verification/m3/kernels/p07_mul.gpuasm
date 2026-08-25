@@ -1,0 +1,9 @@
+.reg vgpr_count=8 sgpr_count=16
+.kern p07 args=()
+p07:
+  V_LLANE v1
+  V_MOVI  v2, 1000
+  V_MUL   v3, v1, v2
+  V_MOVI  v4, -1000
+  V_MUL   v5, v1, v4
+  RET_KERNEL_WF

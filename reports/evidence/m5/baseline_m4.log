@@ -1,0 +1,11 @@
+[PASS] T1 two-wavefront basic
+[PASS] T2 four-wavefront RR
+[PASS] T3 different EXEC masks
+[PASS] T4 zero-EXEC
+[PASS] T5 different WG_X
+[PASS] T6 fault isolation
+[PASS] T7 completion backpressure
+[PASS] T8 reset mid-flight + relaunch
+[PASS] T9 dynamic slot reuse
+
+M4 FULL SUITE RESULT: ALL PASS (total_fails=0)

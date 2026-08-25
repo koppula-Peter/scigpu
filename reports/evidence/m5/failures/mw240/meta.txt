@@ -1,0 +1,6 @@
+exec=ffffffff
+slots=4
+mask_depth=32
+vgpr_req=16
+sgpr_req=32
+n_wf=4

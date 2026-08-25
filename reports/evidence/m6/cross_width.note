@@ -1,0 +1,4 @@
+M6 cross-width: directed suite runs every kernel at L4/L8/L16/L32 (21/21 each,
+see m6/directed*.log invocations); shared-binary random cross-width reuse is
+inherited from the M5 flow (m5/cross_width.log) — the M6 CU changes affect
+storage placement only, not architectural semantics.

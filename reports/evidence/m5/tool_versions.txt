@@ -1,0 +1,6 @@
+Linux peter-Legion-Pro-5 7.0.0-30-generic #30-Ubuntu SMP PREEMPT_DYNAMIC Fri Jul 31 18:22:54 UTC 2026 x86_64 GNU/Linux
+git version 2.53.0
+Python 3.14.4
+Verilator 5.032 2025-01-01 rev (Debian 5.032-1)
+Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
+Z3 version 4.13.3 - 64 bit

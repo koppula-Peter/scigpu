@@ -1,0 +1,49 @@
+.reg vgpr_count=4 sgpr_count=64
+.kern rnd args=()
+rnd:
+  S_MOV   s29, 0
+  NOP
+  S_MOV   s7, 4613762
+  S_MOV   s6, 4294967295
+  S_AND   s17, s13, s15
+  S_SHL   s18, s8, 27
+  S_CMP_LT s2, s19
+  S_BRA_COND Z, SK0
+  NOP
+  NOP
+  NOP
+SK0:
+  S_MUL   s13, s1, s14
+  S_NOT   s2, s8
+  S_MOV   s4, 2124979120
+  S_SUB   s18, s18, s16
+  S_OR    s16, s14, s7
+  S_MOV   s3, 2863311530
+  S_MOV   s5, 4294967295
+  S_SAR   s13, s3, 23
+  S_MUL   s17, s16, s6
+  S_CMP_LT s9, s4
+  S_BRA_COND GE_U, SK1
+  NOP
+  NOP
+  NOP
+SK1:
+  S_OR    s12, s4, s20
+  S_SAR   s16, s14, 1
+  S_SHL   s4, s4, s8
+  S_SUB   s16, s18, s19
+  S_MOV   s20, 4221992750
+  S_CMP_EQ s15, s8
+  S_BRA_COND NZ, SK2
+  NOP
+  NOP
+SK2:
+  NOP
+  S_MOV   s20, 2147483648
+  S_MOV   s30, 3
+LOOP:
+  S_ADD   s21, s21, 1
+  S_SUB   s30, s30, 1
+  S_CMP_EQ s30, s29
+  S_BRA_COND NZ, LOOP
+  RET_KERNEL_WF

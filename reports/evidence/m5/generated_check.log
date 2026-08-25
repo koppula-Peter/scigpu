@@ -1,0 +1,6 @@
+python3 tools/gen_sv_isa.py
+wrote /home/peter/Desktop/IP_dev/gpu_dev/rtl/generated/scigpu_isa_pkg.sv (27 lines, 70 opcodes)
+python3 tools/gen_sv_isa.py
+wrote /home/peter/Desktop/IP_dev/gpu_dev/rtl/generated/scigpu_isa_pkg.sv (27 lines, 70 opcodes)
+git diff --exit-code -- rtl/generated/scigpu_isa_pkg.sv || \
+  (echo "GENERATED OUTPUT DRIFT: commit regenerated scigpu_isa_pkg.sv"; exit 1)

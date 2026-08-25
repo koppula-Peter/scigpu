@@ -1,0 +1,12 @@
+.reg vgpr_count=4 sgpr_count=64
+.kern p09 args=()
+p09:
+  S_MOV  s29, 0
+  S_MOV  s30, 5
+  S_MOV  s1, 0
+LOOP:
+  S_ADD  s1, s1, 2
+  S_SUB  s30, s30, 1
+  S_CMP_EQ s30, s29
+  S_BRA_COND NZ, LOOP
+  RET_KERNEL_WF

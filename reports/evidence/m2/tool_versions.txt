@@ -1,0 +1,11 @@
+Verilator 5.032 2025-01-01 rev (Debian 5.032-1)
+g++ (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+Python 3.14.4
+04f2bc131168555baf2a3f0f5f43f4ae3a9a7e78
+Vivado: NOT INSTALLED in environment
+--- Icarus 12.0 smoke (optional per directive §55) ---
+rtl/compute/scalar/scigpu_scalar_control.sv:197: sorry: constant selects in always_* processes are not currently supported (all bits will be included).
+rtl/compute/scalar/scigpu_scalar_control.sv:197: sorry: constant selects in always_* processes are not currently supported (all bits will be included).
+rtl/compute/scalar/scigpu_scalar_control.sv:197: sorry: constant selects in always_* processes are not currently supported (all bits will be included).
+rtl/compute/scalar/scigpu_scalar_control.sv:197: sorry: constant selects in always_* processes are not currently supported (all bits will be included).
+icarus compile exit=0 (informational 'sorry' notes only)

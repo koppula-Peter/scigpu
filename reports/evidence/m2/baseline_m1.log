@@ -1,0 +1,14 @@
+python3 tests/run_m1_tests.py 2>&1 | tee reports/evidence/m1_regression.log
+============================================================
+SciGPU M1 regression — golden ISA simulator
+============================================================
+[PASS] T1 vector_add bit-exact err=None
+[PASS] T2 SAXPY FMA alpha*x+y err=None
+[PASS] T3 divergence/reconvergence vs serial reference 
+[PASS] T4 BAR.WG release across 2 wavefronts err=None
+[PASS] T5 INV-025 beat equivalence SIMD_LANES∈{4,8,16,32} 
+[PASS] T6 partial-wavefront mask edges (INV-002/016) 
+[PASS] T7 SGP1 checksum tamper detection (INV-022) 
+------------------------------------------------------------
+REGRESSION RESULT: PASS (7 passed, 0 failed)
+[make] regression GREEN

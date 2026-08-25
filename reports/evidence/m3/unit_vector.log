@@ -1,0 +1,6 @@
+vec-alu checks=81164 fails=0
+M3 UNIT RESULT: PASS
+vec-alu checks=81164 fails=0
+M3 UNIT RESULT: PASS
+mask-slice/beat property: PASS (73 masks x widths)
+M3 UNIT RESULT: PASS

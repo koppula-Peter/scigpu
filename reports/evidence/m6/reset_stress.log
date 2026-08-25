@@ -1,0 +1,13 @@
+CTRL pc=9 op=7cf cond=0 P=aaaaaaaa
+TBPRE pre-P1=00000000 kind=12
+TBPW w=0 addr=0 val=aaaaaaaa
+TBCTRL pc=4 op=7c1 cond=0 P=aaaaaaaa
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=8 op=7c2 cond=0 P=aaaaaaaa
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7c2 cond=0 P=aaaaaaaa
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=9 op=7cf cond=0 P=aaaaaaaa
+TBPRE pre-P1=00000000 kind=12
+reset stress: FAIL (14 injection points)
+

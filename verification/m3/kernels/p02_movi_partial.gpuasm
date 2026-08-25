@@ -1,0 +1,5 @@
+.reg vgpr_count=8 sgpr_count=16
+.kern p02 args=()
+p02:
+  V_MOVI v3, 123
+  RET_KERNEL_WF

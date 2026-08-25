@@ -1,0 +1,12 @@
+[PASS] directed p01_mov
+[PASS] directed p02_add_sub
+[PASS] directed p03_logic
+[PASS] directed p04_shifts
+[PASS] directed p05_cmp_eq_ne
+[PASS] directed p06_signed_branch
+[PASS] directed p07_unsigned_branch
+[PASS] directed p08_forward_skip
+[PASS] directed p09_backward_loop
+[PASS] directed p10_getid
+[PASS] directed p11_ret
+[PASS] completion backpressure (P18)

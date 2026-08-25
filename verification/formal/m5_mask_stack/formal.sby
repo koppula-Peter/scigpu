@@ -1,0 +1,14 @@
+[options]
+mode bmc
+depth 12
+
+[engines]
+smtbmc z3
+
+[script]
+read -formal -sv rtl/generated/scigpu_isa_pkg.sv rtl/common/scigpu_types_pkg.sv
+read -formal -sv rtl/control/scigpu_mask_control_m5.sv
+prep -top m5_mask_stack_formal
+
+[files]
+verification/formal/m5_mask_stack/m5_mask_stack_formal.sv

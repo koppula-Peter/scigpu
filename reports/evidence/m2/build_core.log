@@ -1,0 +1,10 @@
+%Warning-IMPLICIT: rtl/core/scigpu_scalar_core.sv:118:17: Signal definition not found, creating implicitly: 'dbg_sgpr_dump'
+  118 |     .dbg_data  (dbg_sgpr_dump),
+      |                 ^~~~~~~~~~~~~
+                   ... For warning description see https://verilator.org/warn/IMPLICIT?v=5.032
+                   ... Use "/* verilator lint_off IMPLICIT */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: rtl/core/scigpu_scalar_core.sv:118:6: Output port connection 'dbg_data' expects 32 bits on the pin connection, but pin connection's VARREF 'dbg_sgpr_dump' generates 1 bits.
+                                                          : ... note: In instance 'scigpu_scalar_core'
+  118 |     .dbg_data  (dbg_sgpr_dump),
+      |      ^~~~~~~~
+%Error: Exiting due to 2 warning(s)

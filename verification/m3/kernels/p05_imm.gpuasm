@@ -1,0 +1,10 @@
+.reg vgpr_count=8 sgpr_count=16
+.kern p05 args=()
+p05:
+  V_LLANE v1
+  V_ADD   v3, v1, -1
+  V_SUB   v4, v1, 1
+  V_AND   v5, v1, 6
+  V_OR    v6, v1, 8
+  V_XOR   v7, v1, 1
+  RET_KERNEL_WF

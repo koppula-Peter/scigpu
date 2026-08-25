@@ -1,0 +1,8 @@
+[PASS] fault f_overflow l8 (expect code=05, rc=0)
+[PASS] fault f_reconv_empty l8 (expect code=06, rc=0)
+[PASS] fault f_popm_empty l8 (expect code=06, rc=0)
+[PASS] fault f_reconv_mismatch l8 (expect code=0d, rc=0)
+[PASS] fault f_break_outside l8 (expect code=0e, rc=0)
+[PASS] fault f_continue_outside l8 (expect code=0e, rc=0)
+[PASS] fault f_loope_norun l8 (expect code=0e, rc=0)
+fault matrix: fails=0

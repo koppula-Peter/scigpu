@@ -1,0 +1,12 @@
+ISA-001 Rev1.4: mask-stack opcode allocation 7C0-7CF (no moves), CBRANCH_IF
+dual-target encoding, control-condition nibble convention [23:20], new fault
+codes 0x0D/0x0E, V_CMP PDST=15 legality.
+EXEC-001 Rev1.1: typed unified stack, LIVE_MASK + EXEC subset LIVE invariant,
+always-push IF rule, two-phase RECONV with target check, LOOP/BREAK/CONTINUE
+nearest-loop semantics with scrubbing, divergent RET + unwind engine,
+full-wavefront early return never underflow-classified.
+MICRO-001 Rev0.4: Section 4 divergence microarchitecture (frame mapping,
+mask-control engine, vector-compare slice, scheduler CONTROL class, PMCs,
+trace contract).
+ADR-011: decision record for the unified typed stack.
+make check-generated: no drift (rtl/generated/scigpu_isa_pkg.sv committed).

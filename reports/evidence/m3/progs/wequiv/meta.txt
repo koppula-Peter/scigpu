@@ -1,0 +1,1 @@
+exec=f0f00f0f vgpr_req=8 sgpr_req=24 wg_x=0

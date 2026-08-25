@@ -1,0 +1,22 @@
+[PASS] cmp_eq l8
+[PASS] cmp_lt l8
+[PASS] cmp_gt l8
+[PASS] ifelse l8
+[PASS] alltrue l8
+[PASS] allfalse l8
+[PASS] single_lane l8
+[PASS] nested8 l8
+[PASS] nested2 l8
+[PASS] nested4 l8
+[PASS] loop_lane_counts l8
+[PASS] break_if_scrub l8
+[PASS] nested_loops l8
+[PASS] early_return l8
+[PASS] mask_ops l8
+[PASS] f_reconv_empty l8
+[PASS] f_popm_empty l8
+[PASS] f_reconv_mismatch l8
+[PASS] f_break_outside l8
+[PASS] f_continue_outside l8
+[PASS] f_loope_norun l8
+directed: 21 ran, fails=0

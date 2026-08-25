@@ -1,0 +1,75 @@
+.reg vgpr_count=4 sgpr_count=64
+.kern rnd args=()
+rnd:
+  S_MOV   s29, 0
+  NOP
+  S_CMP_LT s12, s4
+  S_BRA_COND NZ, SK0
+  NOP
+SK0:
+  S_SAR   s6, s1, 12
+  S_CMP_LT s14, s10
+  S_BRA_COND GE_U, SK1
+  NOP
+  NOP
+SK1:
+  S_CMP_LT s19, s7
+  S_BRA_COND GE_S, SK2
+  NOP
+  NOP
+  NOP
+SK2:
+  NOP
+  S_CMP_EQ s16, s7
+  S_BRA_COND LT_S, SK3
+  NOP
+SK3:
+  S_XOR   s13, s13, s5
+  NOP
+  S_NOT   s16, s4
+  S_MOV   s9, 1431655765
+  S_MOV   s2, 2147483648
+  S_MUL   s13, s17, s19
+  S_SAR   s1, s18, 17
+  S_SHL   s11, s14, 9
+  NOP
+  S_XOR   s17, s2, s12
+  S_CMP_GT s12, s6
+  S_BRA_COND GE_S, SK4
+  NOP
+  NOP
+SK4:
+  S_GETID s11, WG_X
+  S_CMP_GT s1, s8
+  S_BRA_COND LT_S, SK5
+  NOP
+  NOP
+SK5:
+  S_MUL   s3, s1, s13
+  S_MOV   s9, 188742219
+  S_NOT   s11, s10
+  NOP
+  S_ADD   s2, s19, 4000980745
+  S_GETID s10, WG_X
+  S_MOV   s11, 2165180875
+  S_GETID s13, WG_X
+  S_MUL   s3, s2, s16
+  S_SUB   s13, s1, 1969637151
+  S_GETID s14, WG_X
+  S_MUL   s20, s13, s3
+  S_ADD   s14, s3, s20
+  S_GETID s13, WG_X
+  S_CMP_LT s10, s17
+  S_BRA_COND SCC, SK6
+  NOP
+  NOP
+  NOP
+SK6:
+  S_NOT   s18, s20
+  S_MOV   s30, 2
+LOOP:
+  S_ADD   s21, s21, 1
+  S_SUB   s30, s30, 1
+  S_CMP_EQ s30, s29
+  S_BRA_COND NZ, LOOP
+  RET_KERNEL_WF

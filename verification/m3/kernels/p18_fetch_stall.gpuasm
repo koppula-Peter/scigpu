@@ -1,0 +1,8 @@
+.reg vgpr_count=8 sgpr_count=16
+.kern p18 args=()
+p18:
+  V_LLANE v1
+  V_ADD   v2, v1, v1
+  V_MUL   v3, v2, v2
+  S_ADD   s1, s1, 1
+  RET_KERNEL_WF

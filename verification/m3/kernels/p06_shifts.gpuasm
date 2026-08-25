@@ -1,0 +1,9 @@
+.reg vgpr_count=8 sgpr_count=16
+.kern p06 args=()
+p06:
+  V_LLANE v1
+  V_SHL   v2, v1, 4
+  V_SHR   v3, v2, 2
+  V_SAR   v4, v1, 31
+  V_SHL   v5, v1, 33
+  RET_KERNEL_WF

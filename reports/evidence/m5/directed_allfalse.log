@@ -1,0 +1,1189 @@
+l4 FAIL
+MISMATCH events line 3
+  A: 2 3049007070000000 0 00 00000000 ffffffff
+  B: 
+MISMATCH events line 4
+  A: 4 34110300002af000 0 00 00000000 ffffffff
+  B: 
+MISMATCH events line 5
+  A: 5 0205000001000000 0 00 00000000 ffffffff
+  B: 
+MISMATCH mask-events line 1
+  A: w=0 k=CBRANCH_IF pc=3 ft=1 pu=1 po=0 f=00
+  B: 
+MISMATCH mask-events line 2
+  A: w=0 k=RECONV pc=7 ft=1 pu=0 po=1 f=00
+  B: 
+MISMATCH mask-events line 3
+  A: w=0 k=RET_KERNEL_WF pc=9 ft=0 pu=0 po=0 f=00
+  B: 
+MISMATCH state line 4
+  A: LIVE 00000000
+  B: LIVE ffffffff
+MISMATCH state line 9
+  A: VGPR 03 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a
+  B: VGPR 03 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+DONE mismatch:
+ G:DONE retired=9 fault=0 code=00 pc=9 live=00000000
+ R:DONE retired=2 fault=1 code=02 pc=2 live=ffffffff
+[diff /tmp/opencode/m5dir_hl6frg40/allfalse_l4] FAIL (10 mismatches)
+
+l8 FAIL
+MISMATCH events line 3
+  A: 2 3049007070000000 0 00 00000000 ffffffff
+  B: 
+MISMATCH events line 4
+  A: 4 34110300002af000 0 00 00000000 ffffffff
+  B: 
+MISMATCH events line 5
+  A: 5 0205000001000000 0 00 00000000 ffffffff
+  B: 
+MISMATCH mask-events line 1
+  A: w=0 k=CBRANCH_IF pc=3 ft=1 pu=1 po=0 f=00
+  B: 
+MISMATCH mask-events line 2
+  A: w=0 k=RECONV pc=7 ft=1 pu=0 po=1 f=00
+  B: 
+MISMATCH mask-events line 3
+  A: w=0 k=RET_KERNEL_WF pc=9 ft=0 pu=0 po=0 f=00
+  B: 
+MISMATCH state line 4
+  A: LIVE 00000000
+  B: LIVE ffffffff
+MISMATCH state line 9
+  A: VGPR 03 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a
+  B: VGPR 03 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+DONE mismatch:
+ G:DONE retired=9 fault=0 code=00 pc=9 live=00000000
+ R:DONE retired=2 fault=1 code=02 pc=2 live=ffffffff
+[diff /tmp/opencode/m5dir_hl6frg40/allfalse_l8] FAIL (10 mismatches)
+
+l16 FAIL
+MISMATCH events line 3
+  A: 2 3049007070000000 0 00 00000000 ffffffff
+  B: 
+MISMATCH events line 4
+  A: 4 34110300002af000 0 00 00000000 ffffffff
+  B: 
+MISMATCH events line 5
+  A: 5 0205000001000000 0 00 00000000 ffffffff
+  B: 
+MISMATCH mask-events line 1
+  A: w=0 k=CBRANCH_IF pc=3 ft=1 pu=1 po=0 f=00
+  B: 
+MISMATCH mask-events line 2
+  A: w=0 k=RECONV pc=7 ft=1 pu=0 po=1 f=00
+  B: 
+MISMATCH mask-events line 3
+  A: w=0 k=RET_KERNEL_WF pc=9 ft=0 pu=0 po=0 f=00
+  B: 
+MISMATCH state line 4
+  A: LIVE 00000000
+  B: LIVE ffffffff
+MISMATCH state line 9
+  A: VGPR 03 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a
+  B: VGPR 03 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+DONE mismatch:
+ G:DONE retired=9 fault=0 code=00 pc=9 live=00000000
+ R:DONE retired=2 fault=1 code=02 pc=2 live=ffffffff
+[diff /tmp/opencode/m5dir_hl6frg40/allfalse_l16] FAIL (10 mismatches)
+
+l32 FAIL
+MISMATCH events line 3
+  A: 2 3049007070000000 0 00 00000000 ffffffff
+  B: 
+MISMATCH events line 4
+  A: 4 34110300002af000 0 00 00000000 ffffffff
+  B: 
+MISMATCH events line 5
+  A: 5 0205000001000000 0 00 00000000 ffffffff
+  B: 
+MISMATCH mask-events line 1
+  A: w=0 k=CBRANCH_IF pc=3 ft=1 pu=1 po=0 f=00
+  B: 
+MISMATCH mask-events line 2
+  A: w=0 k=RECONV pc=7 ft=1 pu=0 po=1 f=00
+  B: 
+MISMATCH mask-events line 3
+  A: w=0 k=RET_KERNEL_WF pc=9 ft=0 pu=0 po=0 f=00
+  B: 
+MISMATCH state line 4
+  A: LIVE 00000000
+  B: LIVE ffffffff
+MISMATCH state line 9
+  A: VGPR 03 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a
+  B: VGPR 03 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+DONE mismatch:
+ G:DONE retired=9 fault=0 code=00 pc=9 live=00000000
+ R:DONE retired=2 fault=1 code=02 pc=2 live=ffffffff
+[diff /tmp/opencode/m5dir_hl6frg40/allfalse_l32] FAIL (10 mismatches)
+
+l8 FAIL
+M5DBG 0 LAUNCH sl=0 entry=0 cw=10 ex=ffffffff
+M5DBG 0 cyc=17 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=18 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=19 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=20 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=21 st=01 iv=0001 pc0=0 ex0=ffffffff gvv=1 cls=13 flt=0
+M5DBG 0 GRANT gid=0 ctrl=0 vcmp=0 vec=1 sc=0 op=0 pdst=0 cond4=0 bvr=0 bcr=0 bp=0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5DBG 0 cyc=22 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=23 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=24 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=25 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=26 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=27 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=28 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=29 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=30 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=31 st=01 iv=0001 pc0=1 ex0=ffffffff gvv=1 cls=10 flt=0
+M5DBG 0 GRANT gid=0 ctrl=0 vcmp=0 vec=1 sc=0 op=0 pdst=0 cond4=0 bvr=0 bcr=0 bp=0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5DBG 0 cyc=32 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=33 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=34 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=35 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=36 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=37 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=38 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=39 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=40 st=01 iv=0001 pc0=2 ex0=ffffffff gvv=1 cls=15 flt=1
+M5DBG 0 GRANT gid=0 ctrl=0 vcmp=1 vec=0 sc=0 op=0 pdst=0 cond4=0 bvr=0 bcr=1 bp=0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5DBG 0 cyc=41 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+MISMATCH events line 3
+  A: 2 3049007070000000 0 00 00000000 ffffffff
+  B: 
+MISMATCH events line 4
+  A: 4 34110300002af000 0 00 00000000 ffffffff
+  B: 
+MISMATCH events line 5
+  A: 5 0205000001000000 0 00 00000000 ffffffff
+  B: 
+MISMATCH mask-events line 1
+  A: w=0 k=CBRANCH_IF pc=3 ft=1 pu=1 po=0 f=00
+  B: 
+MISMATCH mask-events line 2
+  A: w=0 k=RECONV pc=7 ft=1 pu=0 po=1 f=00
+  B: 
+MISMATCH mask-events line 3
+  A: w=0 k=RET_KERNEL_WF pc=9 ft=0 pu=0 po=0 f=00
+  B: 
+MISMATCH state line 4
+  A: LIVE 00000000
+  B: LIVE ffffffff
+MISMATCH state line 9
+  A: VGPR 03 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a
+  B: VGPR 03 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+DONE mismatch:
+ G:DONE retired=9 fault=0 code=00 pc=9 live=00000000
+ R:DONE retired=2 fault=1 code=02 pc=2 live=ffffffff
+[diff /tmp/opencode/m5dir_yqrgrzwr/allfalse_l8] FAIL (10 mismatches)
+
+l8 FAIL
+MISMATCH mask-events line 2
+  A: w=0 k=RECONV pc=7 ft=1 pu=0 po=1 f=00
+  B: w=0 k=CBRANCH_IF pc=3 ft=1 pu=1 po=0 f=00
+MISMATCH mask-events line 3
+  A: w=0 k=RET_KERNEL_WF pc=8 ft=0 pu=0 po=0 f=00
+  B: w=0 k=RECONV pc=7 ft=0 pu=0 po=1 f=00
+MISMATCH mask-events line 4
+  A: 
+  B: w=0 k=RECONV pc=7 ft=0 pu=0 po=1 f=00
+DONE mismatch:
+ G:DONE retired=8 fault=0 code=00 pc=8 live=00000000
+ R:DONE retired=10 fault=0 code=00 pc=8 live=00000000
+[diff /tmp/opencode/m5dir_vuo31uau/allfalse_l8] FAIL (5 mismatches)
+
+l8 FAIL
+MISMATCH mask-events line 2
+  A: w=0 k=RECONV pc=7 ft=1 pu=0 po=1 f=00
+  B: w=0 k=CBRANCH_IF pc=3 ft=1 pu=1 po=0 f=00
+MISMATCH mask-events line 3
+  A: w=0 k=RET_KERNEL_WF pc=8 ft=0 pu=0 po=0 f=00
+  B: w=0 k=RECONV pc=7 ft=0 pu=0 po=1 f=00
+MISMATCH mask-events line 4
+  A: 
+  B: w=0 k=RECONV pc=7 ft=0 pu=0 po=1 f=00
+DONE mismatch:
+ G:DONE retired=8 fault=0 code=00 pc=8 live=00000000
+ R:DONE retired=10 fault=0 code=00 pc=8 live=00000000
+[diff /tmp/opencode/m5dir_s8b0sx_g/allfalse_l8] FAIL (5 mismatches)
+
+l8 FAIL
+MISMATCH mask-events line 2
+  A: w=0 k=RECONV pc=7 ft=1 pu=0 po=1 f=00
+  B: w=0 k=RECONV pc=7 ft=0 pu=0 po=1 f=00
+[diff /tmp/opencode/m5dir_twd9wypx/allfalse_l8] FAIL (1 mismatches)
+
+l8 FAIL
+MISMATCH mask-events line 2
+  A: w=0 k=RECONV pc=7 ft=1 pu=0 po=1 f=00
+  B: w=0 k=RECONV pc=7 ft=1 pu=0 po=0 f=00
+[diff /tmp/opencode/m5dir_k09es4om/allfalse_l8] FAIL (1 mismatches)
+
+l8 FAIL
+MISMATCH mask-events line 2
+  A: w=0 k=RECONV pc=7 ft=1 pu=0 po=1 f=00
+  B: w=0 k=RECONV pc=7 ft=1 pu=0 po=0 f=00
+[diff /tmp/opencode/m5dir_ll15n3yn/allfalse_l8] FAIL (1 mismatches)
+
+l8 PASS
+[diff /tmp/opencode/m5dir_9qpvt_kl/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+[diff /tmp/opencode/m5dir_o9k0h59b/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+[diff /tmp/opencode/m5dir_p0bea3s_/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+[diff /tmp/opencode/m5dir_6g6w9152/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+[diff /tmp/opencode/m5dir_3gdj54qr/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+M5DBG 0 LAUNCH sl=0 entry=0 cw=9 ex=ffffffff
+M5DBG 0 cyc=17 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=18 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=19 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=20 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=21 st=01 iv=0001 pc0=0 ex0=ffffffff gvv=1 cls=13 flt=0
+M5DBG 0 GRANT gid=0 ctrl=0 vcmp=0 vec=1 sc=0 op=0 pdst=0 cond4=0 pw=ffffffff pc=0     61440 0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5DBG 0 cyc=22 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=23 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=24 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=25 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=26 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=27 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=28 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=29 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=30 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=31 st=01 iv=0001 pc0=1 ex0=ffffffff gvv=1 cls=10 flt=0
+M5DBG 0 GRANT gid=0 ctrl=0 vcmp=0 vec=1 sc=0 op=0 pdst=0 cond4=0 pw=ffffffff pc=1    126976 0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5DBG 0 cyc=32 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=33 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=34 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=35 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=36 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=37 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=38 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=39 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=40 st=01 iv=0001 pc0=2 ex0=ffffffff gvv=1 cls=15 flt=0
+M5DBG 0 GRANT gid=0 ctrl=0 vcmp=1 vec=0 sc=0 op=0 pdst=0 cond4=0 pw=00000000 pc=21879048192 0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5DBG 0 cyc=41 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=42 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=43 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=44 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=45 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=46 st=01 iv=0000 pc0=3 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=47 st=01 iv=0000 pc0=3 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=48 st=01 iv=0000 pc0=3 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=49 st=01 iv=0000 pc0=3 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DEC 0 insn=7c15000000000003 cond4=0
+M5DBG 0 cyc=50 st=01 iv=0001 pc0=3 ex0=ffffffff gvv=1 cls=14 flt=0
+M5DBG 0 GRANT gid=0 ctrl=1 vcmp=0 vec=0 sc=0 op=0 pdst=0 cond4=0 pw=00000000 pc=3         3 0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5DEC 0 insn=7c15000000000003 cond4=0
+M5ENGIN 0 op=0 sp=0 li=32 tft=00 ph=0 ma=00000000 pc=3
+M5DBG 0 cyc=51 st=01 iv=0000 pc0=3 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DEC 0 insn=7c15000000000003 cond4=0
+M5ENGIN 0 RESULT done=1 fault=0 pop=0 pc=4 we=1 ex=ffffffff st=0
+M5DBG 0 cyc=52 st=01 iv=0000 pc0=3 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 MCDONE d=1 f=0 code=00 own=0 oex=ffffffff osp=1
+M5DEC 0 insn=7c15000000000003 cond4=0
+M5DBG 0 cyc=53 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DEC 0 insn=7c15000000000003 cond4=0
+M5DBG 0 cyc=54 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DEC 0 insn=7c15000000000003 cond4=0
+M5DBG 0 cyc=55 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DEC 0 insn=7c15000000000003 cond4=0
+M5DBG 0 cyc=56 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=57 st=01 iv=0001 pc0=4 ex0=ffffffff gvv=1 cls=10 flt=0
+M5DBG 0 GRANT gid=0 ctrl=0 vcmp=0 vec=1 sc=0 op=0 pdst=0 cond4=2 pw=ffffffff pc=4   2813952 2
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5DBG 0 cyc=58 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=59 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=60 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=61 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=62 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=63 st=01 iv=0000 pc0=5 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=64 st=01 iv=0000 pc0=5 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=65 st=01 iv=0000 pc0=5 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=66 st=01 iv=0001 pc0=5 ex0=ffffffff gvv=1 cls=5 flt=0
+M5DBG 0 GRANT gid=0 ctrl=0 vcmp=0 vec=0 sc=1 op=0 pdst=0 cond4=0 pw=ffffffff pc=5  16777216 0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5DBG 0 cyc=67 st=01 iv=0000 pc0=7 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=68 st=01 iv=0000 pc0=7 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=69 st=01 iv=0000 pc0=7 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=70 st=01 iv=0000 pc0=7 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=71 st=01 iv=0001 pc0=7 ex0=ffffffff gvv=1 cls=14 flt=0
+M5DBG 0 GRANT gid=0 ctrl=1 vcmp=0 vec=0 sc=0 op=1 pdst=0 cond4=0 pw=00000000 pc=7         0 0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5ENGIN 0 op=1 sp=1 li=32 tft=01 ph=1 ma=ffffffff pc=7
+M5DBG 0 cyc=72 st=01 iv=0000 pc0=7 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5ENGIN 0 RESULT done=1 fault=0 pop=1 pc=8 we=1 ex=ffffffff st=0
+M5DBG 0 cyc=73 st=01 iv=0000 pc0=7 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 MCDONE d=1 f=0 code=00 own=0 oex=ffffffff osp=0
+M5DBG 0 cyc=74 st=01 iv=0000 pc0=8 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=75 st=01 iv=0000 pc0=8 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=76 st=01 iv=0000 pc0=8 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=77 st=01 iv=0001 pc0=8 ex0=ffffffff gvv=1 cls=14 flt=0
+M5DBG 0 GRANT gid=0 ctrl=1 vcmp=0 vec=0 sc=0 op=12 pdst=0 cond4=0 pw=00000000 pc=8         0 0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5ENGIN 0 op=12 sp=0 li=32 tft=00 ph=0 ma=00000000 pc=8
+M5DBG 0 cyc=78 st=01 iv=0000 pc0=8 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5ENGIN 0 RESULT done=1 fault=0 pop=0 pc=0 we=0 ex=ffffffff st=0
+M5DBG 0 cyc=79 st=01 iv=0000 pc0=8 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 MCDONE d=1 f=0 code=00 own=0 oex=ffffffff osp=0
+M5DBG 0 cyc=80 st=01 iv=0000 pc0=8 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=00000000 issbl=0
+[diff /tmp/opencode/m5dir_bs2se752/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+M5DBG 0 LAUNCH sl=0 entry=0 cw=9 ex=ffffffff
+M5DBG 0 cyc=17 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=18 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=19 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=20 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=21 st=01 iv=0001 pc0=0 ex0=ffffffff gvv=1 cls=13 flt=0
+M5DBG 0 GRANT gid=0 ctrl=0 vcmp=0 vec=1 sc=0 op=0 pdst=0 cond4=0 pw=ffffffff pc=0     61440 0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5DBG 0 cyc=22 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=23 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=24 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=25 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=26 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=27 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=28 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=29 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=30 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=31 st=01 iv=0001 pc0=1 ex0=ffffffff gvv=1 cls=10 flt=0
+M5DBG 0 GRANT gid=0 ctrl=0 vcmp=0 vec=1 sc=0 op=0 pdst=0 cond4=0 pw=ffffffff pc=1    126976 0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5DBG 0 cyc=32 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=33 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=34 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=35 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=36 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=37 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=38 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=39 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=40 st=01 iv=0001 pc0=2 ex0=ffffffff gvv=1 cls=15 flt=0
+M5DBG 0 GRANT gid=0 ctrl=0 vcmp=1 vec=0 sc=0 op=0 pdst=0 cond4=0 pw=00000000 pc=21879048192 0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5DBG 0 cyc=41 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=42 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=43 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=44 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=45 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=46 st=01 iv=0000 pc0=3 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=47 st=01 iv=0000 pc0=3 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=48 st=01 iv=0000 pc0=3 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=49 st=01 iv=0000 pc0=3 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DEC 0 insn=7c15000000000003 cond4=0
+M5DBG 0 cyc=50 st=01 iv=0001 pc0=3 ex0=ffffffff gvv=1 cls=14 flt=0
+M5DBG 0 CTRLGRANT disp=000000 bmod=0003 insn=7c15000000000003 ibuf=7c15000000000003
+M5DBG 0 GRANT gid=0 ctrl=1 vcmp=0 vec=0 sc=0 op=0 pdst=0 cond4=0 pw=00000000 pc=3         3 0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5DEC 0 insn=7c15000000000003 cond4=0
+M5ENGIN CBR dsp=0 bmod=0003 tgtE=4 tgtR=7
+M5ENGIN 0 op=0 sp=0 li=32 tft=00 ph=0 ma=00000000 pc=3
+M5DBG 0 cyc=51 st=01 iv=0000 pc0=3 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DEC 0 insn=7c15000000000003 cond4=0
+M5ENGIN 0 RESULT done=1 fault=0 pop=0 pc=4 we=1 ex=ffffffff st=0
+M5DBG 0 cyc=52 st=01 iv=0000 pc0=3 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 MCDONE d=1 f=0 code=00 own=0 oex=ffffffff osp=1
+M5DEC 0 insn=7c15000000000003 cond4=0
+M5DBG 0 cyc=53 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DEC 0 insn=7c15000000000003 cond4=0
+M5DBG 0 cyc=54 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DEC 0 insn=7c15000000000003 cond4=0
+M5DBG 0 cyc=55 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DEC 0 insn=7c15000000000003 cond4=0
+M5DBG 0 cyc=56 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=57 st=01 iv=0001 pc0=4 ex0=ffffffff gvv=1 cls=10 flt=0
+M5DBG 0 GRANT gid=0 ctrl=0 vcmp=0 vec=1 sc=0 op=0 pdst=0 cond4=2 pw=ffffffff pc=4   2813952 2
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5DBG 0 cyc=58 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=59 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=60 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=61 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=62 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=63 st=01 iv=0000 pc0=5 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=64 st=01 iv=0000 pc0=5 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=65 st=01 iv=0000 pc0=5 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=66 st=01 iv=0001 pc0=5 ex0=ffffffff gvv=1 cls=5 flt=0
+M5DBG 0 GRANT gid=0 ctrl=0 vcmp=0 vec=0 sc=1 op=0 pdst=0 cond4=0 pw=ffffffff pc=5  16777216 0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5DBG 0 cyc=67 st=01 iv=0000 pc0=7 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=68 st=01 iv=0000 pc0=7 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=69 st=01 iv=0000 pc0=7 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=70 st=01 iv=0000 pc0=7 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=71 st=01 iv=0001 pc0=7 ex0=ffffffff gvv=1 cls=14 flt=0
+M5DBG 0 CTRLGRANT disp=000000 bmod=0000 insn=7c25000000000000 ibuf=7c25000000000000
+M5DBG 0 GRANT gid=0 ctrl=1 vcmp=0 vec=0 sc=0 op=1 pdst=0 cond4=0 pw=00000000 pc=7         0 0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5ENGIN 0 op=1 sp=1 li=32 tft=01 ph=1 ma=ffffffff pc=7
+M5DBG 0 cyc=72 st=01 iv=0000 pc0=7 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5ENGIN 0 RESULT done=1 fault=0 pop=1 pc=8 we=1 ex=ffffffff st=0
+M5DBG 0 cyc=73 st=01 iv=0000 pc0=7 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 MCDONE d=1 f=0 code=00 own=0 oex=ffffffff osp=0
+M5DBG 0 cyc=74 st=01 iv=0000 pc0=8 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=75 st=01 iv=0000 pc0=8 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=76 st=01 iv=0000 pc0=8 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=77 st=01 iv=0001 pc0=8 ex0=ffffffff gvv=1 cls=14 flt=0
+M5DBG 0 CTRLGRANT disp=000000 bmod=0000 insn=7cf5000000000000 ibuf=7cf5000000000000
+M5DBG 0 GRANT gid=0 ctrl=1 vcmp=0 vec=0 sc=0 op=12 pdst=0 cond4=0 pw=00000000 pc=8         0 0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5ENGIN 0 op=12 sp=0 li=32 tft=00 ph=0 ma=00000000 pc=8
+M5DBG 0 cyc=78 st=01 iv=0000 pc0=8 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5ENGIN 0 RESULT done=1 fault=0 pop=0 pc=0 we=0 ex=ffffffff st=0
+M5DBG 0 cyc=79 st=01 iv=0000 pc0=8 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 MCDONE d=1 f=0 code=00 own=0 oex=ffffffff osp=0
+M5DBG 0 cyc=80 st=01 iv=0000 pc0=8 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=00000000 issbl=0
+[diff /tmp/opencode/m5dir_s_726ggd/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+[diff /tmp/opencode/m5dir_sc9lhsta/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+[diff /tmp/opencode/m5dir_ytytontd/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+[diff /tmp/opencode/m5dir_qdr5kuse/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+[diff /tmp/opencode/m5dir_tvs19r2h/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+M5DBG 0 LAUNCH sl=0 entry=0 cw=9 ex=ffffffff
+M5DBG 0 cyc=17 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=18 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=19 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=20 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=21 st=01 iv=0001 pc0=0 ex0=ffffffff gvv=1 cls=13 flt=0
+M5DBG 0 GRANT gid=0 ctrl=0 vcmp=0 vec=1 sc=0 op=0 pdst=0 cond4=0 pw=ffffffff pc=0     61440 0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5DBG 0 cyc=22 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=23 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=24 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=25 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=26 st=01 iv=0000 pc0=0 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=27 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=28 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=29 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=30 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=31 st=01 iv=0001 pc0=1 ex0=ffffffff gvv=1 cls=10 flt=0
+M5DBG 0 GRANT gid=0 ctrl=0 vcmp=0 vec=1 sc=0 op=0 pdst=0 cond4=0 pw=ffffffff pc=1    126976 0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5DBG 0 cyc=32 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=33 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=34 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=35 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=36 st=01 iv=0000 pc0=1 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=37 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=38 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=39 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=40 st=01 iv=0001 pc0=2 ex0=ffffffff gvv=1 cls=15 flt=0
+M5DBG 0 GRANT gid=0 ctrl=0 vcmp=1 vec=0 sc=0 op=0 pdst=0 cond4=0 pw=00000000 pc=21879048192 0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5DBG 0 cyc=41 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=42 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=43 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=44 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=45 st=01 iv=0000 pc0=2 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=46 st=01 iv=0000 pc0=3 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=47 st=01 iv=0000 pc0=3 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=48 st=01 iv=0000 pc0=3 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=49 st=01 iv=0000 pc0=3 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DEC 0 insn=7c15000000000003 cond4=0
+M5DBG 0 cyc=50 st=01 iv=0001 pc0=3 ex0=ffffffff gvv=1 cls=14 flt=0
+M5DBG 0 CTRLGRANT disp=000000 bmod=0003 insn=7c15000000000003 ibuf=7c15000000000003
+M5DBG 0 GRANT gid=0 ctrl=1 vcmp=0 vec=0 sc=0 op=0 pdst=0 cond4=0 pw=00000000 pc=3         3 0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5DEC 0 insn=7c15000000000003 cond4=0
+M5ENGIN CBR dsp=0 bmod=0003 tgtE=4 tgtR=7
+M5ENGIN 0 op=0 sp=0 li=32 tft=00 ph=0 ma=00000000 pc=3
+M5DBG 0 cyc=51 st=01 iv=0000 pc0=3 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DEC 0 insn=7c15000000000003 cond4=0
+M5ENGIN 0 RESULT done=1 fault=0 pop=0 pc=4 we=1 ex=ffffffff st=0
+M5DBG 0 cyc=52 st=01 iv=0000 pc0=3 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 MCDONE d=1 f=0 code=00 own=0 oex=ffffffff osp=1
+M5DEC 0 insn=7c15000000000003 cond4=0
+M5DBG 0 cyc=53 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DEC 0 insn=7c15000000000003 cond4=0
+M5DBG 0 cyc=54 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DEC 0 insn=7c15000000000003 cond4=0
+M5DBG 0 cyc=55 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DEC 0 insn=7c15000000000003 cond4=0
+M5DBG 0 cyc=56 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=57 st=01 iv=0001 pc0=4 ex0=ffffffff gvv=1 cls=10 flt=0
+M5DBG 0 GRANT gid=0 ctrl=0 vcmp=0 vec=1 sc=0 op=0 pdst=0 cond4=2 pw=ffffffff pc=4   2813952 2
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5DBG 0 cyc=58 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=59 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=60 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=61 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=62 st=01 iv=0000 pc0=4 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=63 st=01 iv=0000 pc0=5 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=64 st=01 iv=0000 pc0=5 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=65 st=01 iv=0000 pc0=5 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=66 st=01 iv=0001 pc0=5 ex0=ffffffff gvv=1 cls=5 flt=0
+M5DBG 0 GRANT gid=0 ctrl=0 vcmp=0 vec=0 sc=1 op=0 pdst=0 cond4=0 pw=ffffffff pc=5  16777216 0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5DBG 0 cyc=67 st=01 iv=0000 pc0=7 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=68 st=01 iv=0000 pc0=7 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=69 st=01 iv=0000 pc0=7 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=70 st=01 iv=0000 pc0=7 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=71 st=01 iv=0001 pc0=7 ex0=ffffffff gvv=1 cls=14 flt=0
+M5DBG 0 CTRLGRANT disp=000000 bmod=0000 insn=7c25000000000000 ibuf=7c25000000000000
+M5DBG 0 GRANT gid=0 ctrl=1 vcmp=0 vec=0 sc=0 op=1 pdst=0 cond4=0 pw=00000000 pc=7         0 0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5ENGIN 0 op=1 sp=1 li=32 tft=01 ph=1 ma=ffffffff pc=7
+M5DBG 0 cyc=72 st=01 iv=0000 pc0=7 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5ENGIN 0 RESULT done=1 fault=0 pop=1 pc=8 we=1 ex=ffffffff st=0
+M5DBG 0 cyc=73 st=01 iv=0000 pc0=7 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 MCDONE d=1 f=0 code=00 own=0 oex=ffffffff osp=0
+M5DBG 0 cyc=74 st=01 iv=0000 pc0=8 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=75 st=01 iv=0000 pc0=8 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=76 st=01 iv=0000 pc0=8 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 cyc=77 st=01 iv=0001 pc0=8 ex0=ffffffff gvv=1 cls=14 flt=0
+M5DBG 0 CTRLGRANT disp=000000 bmod=0000 insn=7cf5000000000000 ibuf=7cf5000000000000
+M5DBG 0 GRANT gid=0 ctrl=1 vcmp=0 vec=0 sc=0 op=12 pdst=0 cond4=0 pw=00000000 pc=8         0 0
+M5DBG   ex=ffffffff lv=ffffffff issbl=1
+M5ENGIN 0 op=12 sp=0 li=32 tft=00 ph=0 ma=00000000 pc=8
+M5DBG 0 cyc=78 st=01 iv=0000 pc0=8 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5ENGIN 0 RESULT done=1 fault=0 pop=0 pc=0 we=0 ex=ffffffff st=0
+M5DBG 0 cyc=79 st=01 iv=0000 pc0=8 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=ffffffff issbl=0
+M5DBG 0 MCDONE d=1 f=0 code=00 own=0 oex=ffffffff osp=0
+M5DBG 0 cyc=80 st=01 iv=0000 pc0=8 ex0=ffffffff gvv=0 cls=0 flt=1
+M5DBG   ex=ffffffff lv=00000000 issbl=0
+[diff /tmp/opencode/m5dir_qe1on6om/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+[diff /tmp/opencode/m5dir_5wm9bfu4/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBPRE pre-P1=00000000 kind=0
+TBPRE pre-P1=00000000 kind=1
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_dh85o2ru/allfalse_l8] PASS (0 mismatches)
+
+l4 PASS
+[diff /tmp/opencode/m5dir_xevuzaju/allfalse_l4] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBPRE pre-P1=00000000 kind=0
+TBPRE pre-P1=00000000 kind=1
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_xevuzaju/allfalse_l8] PASS (0 mismatches)
+
+l16 PASS
+[diff /tmp/opencode/m5dir_xevuzaju/allfalse_l16] PASS (0 mismatches)
+
+l32 PASS
+[diff /tmp/opencode/m5dir_xevuzaju/allfalse_l32] PASS (0 mismatches)
+
+l8 FAIL
+TBPW w=0 addr=0 val=00000000
+TBPRE pre-P1=00000000 kind=0
+TBPRE pre-P1=00000000 kind=1
+TBPRE pre-P1=00000000 kind=12
+DONE mismatch:
+ G:0 DONE retired=8 fault=0 code=00 pc=8 live=00000000
+ R:DONE retired=8 fault=0 code=00 pc=8 live=00000000
+[diff /tmp/opencode/m5dir_8ozsr4sj/allfalse_l8] FAIL (1 mismatches)
+
+l8 FAIL
+TBPW w=0 addr=0 val=00000000
+TBPRE pre-P1=00000000 kind=0
+TBPRE pre-P1=00000000 kind=1
+TBPRE pre-P1=00000000 kind=12
+DONE mismatch:
+ G:0 DONE retired=8 fault=0 code=00 pc=8 live=00000000
+ R:DONE retired=8 fault=0 code=00 pc=8 live=00000000
+[diff /tmp/opencode/m5dir_clx76wgv/allfalse_l8] FAIL (1 mismatches)
+
+l8 FAIL
+TBPW w=0 addr=0 val=00000000
+TBPRE pre-P1=00000000 kind=0
+TBPRE pre-P1=00000000 kind=1
+TBPRE pre-P1=00000000 kind=12
+DONE mismatch:
+ G:0 DONE retired=8 fault=0 code=00 pc=8 live=00000000
+ R:DONE retired=8 fault=0 code=00 pc=8 live=00000000
+[diff /tmp/opencode/m5dir_eimu630l/allfalse_l8] FAIL (1 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_l22m_1qq/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_rkxqrkmm/allfalse_l8] PASS (0 mismatches)
+
+l4 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_oyyw9e1x/allfalse_l4] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_oyyw9e1x/allfalse_l8] PASS (0 mismatches)
+
+l16 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_oyyw9e1x/allfalse_l16] PASS (0 mismatches)
+
+l32 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_oyyw9e1x/allfalse_l32] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_6kyb31jg/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_dhun9xl9/allfalse_l8] PASS (0 mismatches)
+
+l4 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_nat7zbi1/allfalse_l4] PASS (0 mismatches)
+
+l16 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_igbe31n5/allfalse_l16] PASS (0 mismatches)
+
+l32 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_zzhpohij/allfalse_l32] PASS (0 mismatches)
+
+l8 FAIL
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+MISMATCH state line 6
+  A: VGPR 00 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+  B: VGPR 00 00000000 00000001 00000002 00000003 00000004 00000005 00000006 00000007 00000008 00000009 0000000a 0000000b 0000000c 0000000d 0000000e 0000000f 00000010 00000011 00000012 00000013 00000014 00000015 00000016 00000017 00000018 00000019 0000001a 0000001b 0000001c 0000001d 0000001e 0000001f
+MISMATCH state line 8
+  A: VGPR 02 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+  B: VGPR 02 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a
+MISMATCH state line 12
+  A: VGPR 06 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+  B: VGPR 06 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001
+[diff /tmp/opencode/m5dir_rfwgwaqq/allfalse_l8] FAIL (3 mismatches)
+
+l8 FAIL
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+MISMATCH state line 6
+  A: VGPR 00 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+  B: VGPR 00 00000000 00000001 00000002 00000003 00000004 00000005 00000006 00000007 00000008 00000009 0000000a 0000000b 0000000c 0000000d 0000000e 0000000f 00000010 00000011 00000012 00000013 00000014 00000015 00000016 00000017 00000018 00000019 0000001a 0000001b 0000001c 0000001d 0000001e 0000001f
+MISMATCH state line 8
+  A: VGPR 02 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+  B: VGPR 02 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a 0000002a
+MISMATCH state line 12
+  A: VGPR 06 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+  B: VGPR 06 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001
+[diff /tmp/opencode/m5dir_yiwp87ak/allfalse_l8] FAIL (3 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_mfu9mpwd/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_gxmnke16/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_59wr0chn/allfalse_l8] PASS (0 mismatches)
+
+l4 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_4t8d500k/allfalse_l4] PASS (0 mismatches)
+
+l16 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_vdgeakmp/allfalse_l16] PASS (0 mismatches)
+
+l32 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_u_j5wiqt/allfalse_l32] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_j5c71qq4/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_pbcssfg0/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_cc93b_ly/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_leyio7d3/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_8ggbyb0g/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_5kjaf7ur/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_z6wswbl0/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_m5sut3_0/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_xfpax2la/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_14b80pr1/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_82fl1g4f/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_v89i2244/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_3m2r6mt2/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_lic9sie0/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_pomxqxiv/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_61ow2ulj/allfalse_l8] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c1 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=7 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_iws_lc5f/allfalse_l8] PASS (0 mismatches)
+

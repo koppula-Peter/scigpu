@@ -1,0 +1,5 @@
+.reg vgpr_count=4 sgpr_count=64
+.kern p10 args=()
+p10:
+  S_GETID s1, WG_X
+  RET_KERNEL_WF

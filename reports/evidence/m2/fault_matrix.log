@@ -1,0 +1,3 @@
+[PASS] fault p12_invalid_opcode: RTL/golden agree, code=0x01 (expected 0x01)
+[PASS] fault p13_invalid_sgpr: RTL/golden agree, code=0x02 (expected 0x02)
+[PASS] fault p14_invalid_pc: RTL/golden agree, code=0x03 (expected 0x03)

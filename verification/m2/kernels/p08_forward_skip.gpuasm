@@ -1,0 +1,10 @@
+.reg vgpr_count=4 sgpr_count=64
+.kern p08 args=()
+p08:
+  S_MOV  s1, 3
+  S_CMP_EQ s1, s1
+  S_BRA_COND ALWAYS, OVER
+  S_MOV  s2, 99
+  S_MOV  s3, 99
+OVER:
+  RET_KERNEL_WF

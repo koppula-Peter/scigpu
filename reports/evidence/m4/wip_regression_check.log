@@ -1,0 +1,211 @@
+Makefile:117: warning: overriding recipe for target 'regression'
+Makefile:63: warning: ignoring old recipe for target 'regression'
+python3 tests/run_m1_tests.py | tee reports/evidence/m1_regression.log
+============================================================
+SciGPU M1 regression — golden ISA simulator
+============================================================
+[PASS] T1 vector_add bit-exact err=None
+[PASS] T2 SAXPY FMA alpha*x+y err=None
+[PASS] T3 divergence/reconvergence vs serial reference 
+[PASS] T4 BAR.WG release across 2 wavefronts err=None
+[PASS] T5 INV-025 beat equivalence SIMD_LANES∈{4,8,16,32} 
+[PASS] T6 partial-wavefront mask edges (INV-002/016) 
+[PASS] T7 SGP1 checksum tamper detection (INV-022) 
+------------------------------------------------------------
+REGRESSION RESULT: PASS (7 passed, 0 failed)
+[make] M1 GREEN
+verilator --lint-only -Wall --top-module scigpu_m2_top -Irtl/generated -Irtl/common rtl/generated/scigpu_isa_pkg.sv rtl/common/scigpu_types_pkg.sv rtl/frontend/scigpu_fetch.sv rtl/frontend/scigpu_decode.sv rtl/compute/scalar/scigpu_sgpr_file.sv rtl/compute/scalar/scigpu_scalar_alu.sv rtl/compute/scalar/scigpu_scalar_flags.sv rtl/compute/scalar/scigpu_scalar_control.sv rtl/core/scigpu_scalar_core.sv rtl/top/scigpu_m2_top.sv \
+  | tee reports/evidence/m2/verilator_lint.log
+%Warning-IMPLICIT: rtl/core/scigpu_scalar_core.sv:118:17: Signal definition not found, creating implicitly: 'dbg_sgpr_dump'
+  118 |     .dbg_data  (dbg_sgpr_dump),
+      |                 ^~~~~~~~~~~~~
+                   ... For warning description see https://verilator.org/warn/IMPLICIT?v=5.032
+                   ... Use "/* verilator lint_off IMPLICIT */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: rtl/core/scigpu_scalar_core.sv:118:6: Output port connection 'dbg_data' expects 32 bits on the pin connection, but pin connection's VARREF 'dbg_sgpr_dump' generates 1 bits.
+                                                          : ... note: In instance 'scigpu_m2_top.u_core'
+  118 |     .dbg_data  (dbg_sgpr_dump),
+      |      ^~~~~~~~
+%Warning-UNUSEDSIGNAL: rtl/core/scigpu_scalar_core.sv:118:17: Signal is not used: 'dbg_sgpr_dump'
+                                                            : ... note: In instance 'scigpu_m2_top.u_core'
+  118 |     .dbg_data  (dbg_sgpr_dump),
+      |                 ^~~~~~~~~~~~~
+%Error: Exiting due to 3 warning(s)
+[make] M2 lint clean (see log; documented UNUSEDPARAM waiver inside generated pkg)
+verilator --cc --exe --build -j 4 -O2 --top-module scigpu_scalar_core \
+  -Irtl/generated -Irtl/common rtl/generated/scigpu_isa_pkg.sv rtl/common/scigpu_types_pkg.sv rtl/frontend/scigpu_fetch.sv rtl/frontend/scigpu_decode.sv rtl/compute/scalar/scigpu_sgpr_file.sv rtl/compute/scalar/scigpu_scalar_alu.sv rtl/compute/scalar/scigpu_scalar_flags.sv rtl/compute/scalar/scigpu_scalar_control.sv rtl/core/scigpu_scalar_core.sv rtl/top/scigpu_m2_top.sv verification/m2/tb_m2.cpp \
+  --Mdir build/obj_core -o tb_core 2>&1 | tee reports/evidence/m2/build_core.log
+%Warning-IMPLICIT: rtl/core/scigpu_scalar_core.sv:118:17: Signal definition not found, creating implicitly: 'dbg_sgpr_dump'
+  118 |     .dbg_data  (dbg_sgpr_dump),
+      |                 ^~~~~~~~~~~~~
+                   ... For warning description see https://verilator.org/warn/IMPLICIT?v=5.032
+                   ... Use "/* verilator lint_off IMPLICIT */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: rtl/core/scigpu_scalar_core.sv:118:6: Output port connection 'dbg_data' expects 32 bits on the pin connection, but pin connection's VARREF 'dbg_sgpr_dump' generates 1 bits.
+                                                          : ... note: In instance 'scigpu_scalar_core'
+  118 |     .dbg_data  (dbg_sgpr_dump),
+      |      ^~~~~~~~
+%Error: Exiting due to 2 warning(s)
+verilator --cc --exe --build -j 4 -O2 --top-module scigpu_units_tb \
+  -Irtl/generated -Irtl/common rtl/generated/scigpu_isa_pkg.sv rtl/common/scigpu_types_pkg.sv rtl/frontend/scigpu_fetch.sv rtl/frontend/scigpu_decode.sv rtl/compute/scalar/scigpu_sgpr_file.sv rtl/compute/scalar/scigpu_scalar_alu.sv rtl/compute/scalar/scigpu_scalar_flags.sv rtl/compute/scalar/scigpu_scalar_control.sv rtl/core/scigpu_scalar_core.sv rtl/top/scigpu_m2_top.sv verification/unit/scigpu_units_tb.sv \
+  verification/unit/units_driver.cpp \
+  --Mdir build/obj_units -o tb_units 2>&1 | tee reports/evidence/m2/build_units.log
+%Warning-PINMISSING: verification/unit/scigpu_units_tb.sv:61:39: Cell has missing pin: 'dbg_addr'
+   61 |   scigpu_sgpr_file #(.SGPR_COUNT(64)) u_sgpr (
+      |                                       ^~~~~~
+                     rtl/compute/scalar/scigpu_sgpr_file.sv:29:23: ... Location of port declaration
+   29 |   input  logic [7:0]  dbg_addr,
+      |                       ^~~~~~~~
+                     ... For warning description see https://verilator.org/warn/PINMISSING?v=5.032
+                     ... Use "/* verilator lint_off PINMISSING */" and lint_on around source to disable this message.
+%Warning-PINMISSING: verification/unit/scigpu_units_tb.sv:61:39: Cell has missing pin: 'dbg_data'
+   61 |   scigpu_sgpr_file #(.SGPR_COUNT(64)) u_sgpr (
+      |                                       ^~~~~~
+                     rtl/compute/scalar/scigpu_sgpr_file.sv:30:23: ... Location of port declaration
+   30 |   output logic [31:0] dbg_data
+      |                       ^~~~~~~~
+%Error: Exiting due to 2 warning(s)
+./build/obj_units/tb_units 2>&1 | tee reports/evidence/m2/unit.log
+unit ALU vectors done
+unit FLAGS vectors done
+unit DECODER vectors done
+unit SGPR vectors done
+unit SGPR randomized done
+UNIT RESULT: PASS
+[make] M2 unit GREEN
+python3 tools/m2_run_suite.py directed 2>&1 | tee reports/evidence/m2/directed.log
+[PASS] directed p01_mov
+[PASS] directed p02_add_sub
+[PASS] directed p03_logic
+[PASS] directed p04_shifts
+[PASS] directed p05_cmp_eq_ne
+[PASS] directed p06_signed_branch
+[PASS] directed p07_unsigned_branch
+[PASS] directed p08_forward_skip
+[PASS] directed p09_backward_loop
+[PASS] directed p10_getid
+[PASS] directed p11_ret
+[PASS] completion backpressure (P18)
+python3 tools/m2_run_suite.py random 2>&1 | tee reports/evidence/m2/differential.log
+randomized differential: 1000/1000 clean (stall/latency profiles rotated)
+python3 tools/m2_run_suite.py reset 2>&1 | tee reports/evidence/m2/reset_stress.log
+reset stress: 40 injection points clean
+python3 tools/m2_run_suite.py faults 2>&1 | tee reports/evidence/m2/fault_matrix.log
+[PASS] fault p12_invalid_opcode: RTL/golden agree, code=0x01 (expected 0x01)
+[PASS] fault p13_invalid_sgpr: RTL/golden agree, code=0x02 (expected 0x02)
+[PASS] fault p14_invalid_pc: RTL/golden agree, code=0x03 (expected 0x03)
+[make] M2 GREEN
+[make] M3 lint clean at L4/L8/L16/L32
+verilator --cc --exe --build -j 4 -O2 --top-module scigpu_m3_top -GSIMD_LANES=4 -Irtl/generated -Irtl/common rtl/generated/scigpu_isa_pkg.sv rtl/common/scigpu_types_pkg.sv rtl/frontend/scigpu_fetch.sv rtl/frontend/scigpu_decode_m3.sv rtl/compute/scalar/scigpu_sgpr_file.sv rtl/compute/scalar/scigpu_scalar_alu.sv rtl/compute/scalar/scigpu_scalar_flags.sv rtl/compute/scalar/scigpu_m3_control.sv rtl/compute/vector/scigpu_vgpr_file_m3.sv rtl/compute/vector/scigpu_predicate_file_m3.sv rtl/compute/vector/scigpu_vector_alu.sv rtl/compute/vector/scigpu_vector_engine.sv rtl/core/scigpu_m3_core.sv rtl/top/scigpu_m3_top.sv verification/m3/tb_m3.cpp --Mdir build/m3_l4 -o tb_m3 2>&1 | tee reports/evidence/m3/build_l4.log
+make[1]: Entering directory '/home/peter/Desktop/IP_dev/gpu_dev/build/m3_l4'
+make[1]: Nothing to be done for 'default'.
+make[1]: Leaving directory '/home/peter/Desktop/IP_dev/gpu_dev/build/m3_l4'
+- V e r i l a t i o n   R e p o r t: Verilator 5.032 2025-01-01 rev (Debian 5.032-1)
+- Verilator: Built from 0.000 MB sources in 0 modules, into 0.000 MB in 0 C++ files needing 0.000 MB
+- Verilator: Walltime 0.006 s (elab=0.000, cvt=0.000, bld=0.006); cpu 0.001 s on 4 threads; alloced 7.004 MB
+verilator --cc --exe --build -j 4 -O2 --top-module scigpu_m3_top -GSIMD_LANES=8 -Irtl/generated -Irtl/common rtl/generated/scigpu_isa_pkg.sv rtl/common/scigpu_types_pkg.sv rtl/frontend/scigpu_fetch.sv rtl/frontend/scigpu_decode_m3.sv rtl/compute/scalar/scigpu_sgpr_file.sv rtl/compute/scalar/scigpu_scalar_alu.sv rtl/compute/scalar/scigpu_scalar_flags.sv rtl/compute/scalar/scigpu_m3_control.sv rtl/compute/vector/scigpu_vgpr_file_m3.sv rtl/compute/vector/scigpu_predicate_file_m3.sv rtl/compute/vector/scigpu_vector_alu.sv rtl/compute/vector/scigpu_vector_engine.sv rtl/core/scigpu_m3_core.sv rtl/top/scigpu_m3_top.sv verification/m3/tb_m3.cpp --Mdir build/m3_l8 -o tb_m3 2>&1 | tee reports/evidence/m3/build_l8.log
+make[1]: Entering directory '/home/peter/Desktop/IP_dev/gpu_dev/build/m3_l8'
+make[1]: Nothing to be done for 'default'.
+make[1]: Leaving directory '/home/peter/Desktop/IP_dev/gpu_dev/build/m3_l8'
+- V e r i l a t i o n   R e p o r t: Verilator 5.032 2025-01-01 rev (Debian 5.032-1)
+- Verilator: Built from 0.000 MB sources in 0 modules, into 0.000 MB in 0 C++ files needing 0.000 MB
+- Verilator: Walltime 0.006 s (elab=0.000, cvt=0.000, bld=0.005); cpu 0.001 s on 4 threads; alloced 7.004 MB
+verilator --cc --exe --build -j 4 -O2 --top-module scigpu_m3_top -GSIMD_LANES=16 -Irtl/generated -Irtl/common rtl/generated/scigpu_isa_pkg.sv rtl/common/scigpu_types_pkg.sv rtl/frontend/scigpu_fetch.sv rtl/frontend/scigpu_decode_m3.sv rtl/compute/scalar/scigpu_sgpr_file.sv rtl/compute/scalar/scigpu_scalar_alu.sv rtl/compute/scalar/scigpu_scalar_flags.sv rtl/compute/scalar/scigpu_m3_control.sv rtl/compute/vector/scigpu_vgpr_file_m3.sv rtl/compute/vector/scigpu_predicate_file_m3.sv rtl/compute/vector/scigpu_vector_alu.sv rtl/compute/vector/scigpu_vector_engine.sv rtl/core/scigpu_m3_core.sv rtl/top/scigpu_m3_top.sv verification/m3/tb_m3.cpp --Mdir build/m3_l16 -o tb_m3 2>&1 | tee reports/evidence/m3/build_l16.log
+make[1]: Entering directory '/home/peter/Desktop/IP_dev/gpu_dev/build/m3_l16'
+make[1]: Nothing to be done for 'default'.
+make[1]: Leaving directory '/home/peter/Desktop/IP_dev/gpu_dev/build/m3_l16'
+- V e r i l a t i o n   R e p o r t: Verilator 5.032 2025-01-01 rev (Debian 5.032-1)
+- Verilator: Built from 0.000 MB sources in 0 modules, into 0.000 MB in 0 C++ files needing 0.000 MB
+- Verilator: Walltime 0.007 s (elab=0.000, cvt=0.000, bld=0.006); cpu 0.001 s on 4 threads; alloced 7.004 MB
+verilator --cc --exe --build -j 4 -O2 --top-module scigpu_m3_top -GSIMD_LANES=32 -Irtl/generated -Irtl/common rtl/generated/scigpu_isa_pkg.sv rtl/common/scigpu_types_pkg.sv rtl/frontend/scigpu_fetch.sv rtl/frontend/scigpu_decode_m3.sv rtl/compute/scalar/scigpu_sgpr_file.sv rtl/compute/scalar/scigpu_scalar_alu.sv rtl/compute/scalar/scigpu_scalar_flags.sv rtl/compute/scalar/scigpu_m3_control.sv rtl/compute/vector/scigpu_vgpr_file_m3.sv rtl/compute/vector/scigpu_predicate_file_m3.sv rtl/compute/vector/scigpu_vector_alu.sv rtl/compute/vector/scigpu_vector_engine.sv rtl/core/scigpu_m3_core.sv rtl/top/scigpu_m3_top.sv verification/m3/tb_m3.cpp --Mdir build/m3_l32 -o tb_m3 2>&1 | tee reports/evidence/m3/build_l32.log
+make[1]: Entering directory '/home/peter/Desktop/IP_dev/gpu_dev/build/m3_l32'
+make[1]: Nothing to be done for 'default'.
+make[1]: Leaving directory '/home/peter/Desktop/IP_dev/gpu_dev/build/m3_l32'
+- V e r i l a t i o n   R e p o r t: Verilator 5.032 2025-01-01 rev (Debian 5.032-1)
+- Verilator: Built from 0.000 MB sources in 0 modules, into 0.000 MB in 0 C++ files needing 0.000 MB
+- Verilator: Walltime 0.006 s (elab=0.000, cvt=0.000, bld=0.006); cpu 0.001 s on 4 threads; alloced 7.004 MB
+python3 tools/m3_unit_tests.py 2>&1 | tee reports/evidence/m3/unit_vector.log
+vec-alu checks=81164 fails=0
+M3 UNIT RESULT: PASS
+vec-alu checks=81164 fails=0
+M3 UNIT RESULT: PASS
+mask-slice/beat property: PASS (73 masks x widths)
+M3 UNIT RESULT: PASS
+[make] M3 unit GREEN
+python3 tools/m3_run_suite.py directed 2>&1 | tee reports/evidence/m3/directed.log
+[PASS] p01_llane L=4
+[PASS] p01_llane L=8
+[PASS] p01_llane L=16
+[PASS] p01_llane L=32
+[PASS] p02_movi_partial L=4
+[PASS] p02_movi_partial L=8
+[PASS] p02_movi_partial L=16
+[PASS] p02_movi_partial L=32
+[PASS] p03_add L=4
+[PASS] p03_add L=8
+[PASS] p03_add L=16
+[PASS] p03_add L=32
+[PASS] p04_inplace L=4
+[PASS] p04_inplace L=8
+[PASS] p04_inplace L=16
+[PASS] p04_inplace L=32
+[PASS] p05_imm L=4
+[PASS] p05_imm L=8
+[PASS] p05_imm L=16
+[PASS] p05_imm L=32
+[PASS] p06_shifts L=4
+[PASS] p06_shifts L=8
+[PASS] p06_shifts L=16
+[PASS] p06_shifts L=32
+[PASS] p07_mul L=4
+[PASS] p07_mul L=8
+[PASS] p07_mul L=16
+[PASS] p07_mul L=32
+[PASS] p08_bcast L=4
+[PASS] p08_bcast L=8
+[PASS] p08_bcast L=16
+[PASS] p08_bcast L=32
+[PASS] p09_mixed L=4
+[PASS] p09_mixed L=8
+[PASS] p09_mixed L=16
+[PASS] p09_mixed L=32
+[PASS] p10_zero_exec L=4
+[PASS] p10_zero_exec L=8
+[PASS] p10_zero_exec L=16
+[PASS] p10_zero_exec L=32
+[PASS] p13_predication L=4
+[PASS] p13_predication L=8
+[PASS] p13_predication L=16
+[PASS] p13_predication L=32
+[PASS] p14_pred_bypass L=4
+[PASS] p14_pred_bypass L=8
+[PASS] p14_pred_bypass L=16
+[PASS] p14_pred_bypass L=32
+[PASS] p17_completion_hold L=4
+[PASS] p17_completion_hold L=8
+[PASS] p17_completion_hold L=16
+[PASS] p17_completion_hold L=32
+[PASS] p18_fetch_stall L=4
+[PASS] p18_fetch_stall L=8
+[PASS] p18_fetch_stall L=16
+[PASS] p18_fetch_stall L=32
+[PASS] p11_single_lane sweep lanes 0..31 x widths
+predication coverage: directed P13/P14 + width suite (EXEC x P intersection)
+python3 tools/m3_run_suite.py width 2>&1 | tee reports/evidence/m3/width_equivalence.log
+binary sha256: 20187525751078a04993f0e2ff6f8dac1664c4bd7740248758b30c40f2871df2 (identical words used for every width)
+[PASS] width equivalence L4==L8==L16==L32==golden (retire trace + full final state)
+python3 tools/m3_run_suite.py random 2>&1 | tee reports/evidence/m3/random_differential.log
+... 200/1000 programs clean so far
+... 400/1000 programs clean so far
+... 600/1000 programs clean so far
+... 800/1000 programs clean so far
+... 1000/1000 programs clean so far
+randomized differential: 1000/1000 seeds clean (x4 widths each = 4000 RTL executions)
+python3 tools/m3_run_suite.py reset 2>&1 | tee reports/evidence/m3/reset_stress.log
+[PASS] reset stress L=4: reset stress: 40 injection points clean (vector pipeline)
+[PASS] reset stress L=8: reset stress: 40 injection points clean (vector pipeline)
+[PASS] reset stress L=16: reset stress: 40 injection points clean (vector pipeline)
+[PASS] reset stress L=32: reset stress: 40 injection points clean (vector pipeline)
+python3 tools/m3_run_suite.py faults 2>&1 | tee reports/evidence/m3/fault_matrix.log
+[PASS] fault p15_reg_bounds: code=0x00 (expected 0x00)
+[PASS] fault p16_invalid_vmod: code=0x01 (expected 0x01)
+[make] M3 GREEN
+[make] FULL REGRESSION GREEN (M1+M2+M3)

@@ -1,0 +1,14 @@
+.reg vgpr_count=4 sgpr_count=64
+.kern p07 args=()
+p07:
+  S_MOV  s1, -1
+  S_MOV  s2, 1
+  S_CMP_LT s1, s2
+  S_BRA_COND LT_U, UNSIGNED_TAKEN
+  S_MOV  s3, 7
+UNSIGNED_TAKEN:
+  S_CMP_GT s1, s2
+  S_BRA_COND GE_U, OK
+  S_MOV  s4, 8
+OK:
+  RET_KERNEL_WF

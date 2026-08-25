@@ -1,0 +1,5 @@
+.reg vgpr_count=32 sgpr_count=64
+.kern p15 args=()
+p15:
+  V_LLANE v31
+  RET_KERNEL_WF

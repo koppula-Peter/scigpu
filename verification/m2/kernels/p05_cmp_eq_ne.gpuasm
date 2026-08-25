@@ -1,0 +1,14 @@
+.reg vgpr_count=4 sgpr_count=64
+.kern p05 args=()
+p05:
+  S_MOV  s1, 9
+  S_MOV  s2, 9
+  S_CMP_EQ s1, s2
+  S_BRA_COND Z, SAME
+  S_MOV  s3, 1
+SAME:
+  S_CMP_EQ s1, s2
+  S_BRA_COND NZ, DIFF
+  S_MOV  s4, 2
+DIFF:
+  RET_KERNEL_WF

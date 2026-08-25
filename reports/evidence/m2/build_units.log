@@ -1,0 +1,15 @@
+%Warning-PINMISSING: verification/unit/scigpu_units_tb.sv:61:39: Cell has missing pin: 'dbg_addr'
+   61 |   scigpu_sgpr_file #(.SGPR_COUNT(64)) u_sgpr (
+      |                                       ^~~~~~
+                     rtl/compute/scalar/scigpu_sgpr_file.sv:29:23: ... Location of port declaration
+   29 |   input  logic [7:0]  dbg_addr,
+      |                       ^~~~~~~~
+                     ... For warning description see https://verilator.org/warn/PINMISSING?v=5.032
+                     ... Use "/* verilator lint_off PINMISSING */" and lint_on around source to disable this message.
+%Warning-PINMISSING: verification/unit/scigpu_units_tb.sv:61:39: Cell has missing pin: 'dbg_data'
+   61 |   scigpu_sgpr_file #(.SGPR_COUNT(64)) u_sgpr (
+      |                                       ^~~~~~
+                     rtl/compute/scalar/scigpu_sgpr_file.sv:30:23: ... Location of port declaration
+   30 |   output logic [31:0] dbg_data
+      |                       ^~~~~~~~
+%Error: Exiting due to 2 warning(s)

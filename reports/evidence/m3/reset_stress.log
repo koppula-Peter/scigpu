@@ -1,0 +1,4 @@
+[PASS] reset stress L=4: reset stress: 40 injection points clean (vector pipeline)
+[PASS] reset stress L=8: reset stress: 40 injection points clean (vector pipeline)
+[PASS] reset stress L=16: reset stress: 40 injection points clean (vector pipeline)
+[PASS] reset stress L=32: reset stress: 40 injection points clean (vector pipeline)

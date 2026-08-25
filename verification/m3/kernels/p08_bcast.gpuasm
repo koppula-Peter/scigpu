@@ -1,0 +1,6 @@
+.reg vgpr_count=8 sgpr_count=16
+.kern p08 args=()
+p08:
+  S_MOV   s5, 0x1234
+  V_BCAST v7, s5
+  RET_KERNEL_WF

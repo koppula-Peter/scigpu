@@ -1,0 +1,6 @@
+.reg vgpr_count=4 sgpr_count=64
+.kern p14 args=()
+p14:
+  S_MOV  s1, 1
+  .word 0x0205000004000000
+  RET_KERNEL_WF

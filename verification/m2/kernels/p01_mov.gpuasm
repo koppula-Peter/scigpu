@@ -1,0 +1,8 @@
+.reg vgpr_count=4 sgpr_count=64
+.kern p01 args=()
+p01:
+  S_MOV  s1, 42
+  S_MOV  s2, -1
+  S_MOV  s3, s1
+  S_ADD  s4, s3, s2
+  RET_KERNEL_WF

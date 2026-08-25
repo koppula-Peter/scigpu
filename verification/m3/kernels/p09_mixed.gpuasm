@@ -1,0 +1,15 @@
+.reg vgpr_count=8 sgpr_count=24
+.kern p09 args=()
+p09:
+  S_MOV    s1, 42
+  V_BCAST  v0, s1
+  V_LLANE  v1
+  V_ADD    v2, v0, v1
+  S_ADD    s2, s1, 1
+  V_BCAST  v3, s2
+  V_XOR    v4, v2, v3
+  S_CMP_EQ s1, s1
+  S_BRA_COND SCC, DONE
+  V_MOVI   v5, 99
+DONE:
+  RET_KERNEL_WF
