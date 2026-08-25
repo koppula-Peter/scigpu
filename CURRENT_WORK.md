@@ -107,3 +107,15 @@ remote: /home/peter/Desktop/gpu_dev_backup.git — push after each milestone.
 ## Open issues
 OI-006 procurement · OI-007 rename at clean checkpoint · OI-008 tuning studies ·
 OI-009 Vivado 2025.2 unavailable (non-blocking) · OI-010/OI-011/OI-012 closed.
+
+## Session handoff protocol (read this first in every new session)
+1. `git -C /home/peter/Desktop/scigpu log --oneline -5` + `git status` — HEAD and
+   clean-tree are the source of truth, NOT chat memory.
+2. This file (CURRENT_WORK.md) carries the current milestone, next actions and
+   evidence paths. OPEN_ISSUES.md is the defect ledger.
+3. CADENCE: commit + push to `github` remote at every green checkpoint or
+   before ending a session. Never leave >1 work-block uncommitted.
+4. The todo sidebar of the assistant session mirrors remaining work; on session
+   end, unfinished todos must be reflected here in "Next" lines below.
+5. Build/verify entry points: `make fp32-unit`, `make fp-campaign`,
+   `make m6-build-l8 && make m6-directed`, per-milestone targets in Makefile.

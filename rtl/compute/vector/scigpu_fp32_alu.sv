@@ -7,6 +7,7 @@ module scigpu_fp32_alu #(
   input  logic [4:0]   op,
   input  logic [31:0]  a [SIMD_LANES],
   input  logic [31:0]  b [SIMD_LANES],
+  input  logic [31:0]  c [SIMD_LANES],
   output logic [31:0]  y [SIMD_LANES]
 );
 
@@ -239,6 +240,136 @@ module scigpu_fp32_alu #(
     end
   endfunction
 
+
+  // ======== IEEE 754 SP FUSED MULTIPLY-ADD ===============================
+  // vd = a*b + c, ONE rounding. Exact 48-bit product vs addend aligned into
+  // a common GRS window; single RN-even round with fp_add discipline.
+  function automatic logic [31:0] fp_fma(input logic [31:0] xa, input logic [31:0] xb,
+                                         input logic [31:0] xc);
+    logic sa, sb, sc, sp, rsign, stk, round_up;
+    logic [7:0]  ea, eb, ec, Ea, Eb, Ec, E;
+    logic [22:0] ma, mb, mc;
+    logic [23:0] pa, pb, pc;
+    logic [47:0] prod;
+    int epp, epc, d, k;
+    longint unsigned bigv, smallv, acc, one, tmp;
+    begin
+      sa = xa[31]; ea = xa[30:23]; ma = xa[22:0];
+      sb = xb[31]; eb = xb[30:23]; mb = xb[22:0];
+      sc = xc[31]; ec = xc[30:23]; mc = xc[22:0];
+      one = 64'd1;
+      sp = sa ^ sb;                                        // product sign
+
+      // ---- specials ----
+      if (((&ea) && (|ma)) || ((&eb) && (|mb)) || ((&ec) && (|mc))) return QNAN;
+      // infinities: product side
+      if ((&ea) || (&eb)) begin
+        if ((ea==8'hFF)&&(eb==8'hFF)&&(sa!=sb)) return QNAN;   // (-inf)*(inf)
+        if (((ea==8'hFF)&&(ma==23'd0)&&(eb==8'hFF)) ||
+            ((eb==8'hFF)&&(mb==23'd0)&&(ea==8'hFF))) begin
+          if ((&ec) && (sc != sp)) return QNAN;                // pinf + (-pinf)
+          return {sp, 8'hFF, 23'b0};
+        end
+        return QNAN;                                           // inf * 0
+      end
+      if (&ec) begin
+        if (((ea==8'd0)&&(ma==23'd0)) || ((eb==8'd0)&&(mb==23'd0)))
+          return QNAN;                                         // (0*finite) + inf
+        if ((sc != sp) && ((&ea) || (&eb))) return QNAN;
+        return {sc, 8'hFF, 23'b0};
+      end
+
+      pa = (ea != 8'd0) ? {1'b1, ma} : {1'b0, ma};
+      pb = (eb != 8'd0) ? {1'b1, mb} : {1'b0, mb};
+      pc = (ec != 8'd0) ? {1'b1, mc} : {1'b0, mc};
+      Ea = (ea != 8'd0) ? ea : 8'd1;
+      Eb = (eb != 8'd0) ? eb : 8'd1;
+      Ec = (ec != 8'd0) ? ec : 8'd1;
+
+      prod  = pa * pb;
+      epp   = int'(Ea) + int'(Eb) - 150;                   // prod  x 2^(epp-153+3)
+      epc   = int'(Ec);                                    // addend x 2^(epc-153+3)
+
+      // ---- zero shortcuts ----
+      if (prod == 48'd0) begin
+        if ((ec == 8'd0) && (mc == 23'd0))
+          return {(sp & sc), 31'b0};
+        return xc;
+      end
+      if ((ec == 8'd0) && (mc == 23'd0))
+        return fp_round(sp, {16'd0, prod}, epp);
+
+      // ---- align: bigger exponent hosts the window ----
+      stk = 1'b0;
+      if (epp >= epc) begin
+        bigv   = (longint unsigned'(prod) << 3);
+        smallv = (longint unsigned'(pc)   << 3);
+        E = epp[7:0]; rsign = sp; d = epp - epc;
+      end else begin
+        bigv   = (longint unsigned'(pc)   << 3);
+        smallv = (longint unsigned'(prod) << 3);
+        E = epc[7:0]; rsign = sc; d = epc - epp;
+      end
+      if (d > 60) begin
+        stk    = (smallv != 64'd0);
+        smallv = 64'd0;
+      end else if (d > 0) begin
+        stk    = |(smallv & ((one << d) - one));
+        smallv = smallv >> d;
+      end
+
+      // ---- signed combine ----
+      if (sp == sc)
+        acc = bigv + smallv;
+      else if (bigv >= smallv)
+        acc = bigv - smallv;
+      else begin
+        acc = smallv - bigv;
+        rsign = sc;
+      end
+      if (acc == 64'd0) return 32'b0;
+
+      // ---- normalize MSB to bit 26 ----
+      k = 0;
+      for (int i = 63; i >= 0; i--)
+        if ((k == 0) && (((acc >> i) & one) != 64'd0)) k = i;
+      if (k > 26) begin
+        d = k - 26;
+        tmp  = (one << d) - one;
+        stk  = stk | (|(acc & tmp));
+        acc  = acc >> d;
+        d    = (d > 200) ? 200 : d;
+        E    = E + 8'(d);
+      end else if (k < 26) begin
+        d = 26 - k;
+        for (int i = 0; i < 40; i++)
+          if ((d > 0) && (E > 8'd1)) begin
+            acc = acc << 1;
+            E   = E - 8'd1;
+            d   = d - 1;
+          end
+      end
+
+      // ---- round RN-even (fp_add discipline incl. asymmetric half) ----
+      if (!acc[2])
+        round_up = 1'b0;
+      else if (acc[1] || acc[0])
+        round_up = 1'b1;
+      else if (sp != sc)
+        round_up = stk ? 1'b0 : acc[3];
+      else
+        round_up = stk ? 1'b1 : acc[3];
+      if (round_up) acc = acc + (one << 3);
+      if (acc >= (one << 28)) begin                        // frac carry-out
+        acc = (one << 26);
+        E   = E + 8'd1;
+      end
+      if (E >= 8'd255) return {rsign, 8'hFF, 23'b0};
+      if (acc[26]) return {rsign, E, acc[25:3]};
+      return {rsign, 8'h00, acc[25:3]};
+    end
+  endfunction
+
   // ======== lane datapath ================================================
   genvar g;
   generate for (g = 0; g < SIMD_LANES; g++) begin : g_lane
@@ -249,6 +380,7 @@ module scigpu_fp32_alu #(
         5'd02:   y[g] = fp_mul(a[g], b[g]);                                  // FMUL
         5'd03:   y[g] = fp_i2f(a[g]);                                        // I2F
         5'd04:   y[g] = fp_f2i(a[g]);                                        // F2I
+        5'd05:   y[g] = fp_fma(a[g], b[g], c[g]);                            // FMA
         default: y[g] = 32'b0;
       endcase
     end
