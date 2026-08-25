@@ -1,0 +1,55 @@
+TBPW w=0 addr=5 val=ffffffff
+TBCTRL pc=4 op=7c1 cond=5 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=7 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=40 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=44 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBPW w=0 addr=3 val=00000000
+TBCTRL pc=46 op=7c1 cond=3 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBPW w=0 addr=0 val=ffffffff
+TBCTRL pc=244 op=7c1 cond=0 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=349 op=7c2 cond=0 P=ffffffff
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=354 op=7c8 cond=0 P=ffffffff
+TBPRE pre-P1=00000000 kind=2
+TBPW w=0 addr=14 val=00000000
+TBPW w=0 addr=13 val=ffffffff
+TBCTRL pc=359 op=7c9 cond=13 P=ffffffff
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=3b3b3b3b
+TBPW w=0 addr=13 val=c4c4c4c4
+TBCTRL pc=359 op=7c9 cond=13 P=c4c4c4c4
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=7f7f7f7f
+TBPW w=0 addr=13 val=80808080
+TBCTRL pc=359 op=7c9 cond=13 P=80808080
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=7f7f7f7f
+TBPW w=0 addr=13 val=80808080
+TBCTRL pc=359 op=7c9 cond=13 P=80808080
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=ffffffff
+TBPW w=0 addr=13 val=00000000
+TBCTRL pc=359 op=7c9 cond=13 P=00000000
+TBPRE pre-P1=00000000 kind=3
+TBCTRL pc=360 op=7c2 cond=0 P=ffffffff
+TBPRE pre-P1=00000000 kind=1
+MISMATCH events line 38
+  A: 169 110004040c00f000 0 00 00000000 ffffffff
+  B: 
+MISMATCH mask-events line 15
+  A: w=0 k=RET_KERNEL_WF pc=16a ft=0 pu=0 po=0 f=00
+  B: 
+MISMATCH state line 4
+  A: LIVE 00000000
+  B: LIVE ffffffff
+DONE mismatch:
+ G:DONE retired=53 fault=0 code=00 pc=16a live=00000000
+ R:DONE retired=51 fault=1 code=01 pc=169 live=ffffffff
+[diff /tmp/opencode/m5rnd_wabjh7ha/s782] FAIL (4 mismatches)

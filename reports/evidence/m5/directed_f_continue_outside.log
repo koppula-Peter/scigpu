@@ -515,3 +515,23 @@ TBCTRL pc=1 op=7cb cond=15 P=ffffffff
 TBPRE pre-P1=00000000 kind=5
 [diff /tmp/opencode/m5dir_iws_lc5f/f_continue_outside_l8] PASS (0 mismatches)
 
+l4 PASS
+TBCTRL pc=1 op=7cb cond=15 P=ffffffff
+TBPRE pre-P1=00000000 kind=5
+[diff /tmp/opencode/m5dir_5ocq1arv/f_continue_outside_l4] PASS (0 mismatches)
+
+l8 PASS
+TBCTRL pc=1 op=7cb cond=15 P=ffffffff
+TBPRE pre-P1=00000000 kind=5
+[diff /tmp/opencode/m5dir_5ocq1arv/f_continue_outside_l8] PASS (0 mismatches)
+
+l16 PASS
+TBCTRL pc=1 op=7cb cond=15 P=ffffffff
+TBPRE pre-P1=00000000 kind=5
+[diff /tmp/opencode/m5dir_5ocq1arv/f_continue_outside_l16] PASS (0 mismatches)
+
+l32 PASS
+TBCTRL pc=1 op=7cb cond=15 P=ffffffff
+TBPRE pre-P1=00000000 kind=5
+[diff /tmp/opencode/m5dir_5ocq1arv/f_continue_outside_l32] PASS (0 mismatches)
+

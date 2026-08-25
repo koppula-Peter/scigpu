@@ -115,7 +115,7 @@ module scigpu_m3_core #(
 
   // vector engine
   logic eng_setup_valid, eng_setup_ready, eng_last_commit;
-  logic [3:0] eng_op; logic [1:0] eng_bmux;
+  logic [4:0] eng_op; logic [1:0] eng_bmux;
   logic [7:0] eng_vd, eng_vs0, eng_vs1;
   logic [31:0] eng_imm, eng_bcast, eng_emask;
   logic [7:0] eng_raddr0, eng_raddr1; logic [4:0] eng_rlane_base;

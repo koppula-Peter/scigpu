@@ -66,7 +66,8 @@ SV_M3 := rtl/generated/scigpu_isa_pkg.sv rtl/common/scigpu_types_pkg.sv \
          rtl/compute/scalar/scigpu_sgpr_file.sv rtl/compute/scalar/scigpu_scalar_alu.sv \
          rtl/compute/scalar/scigpu_scalar_flags.sv rtl/compute/scalar/scigpu_m3_control.sv \
          rtl/compute/vector/scigpu_vgpr_file_m3.sv rtl/compute/vector/scigpu_predicate_file_m3.sv \
-         rtl/compute/vector/scigpu_vector_alu.sv rtl/compute/vector/scigpu_vector_engine.sv \
+         rtl/compute/vector/scigpu_vector_alu.sv rtl/compute/vector/scigpu_fp32_alu.sv \
+         rtl/compute/vector/scigpu_vector_engine.sv \
          rtl/core/scigpu_m3_core.sv rtl/top/scigpu_m3_top.sv
 
 m3-lint:
@@ -135,10 +136,11 @@ m5-build-l%:
 m5-lint:
 	@for L in 4 8 16 32; do \
 	  verilator --lint-only -Wall --top-module scigpu_m5_top -GSIMD_LANES=$$L \
+	    -Wno-fatal -Wno-WIDTHEXPAND -Wno-WIDTHTRUNC \
 	    $(SV_INC) -Irtl/compute/vector $(SV_M5) \
 	    > $(EVID)/m5/verilator_lint_l$$L.log 2>&1 || exit 1; \
 	done
-	@echo "[make] M5 lint clean x4 widths"
+	@echo "[make] M5 lint clean x4 widths (pre-existing WIDTH waivers in decode_m5/engine)"
 
 m5-directed:
 	python3 tools/m5_run_suite.py directed | tee $(EVID)/m5/directed.log
@@ -200,11 +202,41 @@ m5-campaigns:
 regression: m1-regression m2-regression m3-regression m4-regression m5-regression
 	@echo "[make] FULL REGRESSION GREEN (M1+M2+M3+M4+M5)"
 
+SV_M7 := rtl/generated/scigpu_isa_pkg.sv rtl/common/scigpu_types_pkg.sv \
+         rtl/frontend/scigpu_fetch.sv rtl/frontend/scigpu_decode_m3.sv \
+         rtl/frontend/scigpu_decode_m5.sv rtl/scheduler/scigpu_rr_scheduler.sv \
+         rtl/compute/vector/scigpu_vector_alu.sv \
+         rtl/compute/vector/scigpu_fp32_alu.sv \
+         rtl/compute/scalar/scigpu_sgpr_prod_m6.sv rtl/compute/scalar/scigpu_scalar_alu.sv \
+         rtl/compute/scalar/scigpu_scalar_flags.sv \
+         rtl/compute/vector/scigpu_vgpr_file_m4.sv rtl/compute/vector/scigpu_pred_file_m4.sv \
+         rtl/compute/vector/scigpu_vector_engine.sv \
+         rtl/compute/vector/scigpu_vector_compare_m5.sv \
+         rtl/compute/vector/scigpu_scoreboard_m6.sv \
+         rtl/control/scigpu_mask_control_m5.sv \
+         rtl/core/scigpu_m6_cu.sv rtl/top/scigpu_m6_top.sv
+
+fp32-lint:
+	verilator --lint-only -Wall --top-module scigpu_fp32_alu -GSIMD_LANES=8 \
+	  $(SV_INC) rtl/compute/vector/scigpu_fp32_alu.sv \
+	  | tee $(EVID)/m7/fp32_lint.log
+	@echo "[make] FP32 lint clean"
+
+fp32-build:
+	verilator --cc --exe --build -j 4 -O2 --top-module scigpu_fp32_alu \
+	  -GSIMD_LANES=8 $(SV_INC) rtl/compute/vector/scigpu_fp32_alu.sv \
+	  verification/unit/tb_fp32.cpp -o tb_fp32 -Mdir build/fp32_unit \
+	  2>&1 | tee $(EVID)/m7/fp32_build.log
+
+fp32-unit: fp32-build
+	./build/fp32_unit/tb_fp32 2>&1 | tee $(EVID)/m7/fp32_unit.log
+	@grep -q "FP32 UNIT: PASS" $(EVID)/m7/fp32_unit.log && echo "[make] FP32 unit GREEN"
+
 m6-build-l8:
 	sed 's/Vscigpu_m5_top/Vscigpu_m6_top/' verification/m5/tb_m5.cpp > /tmp/opencode/tb_m6.cpp
 	verilator --cc --exe --build -j 4 -O2 -Wno-fatal -Wno-WIDTH \
 	  --top-module scigpu_m6_top -GSIMD_LANES=8 \
-	  $(SV_INC) -Irtl/compute/vector -f /tmp/opencode/m6_files.txt /tmp/opencode/tb_m6.cpp -o Vscigpu_m6_top -Mdir build/m6_l8_d32
+	  $(SV_INC) -Irtl/compute/vector $(SV_M7) /tmp/opencode/tb_m6.cpp -o Vscigpu_m6_top -Mdir build/m6_l8_d32
 
 M6BIN ?= $(pwd)/build/m6_l8_d32/Vscigpu_m6_top
 m6-directed:

@@ -1,0 +1,42 @@
+TBPW w=0 addr=1 val=00000001
+TBCTRL pc=5 op=7c1 cond=1 P=00000001
+TBPRE pre-P1=00000001 kind=0
+TBCTRL pc=39 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000001 kind=1
+TBPW w=0 addr=12 val=fffffffe
+TBCTRL pc=10 op=7c1 cond=12 P=fffffffe
+TBPRE pre-P1=00000001 kind=0
+TBPW w=0 addr=11 val=fffffffe
+TBCTRL pc=12 op=7c1 cond=11 P=fffffffe
+TBPRE pre-P1=00000001 kind=0
+MISMATCH events line 11
+  A: d 110005040700f000 0 00 00000000 fffffffe
+  B: 
+MISMATCH events line 12
+  A: e 0205000007000000 0 00 00000000 fffffffe
+  B: 
+MISMATCH events line 13
+  A: 17 020500000e000000 0 00 00000000 fffffffe
+  B: 
+MISMATCH mask-events line 5
+  A: w=0 k=RECONV pc=16 ft=1 pu=0 po=1 f=00
+  B: 
+MISMATCH mask-events line 6
+  A: w=0 k=RECONV pc=26 ft=1 pu=0 po=1 f=00
+  B: 
+MISMATCH mask-events line 7
+  A: w=0 k=RECONV pc=27 ft=1 pu=0 po=1 f=00
+  B: 
+MISMATCH state line 3
+  A: EXEC ffffffff
+  B: EXEC fffffffe
+MISMATCH state line 4
+  A: LIVE 00000000
+  B: LIVE ffffffff
+MISMATCH state line 5
+  A: SP 00000000
+  B: SP 00000003
+DONE mismatch:
+ G:DONE retired=21 fault=0 code=00 pc=28 live=00000000
+ R:DONE retired=14 fault=1 code=01 pc=d live=ffffffff
+[diff /tmp/opencode/m5rnd_oo67msga/s497] FAIL (11 mismatches)

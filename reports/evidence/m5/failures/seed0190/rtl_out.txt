@@ -1,0 +1,39 @@
+TBPW w=0 addr=5 val=ffffffff
+TBCTRL pc=4 op=7c1 cond=5 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=9 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=2
+TBPW w=0 addr=14 val=00000000
+TBPW w=0 addr=13 val=ffffffff
+TBCTRL pc=13 op=7cb cond=14 P=00000000
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=15 op=7c9 cond=13 P=ffffffff
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=ffffffff
+TBPW w=0 addr=13 val=00000000
+TBCTRL pc=13 op=7cb cond=14 P=ffffffff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=15 op=7c9 cond=13 P=00000000
+TBPRE pre-P1=00000000 kind=3
+MISMATCH events line 16
+  A: 10 110005030500f000 0 00 00000000 ffffffff
+  B: 
+MISMATCH events line 17
+  A: 11 02050000a4000000 0 00 00000000 ffffffff
+  B: 
+MISMATCH mask-events line 7
+  A: w=0 k=RECONV pc=b6 ft=1 pu=0 po=1 f=00
+  B: 
+MISMATCH mask-events line 8
+  A: w=0 k=RET_KERNEL_WF pc=b7 ft=0 pu=0 po=0 f=00
+  B: 
+MISMATCH state line 4
+  A: LIVE 00000000
+  B: LIVE ffffffff
+MISMATCH state line 5
+  A: SP 00000000
+  B: SP 00000001
+DONE mismatch:
+ G:DONE retired=25 fault=0 code=00 pc=b7 live=00000000
+ R:DONE retired=21 fault=1 code=01 pc=10 live=ffffffff
+[diff /tmp/opencode/m5rnd_oo67msga/s190] FAIL (7 mismatches)

@@ -1,0 +1,34 @@
+TBPW w=0 addr=3 val=fffffffc
+TBCTRL pc=5 op=7c1 cond=3 P=fffffffc
+TBPRE pre-P1=00000000 kind=0
+MISMATCH events line 6
+  A: 6 111004030500f000 0 00 00000000 fffffffc
+  B: 
+MISMATCH events line 7
+  A: 7 110005040500f000 0 00 00000000 fffffffc
+  B: 
+MISMATCH events line 8
+  A: 8 0205000027000000 0 00 00000000 fffffffc
+  B: 
+MISMATCH mask-events line 2
+  A: w=0 k=RECONV pc=30 ft=1 pu=0 po=0 f=00
+  B: 
+MISMATCH mask-events line 3
+  A: w=0 k=CBRANCH_IF pc=a ft=1 pu=1 po=0 f=00
+  B: 
+MISMATCH mask-events line 4
+  A: w=0 k=LOOP_BEGIN pc=f ft=2 pu=1 po=0 f=00
+  B: 
+MISMATCH state line 2
+  A: PRED 00000000 00000000 00000000 fffffffc 00000001 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000003
+  B: PRED 00000000 00000000 00000000 fffffffc 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+MISMATCH state line 3
+  A: EXEC ffffffff
+  B: EXEC fffffffc
+MISMATCH state line 4
+  A: LIVE 00000000
+  B: LIVE ffffffff
+DONE mismatch:
+ G:DONE retired=49 fault=0 code=00 pc=31 live=00000000
+ R:DONE retired=6 fault=1 code=01 pc=6 live=ffffffff
+[diff /tmp/opencode/m5rnd_oo67msga/s369] FAIL (52 mismatches)

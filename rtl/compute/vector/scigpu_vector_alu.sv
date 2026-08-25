@@ -16,11 +16,14 @@ module scigpu_vector_alu #(
                        OP_MIN = 5'd13, OP_MAX = 5'd14;
 
 
-  // ---- FP32 path: use dedicated fp32_alu for ops >= 16 ----
-  logic        fp_sel;
+  // ---- FP32 path: dedicated fp32_alu drives y for ops >= 16 ----
+  wire        fp_sel  = (op >= 5'd16);
+  wire [4:0]  fp_op_w = op - 5'd16;  // 0=FADD 1=FSUB 2=FMUL 3=I2F 4=F2I
   logic [31:0] fp_y [SIMD_LANES];
-  assign fp_sel = (op >= 5'd16);
-  wire [4:0] fp_op_w = op - 5'd16;  // 0=FADD 1=FSUB 2=FMUL 3=I2F 4=F2I
+  scigpu_fp32_alu #(.SIMD_LANES(SIMD_LANES)) u_fp32 (
+    .op(fp_op_w), .a(a), .b(b), .y(fp_y)
+  );
+
   genvar g;
   generate for (g = 0; g < SIMD_LANES; g++) begin : g_lane
     wire [4:0] sh   = b[g][4:0];

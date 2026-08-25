@@ -693,3 +693,27 @@ TBCTRL pc=3 op=7c1 cond=0 P=fffffffc
 TBPRE pre-P1=00000000 kind=0
 [diff /tmp/opencode/m5dir_iws_lc5f/f_reconv_mismatch_l8] PASS (0 mismatches)
 
+l4 PASS
+TBPW w=0 addr=0 val=fffffffc
+TBCTRL pc=3 op=7c1 cond=0 P=fffffffc
+TBPRE pre-P1=00000000 kind=0
+[diff /tmp/opencode/m5dir_5ocq1arv/f_reconv_mismatch_l4] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=fffffffc
+TBCTRL pc=3 op=7c1 cond=0 P=fffffffc
+TBPRE pre-P1=00000000 kind=0
+[diff /tmp/opencode/m5dir_5ocq1arv/f_reconv_mismatch_l8] PASS (0 mismatches)
+
+l16 PASS
+TBPW w=0 addr=0 val=fffffffc
+TBCTRL pc=3 op=7c1 cond=0 P=fffffffc
+TBPRE pre-P1=00000000 kind=0
+[diff /tmp/opencode/m5dir_5ocq1arv/f_reconv_mismatch_l16] PASS (0 mismatches)
+
+l32 PASS
+TBPW w=0 addr=0 val=fffffffc
+TBCTRL pc=3 op=7c1 cond=0 P=fffffffc
+TBPRE pre-P1=00000000 kind=0
+[diff /tmp/opencode/m5dir_5ocq1arv/f_reconv_mismatch_l32] PASS (0 mismatches)
+

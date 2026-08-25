@@ -47,7 +47,7 @@ module scigpu_m3_control #(
   // vector engine
   output logic        vec_setup_valid,
   input  logic        vec_setup_ready,
-  output logic [3:0]  vec_op,
+  output logic [4:0]  vec_op,
   output logic [1:0]  vec_bmux,
   output logic [7:0]  vec_vd,
   output logic [7:0]  vec_vs0,
@@ -118,7 +118,7 @@ module scigpu_m3_control #(
   logic         d_legal, d_is_vec;
 
   iclass_e      d_cls;
-  logic [3:0]   d_va_op;  logic [1:0] d_va_bmux;
+  logic [4:0]   d_va_op;  logic [1:0] d_va_bmux;
   logic [7:0]   d_dst, d_src0, d_src1;
   logic [7:0]   d_vd, d_vs0, d_vs1;
   logic         d_useimm;
@@ -149,7 +149,7 @@ module scigpu_m3_control #(
   // ---------------- decode (registered out of DECODE) ------------------------
   logic         c_legal, c_isvec;
   iclass_e      c_cls;
-  logic [3:0]   c_va_op;  logic [1:0] c_va_bmux;
+  logic [4:0]   c_va_op;  logic [1:0] c_va_bmux;
   logic [7:0]   c_dst, c_src0, c_src1;
   logic [7:0]   c_vd, c_vs0, c_vs1;
   logic         c_useimm;

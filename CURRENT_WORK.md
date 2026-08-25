@@ -69,6 +69,30 @@ Next (phase 2): m6_cu integration (bootstrap storage retirement, scoreboard
 gating in issueability, staged-supply datapath mux, bank-conflict PMC),
 directed RAW/WAW/conflict kernels, differential campaigns, gate review.
 
+## Current milestone
+**M7 — FP32 Vector Arithmetic — phase 2 COMPLETE (OI-016 closed)**
+
+Highlights:
+- scigpu_fp32_alu.sv fully rewritten: IEEE 754 SP RN-even, subnormals,
+  canonical qNaN; GRS adder with asymmetric on-grid-half tie handling;
+  exact-product multiplier + unified exact-value rounder; I2F/F2I exact with
+  saturating truncation.
+- Unit TB (verification/unit/tb_fp32.cpp): directed edges + 30k random x8
+  lanes vs host IEEE SP — PASS 0/240424 (reports/evidence/m7/fp32_unit.log).
+- Integrated: vector_alu drives FP ops 16..20 from decode_m5 through
+  fp32_alu; core differential kernels fp_arith + fp_consts PASS on m6
+  binary vs golden (reports/evidence/m6/directed_fp_*.log).
+- va_op[4:0] reconciliation across decode_m3/m3_control/m5_cu/m3_core
+  (decode_m5 already emitted 5-bit ops); width nits fixed at source;
+  m5-lint WIDTH waivers documented (pre-existing at HEAD).
+- Regression: M1 GREEN · M2 GREEN · M3 GREEN (lint/build x4, unit,
+  directed, width-equiv, random 1000x4, reset, faults) · M4 GREEN ·
+  M5 GREEN (incl. formal) · M6 directed 23/23 @ L8 incl. FP kernels.
+
+Next (phase 3): M7 gate review — random FP differential campaigns
+(structured float kernels), V_FMA.F32 single-rounding path, F32 compare
+(VFCMP.*) class, then tag gpu-m7-fp32.
+
 ## Open issues
 OI-006 procurement · OI-007 rename at clean checkpoint · OI-008 tuning studies ·
 OI-009 Vivado 2025.2 unavailable (non-blocking) · OI-010/OI-011/OI-012 closed.

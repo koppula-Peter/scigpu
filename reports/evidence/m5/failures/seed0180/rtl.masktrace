@@ -1,0 +1,6 @@
+w=0 k=CBRANCH_IF pc=4 ft=1 pu=1 po=0 f=00
+w=0 k=CBRANCH_IF pc=d2 ft=1 pu=1 po=0 f=00
+w=0 k=RECONV pc=db ft=1 pu=0 po=1 f=00
+w=0 k=CBRANCH_IF pc=dd ft=1 pu=1 po=0 f=00
+w=0 k=CBRANCH_IF pc=e0 ft=1 pu=1 po=0 f=00
+w=0 k=CBRANCH_IF pc=e2 ft=1 pu=1 po=0 f=00

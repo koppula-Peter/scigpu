@@ -1,3 +1,13 @@
+%Warning-UNUSEDSIGNAL: rtl/frontend/scigpu_decode_m5.sv:96:8: Signal is not used: 'vmin'
+                                                            : ... note: In instance 'scigpu_m5_top.u_core.g_dec[3].u_dec'
+   96 |   wire vmin  =(opc==OPC_V_MIN)&&vfmt, vmax=(opc==OPC_V_MAX)&&vfmt;
+      |        ^~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.032
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: rtl/frontend/scigpu_decode_m5.sv:96:39: Signal is not used: 'vmax'
+                                                             : ... note: In instance 'scigpu_m5_top.u_core.g_dec[3].u_dec'
+   96 |   wire vmin  =(opc==OPC_V_MIN)&&vfmt, vmax=(opc==OPC_V_MAX)&&vfmt;
+      |                                       ^~~~
 - V e r i l a t i o n   R e p o r t: Verilator 5.032 2025-01-01 rev (Debian 5.032-1)
-- Verilator: Built from 0.828 MB sources in 18 modules, into 1.255 MB in 6 C++ files needing 0.000 MB
-- Verilator: Walltime 0.114 s (elab=0.014, cvt=0.071, bld=0.000); cpu 0.113 s on 1 threads; alloced 20.645 MB
+- Verilator: Built from 0.849 MB sources in 19 modules, into 3.193 MB in 8 C++ files needing 0.000 MB
+- Verilator: Walltime 0.315 s (elab=0.025, cvt=0.219, bld=0.000); cpu 0.315 s on 1 threads; alloced 30.988 MB

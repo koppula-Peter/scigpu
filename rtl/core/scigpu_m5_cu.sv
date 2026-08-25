@@ -345,7 +345,7 @@ module scigpu_m5_cu #(
   logic [3:0]  d_ctrl_op[N];
   logic [7:0]  d_dst[N], d_src0[N], d_src1[N];
   logic [7:0]  d_vd[N], d_vs0[N], d_vs1[N];
-  logic [3:0]  d_va_op[N]; logic [1:0] d_va_bmux[N]; logic [3:0] d_pred[N];
+  logic [4:0]  d_va_op[N]; logic [1:0] d_va_bmux[N]; logic [3:0] d_pred[N];
   logic [3:0]  d_pdst[N];
   logic [31:0] d_imm[N]; logic d_useimm[N];
   logic signed [23:0] d_disp[N]; logic [15:0] d_bmod[N];
@@ -407,7 +407,8 @@ module scigpu_m5_cu #(
   // granted-slot capture
   logic [7:0]  g_dst, g_src0, g_src1, g_vd, g_vs0, g_vs1;
   logic [31:0] g_imm;
-  logic [3:0]  g_pred, g_va_op, g_pdst, g_ctrl_op, g_cond4;
+  logic [3:0]  g_pred, g_pdst, g_ctrl_op, g_cond4;
+  logic [4:0]  g_va_op;
   logic [15:0] g_bmod;
   logic [1:0]  g_va_bmux;
   logic        g_useimm;
@@ -542,7 +543,7 @@ module scigpu_m5_cu #(
   // =======================================================================
   // shared vector backend: engine (ALU) + compare slice
   // =======================================================================
-  logic [3:0]  ve_setup_op; logic [1:0] ve_setup_bmux;
+  logic [4:0]  ve_setup_op; logic [1:0] ve_setup_bmux;
   logic [7:0]  ve_setup_vd, ve_setup_vs0, ve_setup_vs1;
   logic [31:0] ve_setup_imm, ve_setup_bcast, ve_setup_eff;
 

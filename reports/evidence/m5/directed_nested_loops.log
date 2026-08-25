@@ -1428,3 +1428,55 @@ TBCTRL pc=10 op=7c9 cond=4 P=ffffffff
 TBPRE pre-P1=00000000 kind=3
 [diff /tmp/opencode/m5dir_iws_lc5f/nested_loops_l8] PASS (0 mismatches)
 
+l4 PASS
+TBCTRL pc=3 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=2
+TBCTRL pc=5 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=2
+TBPW w=0 addr=3 val=00000000
+TBCTRL pc=7 op=7ca cond=3 P=00000000
+TBPRE pre-P1=00000000 kind=4
+TBPW w=0 addr=4 val=ffffffff
+TBCTRL pc=10 op=7c9 cond=4 P=ffffffff
+TBPRE pre-P1=00000000 kind=3
+[diff /tmp/opencode/m5dir_5ocq1arv/nested_loops_l4] PASS (0 mismatches)
+
+l8 PASS
+TBCTRL pc=3 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=2
+TBCTRL pc=5 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=2
+TBPW w=0 addr=3 val=00000000
+TBCTRL pc=7 op=7ca cond=3 P=00000000
+TBPRE pre-P1=00000000 kind=4
+TBPW w=0 addr=4 val=ffffffff
+TBCTRL pc=10 op=7c9 cond=4 P=ffffffff
+TBPRE pre-P1=00000000 kind=3
+[diff /tmp/opencode/m5dir_5ocq1arv/nested_loops_l8] PASS (0 mismatches)
+
+l16 PASS
+TBCTRL pc=3 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=2
+TBCTRL pc=5 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=2
+TBPW w=0 addr=3 val=00000000
+TBCTRL pc=7 op=7ca cond=3 P=00000000
+TBPRE pre-P1=00000000 kind=4
+TBPW w=0 addr=4 val=ffffffff
+TBCTRL pc=10 op=7c9 cond=4 P=ffffffff
+TBPRE pre-P1=00000000 kind=3
+[diff /tmp/opencode/m5dir_5ocq1arv/nested_loops_l16] PASS (0 mismatches)
+
+l32 PASS
+TBCTRL pc=3 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=2
+TBCTRL pc=5 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=2
+TBPW w=0 addr=3 val=00000000
+TBCTRL pc=7 op=7ca cond=3 P=00000000
+TBPRE pre-P1=00000000 kind=4
+TBPW w=0 addr=4 val=ffffffff
+TBCTRL pc=10 op=7c9 cond=4 P=ffffffff
+TBPRE pre-P1=00000000 kind=3
+[diff /tmp/opencode/m5dir_5ocq1arv/nested_loops_l32] PASS (0 mismatches)
+

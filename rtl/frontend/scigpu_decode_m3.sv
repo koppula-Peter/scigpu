@@ -7,7 +7,7 @@ module scigpu_decode_m3 (
   output logic        legal,
   output logic        is_vector,
   output scigpu_types_pkg::iclass_e cls,     // scalar classes reused
-  output logic [3:0]  va_op,                 // vector ALU op (va_op_e below)
+  output logic [4:0]  va_op,                 // vector ALU op (va_op_e below)
   output logic [1:0]  va_bmux,               // operand-B select
   output logic [7:0]  dst,                   // SGPR dst (scalar)
   output logic [7:0]  src0, src1,
@@ -84,28 +84,28 @@ module scigpu_decode_m3 (
   // ---------------- classify --------------------------------------------------
   always_comb begin
     legal = 1'b0; is_vector = 1'b0; use_imm = (fmt == FMT_VRI);
-    cls = scigpu_types_pkg::CLS_NONE; va_op = 4'd0; va_bmux = 2'd0;
+    cls = scigpu_types_pkg::CLS_NONE; va_op = 5'd0; va_bmux = 2'd0;
     if (v_any) begin
       legal = vmod_ok;                       // unsupported VMOD -> illegal
       is_vector = 1'b1;
       case (opc)
-        OPC_V_MOV : begin cls=scigpu_types_pkg::CLS_VEC_PASS; va_op=4'd0;
+        OPC_V_MOV : begin cls=scigpu_types_pkg::CLS_VEC_PASS; va_op=5'd0;
                            va_bmux=(fmt==FMT_VRI)?2'd1:2'd2; end   // BM_IMM/BM_VS0
-        OPC_V_MOVI: begin cls=scigpu_types_pkg::CLS_VEC_PASS; va_op=4'd0;
+        OPC_V_MOVI: begin cls=scigpu_types_pkg::CLS_VEC_PASS; va_op=5'd0;
                            va_bmux=2'd1; end
-        OPC_V_BCAST:begin cls=scigpu_types_pkg::CLS_VEC_PASS; va_op=4'd0;
+        OPC_V_BCAST:begin cls=scigpu_types_pkg::CLS_VEC_PASS; va_op=5'd0;
                            va_bmux=2'd3; end
-        OPC_V_LLANE:begin cls=scigpu_types_pkg::CLS_VEC_LLANE; va_op=4'd11;
+        OPC_V_LLANE:begin cls=scigpu_types_pkg::CLS_VEC_LLANE; va_op=5'd11;
                            va_bmux=2'd0; end
-        OPC_V_ADD : begin cls=scigpu_types_pkg::CLS_VEC_ALU; va_op=4'd1; va_bmux=2'd0; end
-        OPC_V_SUB : begin cls=scigpu_types_pkg::CLS_VEC_ALU; va_op=4'd2; va_bmux=2'd0; end
-        OPC_V_MUL : begin cls=scigpu_types_pkg::CLS_VEC_MUL; va_op=4'd10; va_bmux=2'd0; end
-        OPC_V_AND : begin cls=scigpu_types_pkg::CLS_VEC_ALU; va_op=4'd3; va_bmux=2'd0; end
-        OPC_V_OR  : begin cls=scigpu_types_pkg::CLS_VEC_ALU; va_op=4'd4; va_bmux=2'd0; end
-        OPC_V_XOR : begin cls=scigpu_types_pkg::CLS_VEC_ALU; va_op=4'd5; va_bmux=2'd0; end
-        OPC_V_SHL : begin cls=scigpu_types_pkg::CLS_VEC_ALU; va_op=4'd7; va_bmux=2'd0; end
-        OPC_V_SHR : begin cls=scigpu_types_pkg::CLS_VEC_ALU; va_op=4'd8; va_bmux=2'd0; end
-        OPC_V_SAR : begin cls=scigpu_types_pkg::CLS_VEC_ALU; va_op=4'd9; va_bmux=2'd0; end
+        OPC_V_ADD : begin cls=scigpu_types_pkg::CLS_VEC_ALU; va_op=5'd1; va_bmux=2'd0; end
+        OPC_V_SUB : begin cls=scigpu_types_pkg::CLS_VEC_ALU; va_op=5'd2; va_bmux=2'd0; end
+        OPC_V_MUL : begin cls=scigpu_types_pkg::CLS_VEC_MUL; va_op=5'd10; va_bmux=2'd0; end
+        OPC_V_AND : begin cls=scigpu_types_pkg::CLS_VEC_ALU; va_op=5'd3; va_bmux=2'd0; end
+        OPC_V_OR  : begin cls=scigpu_types_pkg::CLS_VEC_ALU; va_op=5'd4; va_bmux=2'd0; end
+        OPC_V_XOR : begin cls=scigpu_types_pkg::CLS_VEC_ALU; va_op=5'd5; va_bmux=2'd0; end
+        OPC_V_SHL : begin cls=scigpu_types_pkg::CLS_VEC_ALU; va_op=5'd7; va_bmux=2'd0; end
+        OPC_V_SHR : begin cls=scigpu_types_pkg::CLS_VEC_ALU; va_op=5'd8; va_bmux=2'd0; end
+        OPC_V_SAR : begin cls=scigpu_types_pkg::CLS_VEC_ALU; va_op=5'd9; va_bmux=2'd0; end
         default: ;
       endcase
       if (fmt == FMT_VRI) va_bmux = 2'd1;    // immediate form overrides

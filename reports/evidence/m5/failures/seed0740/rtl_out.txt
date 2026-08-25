@@ -1,0 +1,31 @@
+TBPW w=0 addr=1 val=ffffffff
+TBCTRL pc=5 op=7c1 cond=1 P=ffffffff
+TBPRE pre-P1=ffffffff kind=0
+MISMATCH events line 6
+  A: 6 111004010700f000 0 00 00000000 ffffffff
+  B: 
+MISMATCH events line 7
+  A: 7 0205000001000000 0 00 00000000 ffffffff
+  B: 
+MISMATCH events line 8
+  A: a 101003050100f000 0 00 00000000 ffffffff
+  B: 
+MISMATCH mask-events line 2
+  A: w=0 k=RECONV pc=9 ft=1 pu=0 po=1 f=00
+  B: 
+MISMATCH mask-events line 3
+  A: w=0 k=RET_KERNEL_WF pc=b ft=0 pu=0 po=0 f=00
+  B: 
+MISMATCH state line 4
+  A: LIVE 00000000
+  B: LIVE ffffffff
+MISMATCH state line 5
+  A: SP 00000000
+  B: SP 00000001
+MISMATCH state line 9
+  A: VGPR 03 00000000 fffffffe fffffffc fffffffa fffffff8 fffffff6 fffffff4 fffffff2 fffffff0 ffffffee ffffffec ffffffea ffffffe8 ffffffe6 ffffffe4 ffffffe2 ffffffe0 ffffffde ffffffdc ffffffda ffffffd8 ffffffd6 ffffffd4 ffffffd2 ffffffd0 ffffffce ffffffcc ffffffca ffffffc8 ffffffc6 ffffffc4 ffffffc2
+  B: VGPR 03 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+DONE mismatch:
+ G:DONE retired=11 fault=0 code=00 pc=b live=00000000
+ R:DONE retired=6 fault=1 code=01 pc=6 live=ffffffff
+[diff /tmp/opencode/m5rnd_wabjh7ha/s740] FAIL (10 mismatches)

@@ -58,7 +58,7 @@ module scigpu_decode_m5 (
   assign getid_sel = insn[7:0];
   assign getid_dst = insn[15:8];
   wire       vecfmt = (fmt == FMT_VRR) || (fmt == FMT_VRI);
-  assign pred  = vecfmt ? insn[15:12] : 5'h0F;
+  assign pred  = vecfmt ? insn[15:12] : 4'hF;
   assign pdst  = insn[47:44];
 
   // ---------------- scalar (identical to M2/M3) ------------------------------
@@ -107,12 +107,12 @@ module scigpu_decode_m5 (
   wire vc_ge  =(opc==OPC_VCMP_GE )&&pcmpf;
   wire vc_any = vc_eq|vc_neq|vc_lt|vc_le|vc_gt|vc_ge;
   // compare-slice op: {1(mode), invert, kind} kind:00 EQ 01 LT(s) 10 LE(s)
-  wire [4:0] vc_op = vc_eq  ? 4'b1000 :
-                     vc_neq ? 4'b1100 :
-                     vc_lt  ? 4'b1001 :
-                     vc_ge  ? 4'b1101 :
-                     vc_le  ? 4'b1010 :
-                              4'b1110 ;   // GT
+  wire [4:0] vc_op = vc_eq  ? 5'b01000 :
+                     vc_neq ? 5'b01100 :
+                     vc_lt  ? 5'b01001 :
+                     vc_ge  ? 5'b01101 :
+                     vc_le  ? 5'b01010 :
+                              5'b01110 ;   // GT
 
   // ---------------- M5 divergence-control family (FMT5) ----------------------
   wire c_cbranch=(opc==OPC_CBRANCH_IF)&&brf;

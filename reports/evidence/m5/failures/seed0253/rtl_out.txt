@@ -1,0 +1,107 @@
+TBPW w=0 addr=7 val=00000001
+TBCTRL pc=5 op=7c1 cond=7 P=00000001
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=10 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=2
+TBPW w=0 addr=14 val=00000000
+TBPW w=0 addr=13 val=00000001
+TBPW w=0 addr=3 val=00000001
+TBCTRL pc=14 op=7c1 cond=3 P=00000001
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=16 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=18 op=7c9 cond=13 P=00000001
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=00000001
+TBPW w=0 addr=13 val=00000000
+TBPW w=0 addr=3 val=00000001
+TBCTRL pc=14 op=7c1 cond=3 P=00000001
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=16 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=18 op=7c9 cond=13 P=00000000
+TBPRE pre-P1=00000000 kind=3
+TBCTRL pc=160 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBPW w=0 addr=4 val=00000000
+TBCTRL pc=22 op=7c1 cond=4 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBPW w=0 addr=4 val=00000000
+TBCTRL pc=79 op=7c1 cond=4 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=147 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=2
+TBPW w=0 addr=14 val=00000001
+TBPW w=0 addr=13 val=fffffffe
+TBPW w=0 addr=11 val=fffffffe
+TBCTRL pc=151 op=7c1 cond=11 P=fffffffe
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=153 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=154 op=7cb cond=14 P=00000001
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=156 op=7c9 cond=13 P=fffffffe
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=55555555
+TBPW w=0 addr=13 val=aaaaaaaa
+TBPW w=0 addr=11 val=fffffffe
+TBCTRL pc=151 op=7c1 cond=11 P=fffffffe
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=153 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=154 op=7cb cond=14 P=55555555
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=156 op=7c9 cond=13 P=aaaaaaaa
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=ffffffff
+TBPW w=0 addr=13 val=00000000
+TBPW w=0 addr=11 val=fffffffe
+TBCTRL pc=151 op=7c1 cond=11 P=fffffffe
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=153 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=154 op=7cb cond=14 P=ffffffff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=156 op=7c9 cond=13 P=00000000
+TBPRE pre-P1=00000000 kind=3
+TBCTRL pc=158 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=159 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=160 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=165 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=2
+TBPW w=0 addr=14 val=00000000
+TBPW w=0 addr=13 val=ffffffff
+MISMATCH events line 49
+  A: a8 111005040500f000 0 00 00000000 ffffffff
+  B: 
+MISMATCH events line 50
+  A: aa 10000a0a0700f000 0 00 00000000 ffffffff
+  B: 
+MISMATCH events line 51
+  A: a6 3059e0a0c0000000 0 00 00000000 ffffffff
+  B: 
+MISMATCH mask-events line 29
+  A: w=0 k=CONTINUE pc=a9 ft=2 pu=0 po=0 f=00
+  B: 
+MISMATCH mask-events line 30
+  A: w=0 k=LOOP_END pc=ab ft=2 pu=0 po=0 f=00
+  B: 
+MISMATCH mask-events line 31
+  A: w=0 k=CONTINUE pc=a9 ft=2 pu=0 po=0 f=00
+  B: 
+MISMATCH state line 2
+  A: PRED 00000000 00000000 00000000 00000001 00000000 00000000 00000000 00000001 00000000 00000000 00000000 fffffffe 00000000 00000000 ffffffff
+  B: PRED 00000000 00000000 00000000 00000001 00000000 00000000 00000000 00000001 00000000 00000000 00000000 fffffffe 00000000 ffffffff 00000000
+MISMATCH state line 4
+  A: LIVE 00000000
+  B: LIVE ffffffff
+MISMATCH state line 5
+  A: SP 00000000
+  B: SP 00000001
+DONE mismatch:
+ G:DONE retired=86 fault=0 code=00 pc=ac live=00000000
+ R:DONE retired=76 fault=1 code=01 pc=a8 live=ffffffff
+[diff /tmp/opencode/m5rnd_oo67msga/s253] FAIL (15 mismatches)

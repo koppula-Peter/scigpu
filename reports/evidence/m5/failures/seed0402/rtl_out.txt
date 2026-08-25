@@ -1,0 +1,62 @@
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=4 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=9 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=2
+TBPW w=0 addr=14 val=00000000
+TBPW w=0 addr=13 val=ffffffff
+TBCTRL pc=14 op=7c9 cond=13 P=ffffffff
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=55555555
+TBPW w=0 addr=13 val=aaaaaaaa
+TBCTRL pc=14 op=7c9 cond=13 P=aaaaaaaa
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=ffffffff
+TBPW w=0 addr=13 val=00000000
+TBCTRL pc=14 op=7c9 cond=13 P=00000000
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=2 val=00000000
+TBCTRL pc=16 op=7c1 cond=2 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=21 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=24 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=29 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=2
+TBPW w=0 addr=14 val=00000000
+TBPW w=0 addr=13 val=ffffffff
+TBPW w=0 addr=10 val=00000000
+TBCTRL pc=33 op=7c1 cond=10 P=00000000
+TBPRE pre-P1=00000000 kind=0
+MISMATCH events line 32
+  A: 22 111005040500f000 0 00 00000000 ffffffff
+  B: 
+MISMATCH events line 33
+  A: 25 10000a0a0700f000 0 00 00000000 ffffffff
+  B: 
+MISMATCH events line 34
+  A: 1e 3059e0a0c0000000 0 00 00000000 ffffffff
+  B: 
+MISMATCH mask-events line 11
+  A: w=0 k=RECONV pc=23 ft=1 pu=0 po=1 f=00
+  B: 
+MISMATCH mask-events line 12
+  A: w=0 k=CONTINUE pc=24 ft=2 pu=0 po=0 f=00
+  B: 
+MISMATCH mask-events line 13
+  A: w=0 k=LOOP_END pc=26 ft=2 pu=0 po=0 f=00
+  B: 
+MISMATCH state line 2
+  A: PRED 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 ffffffff
+  B: PRED 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 ffffffff 00000000
+MISMATCH state line 4
+  A: LIVE 00000000
+  B: LIVE ffffffff
+MISMATCH state line 5
+  A: SP 00000000
+  B: SP 00000002
+DONE mismatch:
+ G:DONE retired=55 fault=0 code=00 pc=27 live=00000000
+ R:DONE retired=41 fault=1 code=01 pc=22 live=ffffffff
+[diff /tmp/opencode/m5rnd_oo67msga/s402] FAIL (19 mismatches)

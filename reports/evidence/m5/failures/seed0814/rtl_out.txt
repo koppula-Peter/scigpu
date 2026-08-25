@@ -1,0 +1,436 @@
+TBPW w=0 addr=2 val=ffffffff
+TBCTRL pc=4 op=7c1 cond=2 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=9 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=2
+TBPW w=0 addr=14 val=00000000
+TBPW w=0 addr=13 val=ffffffff
+TBPW w=0 addr=10 val=00000000
+TBCTRL pc=13 op=7c1 cond=10 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=00000000
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=ffffffff
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=00000001
+TBPW w=0 addr=13 val=fffffffe
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=00000001
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=fffffffe
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=00000003
+TBPW w=0 addr=13 val=fffffffc
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=00000003
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=fffffffc
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=00000007
+TBPW w=0 addr=13 val=fffffff8
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=00000007
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=fffffff8
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=0000000f
+TBPW w=0 addr=13 val=fffffff0
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=0000000f
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=fffffff0
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=0000001f
+TBPW w=0 addr=13 val=ffffffe0
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=0000001f
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=ffffffe0
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=0000003f
+TBPW w=0 addr=13 val=ffffffc0
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=0000003f
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=ffffffc0
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=0000007f
+TBPW w=0 addr=13 val=ffffff80
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=0000007f
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=ffffff80
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=000000ff
+TBPW w=0 addr=13 val=ffffff00
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=000000ff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=ffffff00
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=000001ff
+TBPW w=0 addr=13 val=fffffe00
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=000001ff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=fffffe00
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=000003ff
+TBPW w=0 addr=13 val=fffffc00
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=000003ff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=fffffc00
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=000007ff
+TBPW w=0 addr=13 val=fffff800
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=000007ff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=fffff800
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=00000fff
+TBPW w=0 addr=13 val=fffff000
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=00000fff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=fffff000
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=00001fff
+TBPW w=0 addr=13 val=ffffe000
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=00001fff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=ffffe000
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=00003fff
+TBPW w=0 addr=13 val=ffffc000
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=00003fff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=ffffc000
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=00007fff
+TBPW w=0 addr=13 val=ffff8000
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=00007fff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=ffff8000
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=0000ffff
+TBPW w=0 addr=13 val=ffff0000
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=0000ffff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=ffff0000
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=0001ffff
+TBPW w=0 addr=13 val=fffe0000
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=0001ffff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=fffe0000
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=0003ffff
+TBPW w=0 addr=13 val=fffc0000
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=0003ffff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=fffc0000
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=0007ffff
+TBPW w=0 addr=13 val=fff80000
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=0007ffff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=fff80000
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=000fffff
+TBPW w=0 addr=13 val=fff00000
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=000fffff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=fff00000
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=001fffff
+TBPW w=0 addr=13 val=ffe00000
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=001fffff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=ffe00000
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=003fffff
+TBPW w=0 addr=13 val=ffc00000
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=003fffff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=ffc00000
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=007fffff
+TBPW w=0 addr=13 val=ff800000
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=007fffff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=ff800000
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=00ffffff
+TBPW w=0 addr=13 val=ff000000
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=00ffffff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=ff000000
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=01ffffff
+TBPW w=0 addr=13 val=fe000000
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=01ffffff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=fe000000
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=03ffffff
+TBPW w=0 addr=13 val=fc000000
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=03ffffff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=fc000000
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=07ffffff
+TBPW w=0 addr=13 val=f8000000
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=07ffffff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=f8000000
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=0fffffff
+TBPW w=0 addr=13 val=f0000000
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=0fffffff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=f0000000
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=1fffffff
+TBPW w=0 addr=13 val=e0000000
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=1fffffff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=e0000000
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=3fffffff
+TBPW w=0 addr=13 val=c0000000
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=3fffffff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=c0000000
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=7fffffff
+TBPW w=0 addr=13 val=80000000
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=7fffffff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=80000000
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=ffffffff
+TBPW w=0 addr=13 val=00000000
+TBPW w=0 addr=10 val=ffffffff
+TBCTRL pc=13 op=7c1 cond=10 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=15 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=16 op=7cb cond=14 P=ffffffff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=18 op=7c9 cond=13 P=00000000
+TBPRE pre-P1=00000000 kind=3
+TBCTRL pc=27 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=32 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=2
+TBPW w=0 addr=14 val=00000000
+TBPW w=0 addr=13 val=ffffffff
+TBPW w=0 addr=1 val=00000000
+TBCTRL pc=36 op=7c1 cond=1 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=38 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=40 op=7c9 cond=13 P=ffffffff
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=55555555
+TBPW w=0 addr=13 val=aaaaaaaa
+TBPW w=0 addr=1 val=00000000
+TBCTRL pc=36 op=7c1 cond=1 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=38 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=40 op=7c9 cond=13 P=aaaaaaaa
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=14 val=ffffffff
+TBPW w=0 addr=13 val=00000000
+TBPW w=0 addr=1 val=00000000
+TBCTRL pc=36 op=7c1 cond=1 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=38 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=40 op=7c9 cond=13 P=00000000
+TBPRE pre-P1=00000000 kind=3
+TBPW w=0 addr=6 val=ffffffff
+TBCTRL pc=42 op=7c1 cond=6 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBPW w=0 addr=3 val=ffffffff
+TBCTRL pc=44 op=7c1 cond=3 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+MISMATCH events line 195
+  A: 2d 111005040500f000 0 00 00000000 ffffffff
+  B: 
+MISMATCH events line 196
+  A: 2e 10000c010700f000 0 00 00000000 ffffffff
+  B: 
+MISMATCH events line 197
+  A: 2f 0205000001000000 0 00 00000000 ffffffff
+  B: 
+MISMATCH mask-events line 148
+  A: w=0 k=RECONV pc=31 ft=1 pu=0 po=1 f=00
+  B: 
+MISMATCH mask-events line 149
+  A: w=0 k=RECONV pc=3c ft=1 pu=0 po=1 f=00
+  B: 
+MISMATCH mask-events line 150
+  A: w=0 k=RET_KERNEL_WF pc=3d ft=0 pu=0 po=0 f=00
+  B: 
+MISMATCH state line 4
+  A: LIVE 00000000
+  B: LIVE ffffffff
+MISMATCH state line 5
+  A: SP 00000000
+  B: SP 00000002
+MISMATCH state line 18
+  A: VGPR 0c 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001 00000001
+  B: VGPR 0c 00000001 00000002 00000001 00000002 00000001 00000002 00000001 00000002 00000001 00000002 00000001 00000002 00000001 00000002 00000001 00000002 00000001 00000002 00000001 00000002 00000001 00000002 00000001 00000002 00000001 00000002 00000001 00000002 00000001 00000002 00000001 00000002
+DONE mismatch:
+ G:DONE retired=349 fault=0 code=00 pc=3d live=00000000
+ R:DONE retired=341 fault=1 code=01 pc=2d live=ffffffff
+[diff /tmp/opencode/m5rnd_wabjh7ha/s814] FAIL (12 mismatches)

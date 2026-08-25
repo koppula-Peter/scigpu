@@ -1,0 +1,36 @@
+TBPW w=0 addr=14 val=00000000
+TBCTRL pc=4 op=7c1 cond=14 P=00000000
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=8 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=1
+MISMATCH events line 6
+  A: 9 110003010500f000 0 00 00000000 ffffffff
+  B: 
+MISMATCH events line 7
+  A: a 34110d000003f000 0 00 00000000 ffffffff
+  B: 
+MISMATCH events line 8
+  A: b 10300c010d00f000 0 00 00000000 ffffffff
+  B: 
+MISMATCH mask-events line 3
+  A: w=0 k=LOOP_BEGIN pc=e ft=2 pu=1 po=0 f=00
+  B: 
+MISMATCH mask-events line 4
+  A: w=0 k=LOOP_END pc=13 ft=2 pu=0 po=0 f=00
+  B: 
+MISMATCH mask-events line 5
+  A: w=0 k=LOOP_END pc=13 ft=2 pu=0 po=0 f=00
+  B: 
+MISMATCH state line 2
+  A: PRED 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 ffffffff
+  B: PRED 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+MISMATCH state line 4
+  A: LIVE 00000000
+  B: LIVE ffffffff
+MISMATCH state line 10
+  A: VGPR 04 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
+  B: VGPR 04 00000000 ffffffff fffffffe fffffffd fffffffc fffffffb fffffffa fffffff9 fffffff8 fffffff7 fffffff6 fffffff5 fffffff4 fffffff3 fffffff2 fffffff1 fffffff0 ffffffef ffffffee ffffffed ffffffec ffffffeb ffffffea ffffffe9 ffffffe8 ffffffe7 ffffffe6 ffffffe5 ffffffe4 ffffffe3 ffffffe2 ffffffe1
+DONE mismatch:
+ G:DONE retired=39 fault=0 code=00 pc=14 live=00000000
+ R:DONE retired=7 fault=1 code=01 pc=9 live=ffffffff
+[diff /tmp/opencode/m5rnd_oo67msga/s229] FAIL (39 mismatches)

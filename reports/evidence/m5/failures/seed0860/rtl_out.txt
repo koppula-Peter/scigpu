@@ -1,0 +1,27 @@
+TBPW w=0 addr=1 val=fffffff0
+TBCTRL pc=4 op=7c1 cond=1 P=fffffff0
+TBPRE pre-P1=fffffff0 kind=0
+TBCTRL pc=9 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=fffffff0 kind=1
+MISMATCH events line 8
+  A: 8 110004010500f000 0 00 00000000 0000000f
+  B: 
+MISMATCH mask-events line 3
+  A: w=0 k=RECONV pc=9 ft=1 pu=0 po=1 f=00
+  B: 
+MISMATCH mask-events line 4
+  A: w=0 k=RET_KERNEL_WF pc=a ft=0 pu=0 po=0 f=00
+  B: 
+MISMATCH state line 3
+  A: EXEC ffffffff
+  B: EXEC 0000000f
+MISMATCH state line 4
+  A: LIVE 00000000
+  B: LIVE ffffffff
+MISMATCH state line 5
+  A: SP 00000000
+  B: SP 00000001
+DONE mismatch:
+ G:DONE retired=12 fault=0 code=00 pc=a live=00000000
+ R:DONE retired=9 fault=1 code=01 pc=8 live=ffffffff
+[diff /tmp/opencode/m5rnd_wabjh7ha/s860] FAIL (7 mismatches)

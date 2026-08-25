@@ -1,0 +1,44 @@
+TBPW w=0 addr=13 val=ffffffff
+TBCTRL pc=6 op=7c1 cond=13 P=ffffffff
+TBPRE pre-P1=00000000 kind=0
+TBPW w=0 addr=11 val=00000003
+TBCTRL pc=9 op=7c1 cond=11 P=00000003
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=14 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=2
+TBPW w=0 addr=14 val=00000000
+TBPW w=0 addr=13 val=ffffffff
+TBPW w=0 addr=1 val=00000000
+TBCTRL pc=18 op=7c1 cond=1 P=00000000
+TBPRE pre-P1=00000000 kind=0
+MISMATCH events line 16
+  A: 13 110003040700f000 0 00 00000000 00000003
+  B: 
+MISMATCH events line 17
+  A: 16 10000a0a0700f000 0 00 00000000 00000003
+  B: 
+MISMATCH events line 18
+  A: f 3059e0a0c0000000 0 00 00000000 00000003
+  B: 
+MISMATCH mask-events line 5
+  A: w=0 k=RECONV pc=14 ft=1 pu=0 po=1 f=00
+  B: 
+MISMATCH mask-events line 6
+  A: w=0 k=CONTINUE pc=15 ft=2 pu=0 po=0 f=00
+  B: 
+MISMATCH mask-events line 7
+  A: w=0 k=LOOP_END pc=17 ft=2 pu=0 po=0 f=00
+  B: 
+MISMATCH state line 2
+  A: PRED 00000000 00000003 00000000 00000000 00000004 00000000 00000000 00000000 fffffff8 00000000 00000000 00000003 00000000 00000000 ffffffff
+  B: PRED 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000003 00000000 ffffffff 00000000
+MISMATCH state line 3
+  A: EXEC ffffffff
+  B: EXEC 00000003
+MISMATCH state line 4
+  A: LIVE 00000000
+  B: LIVE ffffffff
+DONE mismatch:
+ G:DONE retired=125 fault=0 code=00 pc=3f live=00000000
+ R:DONE retired=19 fault=1 code=01 pc=13 live=ffffffff
+[diff /tmp/opencode/m5rnd_wabjh7ha/s665] FAIL (116 mismatches)

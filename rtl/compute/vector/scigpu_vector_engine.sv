@@ -162,7 +162,7 @@ module scigpu_vector_engine #(
         com_vd_q    <= vd_q;
         com_mask_q  <= iss_mask;
         for (int j = 0; j < SIMD_LANES; j++)
-          com_data_q[j] <= (op_q == 4'd11) ? llane_val[j] : alu_y[j];
+          com_data_q[j] <= (op_q == 5'd11) ? llane_val[j] : alu_y[j];
 
         if (last_issue_q) begin
           running_q    <= 1'b0;                 // final beat in flight; retire

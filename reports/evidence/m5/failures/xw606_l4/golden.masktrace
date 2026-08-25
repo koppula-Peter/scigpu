@@ -1,0 +1,16 @@
+w=0 k=LOOP_BEGIN pc=8 ft=2 pu=1 po=0 f=00
+w=0 k=CONTINUE pc=c ft=2 pu=0 po=0 f=00
+w=0 k=LOOP_END pc=e ft=2 pu=0 po=0 f=00
+w=0 k=CONTINUE pc=c ft=2 pu=0 po=0 f=00
+w=0 k=LOOP_END pc=e ft=2 pu=0 po=0 f=00
+w=0 k=CONTINUE pc=c ft=2 pu=0 po=0 f=00
+w=0 k=LOOP_END pc=e ft=2 pu=0 po=1 f=00
+w=0 k=CBRANCH_IF pc=10 ft=1 pu=1 po=0 f=00
+w=0 k=LOOP_BEGIN pc=15 ft=2 pu=1 po=0 f=00
+w=0 k=LOOP_END pc=1a ft=2 pu=0 po=0 f=00
+w=0 k=LOOP_END pc=1a ft=2 pu=0 po=1 f=00
+w=0 k=RECONV pc=30 ft=1 pu=0 po=0 f=00
+w=0 k=CBRANCH_IF pc=1e ft=1 pu=1 po=0 f=00
+w=0 k=RECONV pc=2f ft=1 pu=0 po=1 f=00
+w=0 k=RECONV pc=30 ft=1 pu=0 po=1 f=00
+w=0 k=RET_KERNEL_WF pc=31 ft=0 pu=0 po=0 f=00

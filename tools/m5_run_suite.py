@@ -277,6 +277,35 @@ mop:
   RET_KERNEL_WF
 """, None, None, 1, 32, None)
 
+# ---- FP32 arithmetic (M7) ---------------------------------------------------
+KERNELS['fp_arith'] = ("""
+.reg vgpr_count=16 sgpr_count=24
+.kern fp_arith args=(out:PTR)
+fp_arith:
+  V_LLANE v1               ; lane id 0..L-1 (integer)
+  V_CVT.F32.I32 v2, v1     ; f(lane)
+  V_ADD.F32 v3, v2, v2     ; 2f
+  V_SUB.F32 v4, v3, v2     ; f via different path
+  V_MUL.F32 v5, v3, v3     ; 4f^2
+  V_CVT.I32.F32 v6, v5     ; trunc(4f^2)
+  RET_KERNEL_WF
+""", None, None, 1, 32, None)
+
+KERNELS['fp_consts'] = ("""
+.reg vgpr_count=16 sgpr_count=24
+.kern fp_consts args=(out:PTR)
+fp_consts:
+  V_MOVI v1, 1065353216    ; +1.0f bit pattern
+  V_BCAST v2, s0           ; arg payload (0)
+  V_LLANE v7
+  V_CVT.F32.I32 v3, v7     ; f(lane)
+  V_ADD.F32 v4, v3, v1     ; f+1
+  V_MUL.F32 v5, v4, v4     ; (f+1)^2
+  V_SUB.F32 v6, v5, v1     ; (f+1)^2 - 1
+  V_CVT.I32.F32 v8, v5     ; trunc((f+1)^2)
+  RET_KERNEL_WF
+""", None, None, 1, 32, None)
+
 # ---- fault kernels ----------------------------------------------------------
 KERNELS['f_overflow'] = (build_nested(6), 0xFFFFFFFF, None, 1, 4,
                          0x05)   # depth-4 build: 6 pushes -> overflow

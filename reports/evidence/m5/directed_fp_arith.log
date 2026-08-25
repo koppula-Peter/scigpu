@@ -1,0 +1,20 @@
+l4 PASS
+TBCTRL pc=6 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_5ocq1arv/fp_arith_l4] PASS (0 mismatches)
+
+l8 PASS
+TBCTRL pc=6 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_5ocq1arv/fp_arith_l8] PASS (0 mismatches)
+
+l16 PASS
+TBCTRL pc=6 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_5ocq1arv/fp_arith_l16] PASS (0 mismatches)
+
+l32 PASS
+TBCTRL pc=6 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_5ocq1arv/fp_arith_l32] PASS (0 mismatches)
+
