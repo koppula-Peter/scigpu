@@ -585,3 +585,8 @@ TBCTRL pc=1 op=7ca cond=15 P=ffffffff
 TBPRE pre-P1=00000000 kind=4
 [diff /tmp/opencode/m5dir_397a4rt_/f_break_outside_l32] PASS (0 mismatches)
 
+l8 PASS
+TBCTRL pc=1 op=7ca cond=15 P=ffffffff
+TBPRE pre-P1=00000000 kind=4
+[diff /tmp/opencode/m5dir_nefdywdo/f_break_outside_l8] PASS (0 mismatches)
+

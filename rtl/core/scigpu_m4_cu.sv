@@ -369,8 +369,9 @@ module scigpu_m4_cu #(
   assign sgpr_init_ready = 1'b1;
 
   // vector engine
-  logic [7:0]  ve_raddr0, ve_raddr1; logic [4:0] ve_rlane_base;
+  logic [7:0]  ve_raddr0, ve_raddr1, ve_raddr2; logic [4:0] ve_rlane_base;
   logic [31:0] ve_rdata0 [SIMD_LANES]; logic [31:0] ve_rdata1 [SIMD_LANES];
+  logic [31:0] ve_rdata2 [SIMD_LANES];
   logic        ve_we; logic [7:0] ve_wa; logic [4:0] ve_wb;
   logic [SIMD_LANES-1:0] ve_wm; logic [31:0] ve_wd [SIMD_LANES];
   logic [3:0]  ve_setup_op; logic [1:0] ve_setup_bmux;
@@ -382,10 +383,10 @@ module scigpu_m4_cu #(
     .setup_valid(vec_setup_valid), .setup_ready(ve_setup_ready),
     .setup_op(ve_setup_op), .setup_bmux(ve_setup_bmux),
     .setup_vd(ve_setup_vd), .setup_vs0(ve_setup_vs0),
-    .setup_vs1(ve_setup_vs1), .setup_imm(ve_setup_imm),
+    .setup_vs1(ve_setup_vs1), .setup_vs2(ve_setup_vs2), .setup_imm(ve_setup_imm),
     .setup_bcast_data(ve_setup_bcast),
     .setup_effective_mask(ve_setup_eff),
-    .vg_raddr0(ve_raddr0), .vg_raddr1(ve_raddr1),
+    .vg_raddr0(ve_raddr0), .vg_raddr1(ve_raddr1), .vg_raddr2(ve_raddr2),
     .vg_rlane_base(ve_rlane_base),
     .vg_rdata0(ve_rdata0), .vg_rdata1(ve_rdata1),
     .vg_we(ve_we), .vg_waddr(ve_wa), .vg_wlane_base(ve_wb),
@@ -401,9 +402,9 @@ module scigpu_m4_cu #(
     .init_we(vgpr_init_valid && vgpr_init_ready),
     .init_slot(vgpr_init_slot), .init_vgpr(vgpr_init_addr),
     .init_lane(vgpr_init_lane), .init_data(vgpr_init_data),
-    .rd_slot(ve_own), .raddr0(ve_raddr0), .raddr1(ve_raddr1),
+    .rd_slot(ve_own), .raddr0(ve_raddr0), .raddr1(ve_raddr1), .raddr2(7'h00),
     .rlane_base(ve_rlane_base),
-    .rdata0(ve_rdata0), .rdata1(ve_rdata1),
+    .rdata0(ve_rdata0), .rdata1(ve_rdata1), .rdata2(),
     .we(ve_we), .wslot(ve_own), .waddr(ve_wa), .wlane_base(ve_wb),
     .wmask(ve_wm), .wdata(ve_wd),
     .dbg_slot(dbg_wf_sel), .dbg_vgpr(dbg_vgpr_addr),

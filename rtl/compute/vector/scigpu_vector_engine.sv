@@ -23,16 +23,19 @@ module scigpu_vector_engine #(
   input  logic [7:0]  setup_vd,
   input  logic [7:0]  setup_vs0,
   input  logic [7:0]  setup_vs1,
+  input  logic [7:0]  setup_vs2,
   input  logic [31:0] setup_imm,
   input  logic [31:0] setup_bcast_data,
   input  logic [31:0] setup_effective_mask,// EXEC (& predicate), captured once
 
   // VGPR read port
   output logic [7:0]  vg_raddr0,
+  output logic [7:0]  vg_raddr2,
   output logic [7:0]  vg_raddr1,
   output logic [4:0]  vg_rlane_base,
   input  logic [31:0] vg_rdata0 [SIMD_LANES],
   input  logic [31:0] vg_rdata1 [SIMD_LANES],
+  input  logic [31:0] vg_rdata2 [SIMD_LANES],
 
   // VGPR write port (commit stage)
   output logic        vg_we,
@@ -64,7 +67,7 @@ module scigpu_vector_engine #(
   logic        running_q;
   logic [4:0]  op_q;
   logic [1:0]  bmux_q;
-  logic [7:0]  vd_q, vs0_q, vs1_q;
+  logic [7:0]  vd_q, vs0_q, vs1_q, vs2_q;
   logic [31:0] imm_q, bcast_q, emask_q;
   logic [BCNT_W-1:0] beat_q;                   // beat being ISSUED this cycle
   logic        last_issue_q;                  // issuing final beat
@@ -79,17 +82,20 @@ module scigpu_vector_engine #(
   // ---- VGPR read addressing (issue stage, combinational) --------------------
   assign vg_raddr0     = vs0_q;
   assign vg_raddr1     = vs1_q;
+  assign vg_raddr2     = vs2_q;
   assign vg_rlane_base = iss_base;
 
   // ---- ALU ------------------------------------------------------------------
   logic [4:0]  alu_op;
   logic [31:0] alu_a [SIMD_LANES];
   logic [31:0] alu_b [SIMD_LANES];
+  logic [31:0] alu_c [SIMD_LANES];
 
   always_comb begin
     alu_op = op_q;
     for (int j = 0; j < SIMD_LANES; j++) begin
       alu_a[j] = vg_rdata0[j];
+      alu_c[j] = vg_rdata2[j];
       case (bmux_q)
         BM_VS1  : alu_b[j] = vg_rdata1[j];
         BM_IMM  : alu_b[j] = imm_q;
@@ -109,7 +115,7 @@ module scigpu_vector_engine #(
   end
 
   scigpu_vector_alu #(.SIMD_LANES(SIMD_LANES)) u_alu (
-    .op(alu_op), .a(alu_a), .b(alu_b), .y(alu_y)
+    .op(alu_op), .a(alu_a), .b(alu_b), .c(alu_c), .y(alu_y)
   );
 
   wire [4:0] com_base = 5'(com_idx_q) * L5;
@@ -143,7 +149,7 @@ module scigpu_vector_engine #(
     if (rst) begin
       running_q    <= 1'b0;
       op_q         <= '0; bmux_q <= '0;
-      vd_q         <= '0; vs0_q <= '0; vs1_q <= '0;
+      vd_q         <= '0; vs0_q <= '0; vs1_q <= '0; vs2_q <= '0;
       imm_q        <= '0; bcast_q <= '0; emask_q <= '0;
       beat_q       <= '0;
       last_issue_q <= 1'b0;
@@ -184,6 +190,7 @@ module scigpu_vector_engine #(
         vd_q      <= setup_vd;
         vs0_q     <= setup_vs0;
         vs1_q     <= setup_vs1;
+        vs2_q     <= setup_vs2;
         imm_q     <= setup_imm;
         bcast_q   <= setup_bcast_data;
         emask_q   <= setup_effective_mask;

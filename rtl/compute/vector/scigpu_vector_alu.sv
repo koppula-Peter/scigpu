@@ -6,6 +6,7 @@ module scigpu_vector_alu #(
   input  logic [4:0]            op,        // va_op_e
   input  logic [31:0]           a [SIMD_LANES],
   input  logic [31:0]           b [SIMD_LANES],
+  input  logic [31:0]           c [SIMD_LANES],
   output logic [31:0]           y [SIMD_LANES]
 );
 
@@ -21,7 +22,7 @@ module scigpu_vector_alu #(
   wire [4:0]  fp_op_w = op - 5'd16;  // 0=FADD 1=FSUB 2=FMUL 3=I2F 4=F2I
   logic [31:0] fp_y [SIMD_LANES];
   scigpu_fp32_alu #(.SIMD_LANES(SIMD_LANES)) u_fp32 (
-    .op(fp_op_w), .a(a), .b(b), .y(fp_y)
+    .op(fp_op_w), .a(a), .b(b), .c(c), .y(fp_y)
   );
 
   genvar g;

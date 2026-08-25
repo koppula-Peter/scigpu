@@ -1,5 +1,5 @@
 // SciGPU M7 — IEEE 754 single-precision vector ALU
-// Ops: 0=FADD 1=FSUB 2=FMUL 3=I2F 4=F2I. RN-even; subnormals supported;
+// Ops: 0=FADD 1=FSUB 2=FMUL 3=I2F 4=F2I 5=FMA. RN-even; subnormals supported;
 // NaN -> canonical qNaN 0x7FC00000; F2I truncates toward zero with saturation.
 module scigpu_fp32_alu #(
   parameter int unsigned SIMD_LANES = 8
@@ -78,7 +78,7 @@ module scigpu_fp32_alu #(
 
   // ======== IEEE 754 SP ADD (SUB via operand sign flip) ==================
   function automatic logic [31:0] fp_add(input logic [31:0] xa, input logic [31:0] xb);
-    logic sa, sb, rsign, stk, round_up;
+    logic sa, sb, rsign, stk_a, stk_n, round_up;
     logic [7:0]  ea, eb, Ea, Eb, E;
     logic [22:0] ma, mb;
     logic [23:0] pa, pb;
@@ -114,13 +114,13 @@ module scigpu_fp32_alu #(
       end
 
       // align smaller operand into GRS window
-      stk = 1'b0;
+      stk_a = 1'b0;
       if (d > 27) begin
-        stk    = (smallv != 27'd0);
+        stk_a  = (smallv != 27'd0);
         smallv = 27'd0;
       end else if (d > 0) begin
         mask   = (27'd1 << d) - 27'd1;
-        stk    = |(smallv & mask);
+        stk_a  = |(smallv & mask);
         smallv = smallv >> d;
       end
 
@@ -130,13 +130,12 @@ module scigpu_fp32_alu #(
         acc = {1'b0, bigv} - {1'b0, smallv};   // big >= small guaranteed
 
       if (acc == 28'd0) return 32'b0;                      // exact cancel -> +0
-                                                           // (addition cannot produce 0:
-                                                           //  operands >= min-normal*2^3)
       if (acc[27]) begin                                   // carry out
-        stk = stk | acc[0];
-        acc = {1'b0, acc[27:1]};
-        E   = E + 8'd1;
+        stk_n = stk_a | acc[0];
+        acc   = {1'b0, acc[27:1]};
+        E     = E + 8'd1;
       end else begin
+        stk_n = stk_a;
         // left-normalize (fixed-bound: max 26 shifts)
         for (int i = 0; i < 26; i++)
           if ((acc[26] == 1'b0) && (E > 8'd1)) begin
@@ -145,7 +144,7 @@ module scigpu_fp32_alu #(
           end
       end
 
-      // round RN-even: G=[2] R=[1] S_d=[0], alignment sticky in stk,
+      // round RN-even: G=[2] R=[1] S_d=[0], alignment sticky in stk_n,
       // tie LSB=[3]. On-grid half behaves differently for add vs eff-sub:
       // add pushes above half; subtract pulls below.
       if (!acc[2])
@@ -153,9 +152,9 @@ module scigpu_fp32_alu #(
       else if (acc[1] || acc[0])
         round_up = 1'b1;
       else if (sa != sb)
-        round_up = stk ? 1'b0 : acc[3];
+        round_up = stk_n ? 1'b0 : acc[3];
       else
-        round_up = stk ? 1'b1 : acc[3];
+        round_up = stk_n ? 1'b1 : acc[3];
       if (round_up) acc = acc + 28'd8;
       if (acc[26]) begin                                   // normal result
         if (acc[27]) begin                                 // frac carry-out
@@ -240,55 +239,57 @@ module scigpu_fp32_alu #(
     end
   endfunction
 
-
   // ======== IEEE 754 SP FUSED MULTIPLY-ADD ===============================
-  // vd = a*b + c, ONE rounding. Exact 48-bit product vs addend aligned into
-  // a common GRS window; single RN-even round with fp_add discipline.
+  // vd = a*b + c, ONE rounding. Exact 48-bit product combined with the
+  // addend on a common unit-exponent grid (value = acc * 2^u); results
+  // below min-normal use the direct fraction-grid path. RN-even with the
+  // fp_add asymmetric on-grid-half rule for folded tails.
   function automatic logic [31:0] fp_fma(input logic [31:0] xa, input logic [31:0] xb,
                                          input logic [31:0] xc);
-    logic sa, sb, sc, sp, rsign, stk, round_up;
-    logic [7:0]  ea, eb, ec, Ea, Eb, Ec, E;
+    logic sa, sb, sc, sp, s_big, s_small, rsign, round_up;
+    logic stk_a;
+    logic [7:0]  ea, eb, ec, Ea, Eb, Ec;
     logic [22:0] ma, mb, mc;
-    logic [23:0] pa, pb, pc;
+    logic [23:0] pa, pb, pcv;
     logic [47:0] prod;
-    int epp, epc, d, k;
-    longint unsigned bigv, smallv, acc, one, tmp;
+    int epp, epB, kp, kc, vpp, vpc, u, k, d, fld;
+    longint unsigned acc, tmp, one;
     begin
       sa = xa[31]; ea = xa[30:23]; ma = xa[22:0];
       sb = xb[31]; eb = xb[30:23]; mb = xb[22:0];
       sc = xc[31]; ec = xc[30:23]; mc = xc[22:0];
       one = 64'd1;
-      sp = sa ^ sb;                                        // product sign
+      sp = sa ^ sb;
 
       // ---- specials ----
-      if (((&ea) && (|ma)) || ((&eb) && (|mb)) || ((&ec) && (|mc))) return QNAN;
-      // infinities: product side
-      if ((&ea) || (&eb)) begin
-        if ((ea==8'hFF)&&(eb==8'hFF)&&(sa!=sb)) return QNAN;   // (-inf)*(inf)
-        if (((ea==8'hFF)&&(ma==23'd0)&&(eb==8'hFF)) ||
-            ((eb==8'hFF)&&(mb==23'd0)&&(ea==8'hFF))) begin
-          if ((&ec) && (sc != sp)) return QNAN;                // pinf + (-pinf)
+      begin
+        logic a_nan, b_nan, c_nan, a_inf, b_inf, c_inf, a_zer, b_zer;
+        a_nan = (&ea) && (|ma);  b_nan = (&eb) && (|mb);  c_nan = (&ec) && (|mc);
+        a_inf = (&ea) && !a_nan; b_inf = (&eb) && !b_nan; c_inf = (&ec) && !c_nan;
+        a_zer = (ea == 8'd0) && (ma == 23'd0);
+        b_zer = (eb == 8'd0) && (mb == 23'd0);
+        if (a_nan || b_nan || c_nan) return QNAN;
+        if (a_inf || b_inf) begin
+          if ((a_inf && b_zer) || (b_inf && a_zer)) return QNAN;   // inf*0
+          if (c_inf && (sc != sp)) return QNAN;                    // inf + (-inf)
           return {sp, 8'hFF, 23'b0};
         end
-        return QNAN;                                           // inf * 0
-      end
-      if (&ec) begin
-        if (((ea==8'd0)&&(ma==23'd0)) || ((eb==8'd0)&&(mb==23'd0)))
-          return QNAN;                                         // (0*finite) + inf
-        if ((sc != sp) && ((&ea) || (&eb))) return QNAN;
-        return {sc, 8'hFF, 23'b0};
+        if (c_inf) begin
+          if (a_zer || b_zer) return QNAN;                         // (0*x)+inf
+          return {sc, 8'hFF, 23'b0};
+        end
       end
 
-      pa = (ea != 8'd0) ? {1'b1, ma} : {1'b0, ma};
-      pb = (eb != 8'd0) ? {1'b1, mb} : {1'b0, mb};
-      pc = (ec != 8'd0) ? {1'b1, mc} : {1'b0, mc};
-      Ea = (ea != 8'd0) ? ea : 8'd1;
-      Eb = (eb != 8'd0) ? eb : 8'd1;
-      Ec = (ec != 8'd0) ? ec : 8'd1;
+      pa  = (ea != 8'd0) ? {1'b1, ma} : {1'b0, ma};
+      pb  = (eb != 8'd0) ? {1'b1, mb} : {1'b0, mb};
+      pcv = (ec != 8'd0) ? {1'b1, mc} : {1'b0, mc};
+      Ea  = (ea != 8'd0) ? ea : 8'd1;
+      Eb  = (eb != 8'd0) ? eb : 8'd1;
+      Ec  = (ec != 8'd0) ? ec : 8'd1;
 
-      prod  = pa * pb;
-      epp   = int'(Ea) + int'(Eb) - 150;                   // prod  x 2^(epp-153+3)
-      epc   = int'(Ec);                                    // addend x 2^(epc-153+3)
+      prod = pa * pb;
+      epp  = int'(Ea) + int'(Eb) - 300;                  // prod * 2^epp
+      epB  = int'(Ec) - 150;                             // pcv * 2^epB
 
       // ---- zero shortcuts ----
       if (prod == 48'd0) begin
@@ -299,55 +300,96 @@ module scigpu_fp32_alu #(
       if ((ec == 8'd0) && (mc == 23'd0))
         return fp_round(sp, {16'd0, prod}, epp);
 
-      // ---- align: bigger exponent hosts the window ----
-      stk = 1'b0;
-      if (epp >= epc) begin
-        bigv   = (longint unsigned'(prod) << 3);
-        smallv = (longint unsigned'(pc)   << 3);
-        E = epp[7:0]; rsign = sp; d = epp - epc;
+      // ---- value exponents (MSB-normalized) ----
+      kp = 47;
+      for (int i = 46; i >= 0; i--)
+        if ((kp == 47) && ((({16'd0, prod} >> i) & one) != 64'd0)) kp = i;
+      kc = 23;
+      for (int i = 22; i >= 0; i--)
+        if ((kc == 23) && ((({40'd0, pcv} >> i) & one) != 64'd0)) kc = i;
+      vpp = epp + kp;
+      vpc = epB + kc;
+
+      // ===== window path: at least one term in normal range ==============
+      u = (vpp >= vpc) ? vpp : vpc;
+      u = u - 50;
+      if (vpp >= vpc) begin
+        acc = ({16'd0, prod}) << (50 - kp);
+        tmp = ({40'd0, pcv}) << (50 - kc);
+        sp  = sp;                     // product is host candidate
+        s_big = sp; s_small = sc;
       end else begin
-        bigv   = (longint unsigned'(pc)   << 3);
-        smallv = (longint unsigned'(prod) << 3);
-        E = epc[7:0]; rsign = sc; d = epc - epp;
+        acc = ({40'd0, pcv}) << (50 - kc);
+        tmp = ({16'd0, prod}) << (50 - kp);
+        s_big = sc; s_small = sp;
       end
+      d = (vpp >= vpc) ? (vpp - vpc) : (vpc - vpp);
+
+      // guest shift w/ sticky (single assignment into window sticky)
       if (d > 60) begin
-        stk    = (smallv != 64'd0);
-        smallv = 64'd0;
+        stk_a = (tmp != 64'd0);
+        tmp = 64'd0;
       end else if (d > 0) begin
-        stk    = |(smallv & ((one << d) - one));
-        smallv = smallv >> d;
+        stk_a = |(tmp & ((one << d) - one));
+        tmp = tmp >> d;
+      end else begin
+        stk_a = 1'b0;
       end
 
-      // ---- signed combine ----
-      if (sp == sc)
-        acc = bigv + smallv;
-      else if (bigv >= smallv)
-        acc = bigv - smallv;
-      else begin
-        acc = smallv - bigv;
-        rsign = sc;
+      // ---- signed combine (host magnitude vs aligned guest) ----
+      if (sp == sc) begin
+        acc   = acc + tmp;
+        rsign = sp;
+      end else if (acc >= tmp) begin
+        acc   = acc - tmp;
+        rsign = s_big;
+      end else begin
+        acc   = tmp - acc;
+        rsign = s_small;
       end
       if (acc == 64'd0) return 32'b0;
 
       // ---- normalize MSB to bit 26 ----
-      k = 0;
-      for (int i = 63; i >= 0; i--)
-        if ((k == 0) && (((acc >> i) & one) != 64'd0)) k = i;
+      k = 63;
+      for (int i = 62; i >= 0; i--)
+        if ((k == 63) && (((acc >> i) & one) != 64'd0)) k = i;
       if (k > 26) begin
         d = k - 26;
-        tmp  = (one << d) - one;
-        stk  = stk | (|(acc & tmp));
-        acc  = acc >> d;
-        d    = (d > 200) ? 200 : d;
-        E    = E + 8'(d);
+        if (d <= 60) stk_a = stk_a | ((acc & ((one << d) - one)) != 64'd0);
+        else         stk_a = 1'b1;
+        acc >>= d;
+        u    += d;
+        k    = 26;
       end else if (k < 26) begin
-        d = 26 - k;
-        for (int i = 0; i < 40; i++)
-          if ((d > 0) && (E > 8'd1)) begin
+        for (int i = 0; i < 26; i++)
+          if ((k < 26) && (u > -152)) begin
             acc = acc << 1;
-            E   = E - 8'd1;
-            d   = d - 1;
+            u   = u - 1;
+            k   = k + 1;
           end
+      end
+
+      // ---- settle subnormal anchor: bring unit exponent to -152 --------
+      if (u > -152) begin
+        for (int i = 0; i < 26; i++)
+          if ((k < 26) && (u > -152)) begin
+            acc = acc << 1;
+            u   = u - 1;
+            k   = k + 1;
+          end
+      end else if (u < -152) begin
+        d = -152 - u;
+        if (d > 60) begin
+          stk_a = 1'b1;
+          acc   = 64'd0;
+        end else begin
+          stk_a = stk_a | ((acc & ((one << d) - one)) != 64'd0);
+          acc   = acc >> d;
+        end
+        u = -152;
+        k = 63;
+        for (int i = 62; i >= 0; i--)
+          if ((k == 63) && (((acc >> i) & one) != 64'd0)) k = i;
       end
 
       // ---- round RN-even (fp_add discipline incl. asymmetric half) ----
@@ -356,17 +398,21 @@ module scigpu_fp32_alu #(
       else if (acc[1] || acc[0])
         round_up = 1'b1;
       else if (sp != sc)
-        round_up = stk ? 1'b0 : acc[3];
+        round_up = stk_a ? 1'b0 : acc[3];
       else
-        round_up = stk ? 1'b1 : acc[3];
+        round_up = stk_a ? 1'b1 : acc[3];
       if (round_up) acc = acc + (one << 3);
-      if (acc >= (one << 28)) begin                        // frac carry-out
+
+      // ---- assemble ----
+      if (acc[27]) begin                                   // frac carry-out
         acc = (one << 26);
-        E   = E + 8'd1;
+        u   = u + 1;
       end
-      if (E >= 8'd255) return {rsign, 8'hFF, 23'b0};
-      if (acc[26]) return {rsign, E, acc[25:3]};
-      return {rsign, 8'h00, acc[25:3]};
+      fld = u + 153;
+      if (fld >= 255) return {rsign, 8'hFF, 23'b0};
+      if (acc[26] && (fld >= 1))
+        return {rsign, fld[7:0], acc[25:3]};
+      return {rsign, 8'h00, acc[25:3]};                    // subnormal
     end
   endfunction
 
@@ -381,8 +427,17 @@ module scigpu_fp32_alu #(
         5'd03:   y[g] = fp_i2f(a[g]);                                        // I2F
         5'd04:   y[g] = fp_f2i(a[g]);                                        // F2I
         5'd05:   y[g] = fp_fma(a[g], b[g], c[g]);                            // FMA
-        default: y[g] = 32'b0;
+        default: begin
+          y[g] = 32'b0;
+`ifdef SCIGPU_FMA_DBG
+          if (op == 5'd05) $display("DEFAULT-HIT g=%0d", g);
+`endif
+        end
       endcase
+`ifdef SCIGPU_FMA_DBG
+      if (op == 5'd05)
+        $display("DISP g=%0d a=%h b=%h c=%h y=%h", g, a[g], b[g], c[g], y[g]);
+`endif
     end
   end endgenerate
 

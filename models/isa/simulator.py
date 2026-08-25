@@ -824,7 +824,8 @@ class Kernel:
                 elif op == VF_SUB:   r = f32_bits(bits_f32(a) - bits_f32(b))
                 elif op == VF_MUL:   r = f32_bits(bits_f32(a) * bits_f32(b))
                 elif op == VF_FMA:
-                    r = f32_bits(bits_f32(a)*bits_f32(s1v[l]) + bits_f32(s2v[l]))
+                    import math
+                    r = f32_bits(math.fma(bits_f32(a), bits_f32(s1v[l]), bits_f32(s2v[l])))
                 else:
                     raise SimFault(F_ILLEGAL_OPCODE)
                 dst[l] = r & MASK32

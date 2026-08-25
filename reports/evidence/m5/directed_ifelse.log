@@ -1680,3 +1680,15 @@ TBCTRL pc=9 op=7cf cond=0 P=aaaaaaaa
 TBPRE pre-P1=00000000 kind=12
 [diff /tmp/opencode/m5dir_397a4rt_/ifelse_l32] PASS (0 mismatches)
 
+l8 PASS
+TBPW w=0 addr=0 val=aaaaaaaa
+TBCTRL pc=4 op=7c1 cond=0 P=aaaaaaaa
+TBPRE pre-P1=00000000 kind=0
+TBCTRL pc=8 op=7c2 cond=0 P=aaaaaaaa
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=8 op=7c2 cond=0 P=aaaaaaaa
+TBPRE pre-P1=00000000 kind=1
+TBCTRL pc=9 op=7cf cond=0 P=aaaaaaaa
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_nefdywdo/ifelse_l8] PASS (0 mismatches)
+

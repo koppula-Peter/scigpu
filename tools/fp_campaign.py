@@ -73,9 +73,12 @@ def gen_kernel(seed):
     n_ops = rng.randint(4, 9)
     dst_pool = [3] + list(range(10, 15))
     for i in range(n_ops):
-        op = rng.choice(['FADD', 'FSUB', 'FMUL', 'FMUL', 'I2F', 'F2I'])
+        op = rng.choice(['FADD', 'FSUB', 'FMUL', 'FMUL', 'FMA', 'I2F', 'F2I'])
         vd = rng.choice(dst_pool)
-        if op in ('FADD', 'FSUB', 'FMUL'):
+        if op == 'FMA':
+            lines.append('  V_FMA.F32 v%d, v%d, v%d, v%d' % (
+                vd, rng.choice([4,5,6,7]), rng.choice([4,5,6,7]), rng.choice([4,5,6,7])))
+        elif op in ('FADD', 'FSUB', 'FMUL'):
             vs0 = rng.choice([4, 5, 6, 7])
             vs1 = rng.choice([4, 5, 6, 7])
             mnem = {'FADD': 'V_ADD.F32', 'FSUB': 'V_SUB.F32', 'FMUL': 'V_MUL.F32'}[op]

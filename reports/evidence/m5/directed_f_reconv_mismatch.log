@@ -777,3 +777,9 @@ TBCTRL pc=3 op=7c1 cond=0 P=fffffffc
 TBPRE pre-P1=00000000 kind=0
 [diff /tmp/opencode/m5dir_397a4rt_/f_reconv_mismatch_l32] PASS (0 mismatches)
 
+l8 PASS
+TBPW w=0 addr=0 val=fffffffc
+TBCTRL pc=3 op=7c1 cond=0 P=fffffffc
+TBPRE pre-P1=00000000 kind=0
+[diff /tmp/opencode/m5dir_nefdywdo/f_reconv_mismatch_l8] PASS (0 mismatches)
+

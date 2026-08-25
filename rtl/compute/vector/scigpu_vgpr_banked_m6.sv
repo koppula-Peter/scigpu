@@ -12,10 +12,11 @@ module scigpu_vgpr_banked_m6 #(
   input  logic [4:0]  init_lane,
   input  logic [31:0] init_data,
   input  logic [$clog2(SLOTS)-1:0] rd_slot,
-  input  logic [7:0]  raddr0, raddr1,
+  input  logic [7:0]  raddr0, raddr1, raddr2,
   input  logic [4:0]  rlane_base,
   output logic [31:0] rdata0 [SIMD_LANES],
   output logic [31:0] rdata1 [SIMD_LANES],
+  output logic [31:0] rdata2 [SIMD_LANES],
   output logic        conflict,
   input  logic        we,
   input  logic [$clog2(SLOTS)-1:0] wslot,
@@ -56,8 +57,10 @@ module scigpu_vgpr_banked_m6 #(
       automatic int ln = int'(rlane_base) + j;
       automatic int reg_a = (raddr0[4:1])*2 + int'(raddr0[0]);
       automatic int reg_b = (raddr1[4:1])*2 + int'(raddr1[0]);
+      automatic int reg_c = (raddr2[4:1])*2 + int'(raddr2[0]);
       rdata0[j] = mem[rd_slot][reg_a][ln];
       rdata1[j] = mem[rd_slot][reg_b][ln];
+      rdata2[j] = mem[rd_slot][reg_c][ln];
     end
   end
 

@@ -11,9 +11,10 @@ module scigpu_vgpr_file_m4 #(
   input  logic [31:0] init_data,
   // engine read (owner slot)
   input  logic [$clog2(N)-1:0] rd_slot,
-  input  logic [7:0] raddr0, raddr1, input logic [4:0] rlane_base,
+  input  logic [7:0] raddr0, raddr1, raddr2, input logic [4:0] rlane_base,
   output logic [31:0] rdata0 [SIMD_LANES],
   output logic [31:0] rdata1 [SIMD_LANES],
+  output logic [31:0] rdata2 [SIMD_LANES],
   // engine writeback (owner slot)
   input  logic we, input logic [$clog2(N)-1:0] wslot,
   input  logic [7:0] waddr, input logic [4:0] wlane_base,
@@ -39,6 +40,7 @@ module scigpu_vgpr_file_m4 #(
     for (int j = 0; j < SIMD_LANES; j++) begin
       rdata0[j] = mem[rd_base + 32'(raddr0)*32 + 32'(rlane_base) + 32'(j)];
       rdata1[j] = mem[rd_base + 32'(raddr1)*32 + 32'(rlane_base) + 32'(j)];
+      rdata2[j] = mem[rd_base + 32'(raddr2)*32 + 32'(rlane_base) + 32'(j)];
     end
   end
   wire [31:0] didx = i_base + 32'(init_vgpr)*32 + 32'(init_lane);

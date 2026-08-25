@@ -739,3 +739,9 @@ TBCTRL pc=3 op=7c9 cond=0 P=00000000
 TBPRE pre-P1=00000000 kind=3
 [diff /tmp/opencode/m5dir_397a4rt_/f_loope_norun_l32] PASS (0 mismatches)
 
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c9 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=3
+[diff /tmp/opencode/m5dir_nefdywdo/f_loope_norun_l8] PASS (0 mismatches)
+

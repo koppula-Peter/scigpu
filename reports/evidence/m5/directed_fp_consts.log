@@ -68,3 +68,8 @@ TBCTRL pc=8 op=7cf cond=0 P=00000000
 TBPRE pre-P1=00000000 kind=12
 [diff /tmp/opencode/m5dir_397a4rt_/fp_consts_l32] PASS (0 mismatches)
 
+l8 PASS
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_nefdywdo/fp_consts_l8] PASS (0 mismatches)
+

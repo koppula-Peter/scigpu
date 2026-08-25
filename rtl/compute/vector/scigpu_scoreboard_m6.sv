@@ -14,6 +14,8 @@ module scigpu_scoreboard_m6 #(
   input  logic [$clog2(SLOTS)-1:0] chk_slot,
   input  logic [7:0]  chk_src0,
   input  logic [7:0]  chk_src1,
+  input  logic [7:0]  chk_src2,
+  input  logic        chk_src2_en,
   input  logic [3:0]  chk_pred,        // control-condition selector
   output logic        vgpr_wait,       // vector src hits pending VGPR dst
   output logic        pred_wait,       // control cond hits pending PRED dst
@@ -62,7 +64,8 @@ module scigpu_scoreboard_m6 #(
     /* verilator lint_off UNUSEDSIGNAL */
     automatic int s = int'(chk_slot);
     /* verilator lint_on UNUSEDSIGNAL */
-    vgpr_wait = v_val[s] && ((chk_src0 == v_reg[s]) || (chk_src1 == v_reg[s]));
+    vgpr_wait = v_val[s] && ((chk_src0 == v_reg[s]) || (chk_src1 == v_reg[s]) ||
+                             (chk_src2_en && (chk_src2 == v_reg[s])));
     pred_wait = p_val[s] && (chk_pred == p_reg[s]);
   end
 

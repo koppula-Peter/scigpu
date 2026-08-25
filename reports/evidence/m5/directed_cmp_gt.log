@@ -910,3 +910,9 @@ TBCTRL pc=4 op=7cf cond=0 P=fffff800
 TBPRE pre-P1=00000000 kind=12
 [diff /tmp/opencode/m5dir_397a4rt_/cmp_gt_l32] PASS (0 mismatches)
 
+l8 PASS
+TBPW w=0 addr=0 val=fffff800
+TBCTRL pc=4 op=7cf cond=0 P=fffff800
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_nefdywdo/cmp_gt_l8] PASS (0 mismatches)
+

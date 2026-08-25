@@ -17,6 +17,7 @@ module scigpu_decode_m5 (
   output logic [7:0]  dst,
   output logic [7:0]  src0, src1,
   output logic [7:0]  vd, vs0, vs1,
+  output logic [7:0]  vs2,
   output logic        use_imm,
   output logic [31:0] imm,
   output logic signed [23:0] disp24,
@@ -49,6 +50,8 @@ module scigpu_decode_m5 (
   assign vd    = insn[47:40];
   assign vs0   = (fmt == FMT_PCMP) ? insn[43:36] : insn[39:32];
   assign vs1   = (fmt == FMT_PCMP) ? insn[35:28] : insn[31:24];
+  // FMA third source rides VRR VS2 @[23:16] (overlaps imm low half)
+  assign vs2   = insn[23:16];
   assign imm   = (fmt == FMT_VRI) ? {{16{insn[31]}}, insn[31:16]}
                                   : {{8{insn[31]}}, insn[31:8]};
   assign disp24= insn[47:24];
@@ -90,12 +93,12 @@ module scigpu_decode_m5 (
   wire vxor  =(opc==OPC_V_XOR)&&vfmt;
   wire vshl  =(opc==OPC_V_SHL)&&vfmt,  vshr  =(opc==OPC_V_SHR)&&vfmt;
   wire vfadd =(opc==12'h400)&&vfmt, vfsub=(opc==12'h401)&&vfmt,
-       vfmul =(opc==12'h402)&&vfmt,
+       vfmul =(opc==12'h402)&&vfmt, vfma =(opc==12'h403)&&vfmt,
        vfcvt_i=(opc==12'h460)&&vfmt, vfcvt_f=(opc==12'h461)&&vfmt;
   wire vsar  =(opc==OPC_V_SAR)&&vfmt;
   wire vmin  =(opc==OPC_V_MIN)&&vfmt, vmax=(opc==OPC_V_MAX)&&vfmt;
   wire v_any = vmov|vmovi|vbcast|vllane|vadd|vsub|vmul|vand|vor|vxor|vshl|vshr|vsar|
-               vmin|vmax|vfadd|vfsub|vfmul|vfcvt_i|vfcvt_f;
+               vmin|vmax|vfadd|vfsub|vfmul|vfma|vfcvt_i|vfcvt_f;
   wire vmod_ok = (insn[11:0] == 12'd0);
 
   // ---------------- M5 vector compare (integer, FMT9) ------------------------
@@ -169,6 +172,7 @@ module scigpu_decode_m5 (
                            if (fmt == FMT_VRI) va_bmux = 2'd1; end
         OPC_VF_MUL : begin cls=CLS_VEC_ALU; va_op=5'd18;
                            if (fmt == FMT_VRI) va_bmux = 2'd1; end
+        OPC_VF_FMA : begin cls=CLS_VEC_ALU; va_op=5'd21; va_bmux=2'd0; end
         OPC_VCVT_F32_I32 : begin cls=CLS_VEC_ALU; va_op=5'd19; va_bmux=2'd2; end
         OPC_VCVT_I32_F32 : begin cls=CLS_VEC_ALU; va_op=5'd20; va_bmux=2'd2; end
         OPC_V_SAR : begin cls=CLS_VEC_ALU; va_op=5'd09; va_bmux=2'd0; end

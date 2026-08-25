@@ -44,6 +44,21 @@ static void one(u32 op,u32 a,u32 b,u32 e,const char* tag){
     tick(op,A,B,E,tag);
 }
 
+static void one3(u32 op,u32 a,u32 b,u32 c,u32 e,const char* tag){
+    for(int l=0;l<8;l++){
+        dut->op=op;
+        dut->a[l]=a; dut->b[l]=b; dut->c[l]=c;
+        dut->eval();
+        total++;
+        u32 got=dut->y[l];
+        if(got!=e){
+            fails++;
+            if(fails<=20)
+                printf("[FAIL] %s lane%d got=%08x exp=%08x\n",tag,l,got,e);
+        }
+    }
+}
+
 int main(int argc,char**argv){
     Verilated::commandArgs(argc,argv);
     dut=new Vscigpu_fp32_alu;
@@ -119,6 +134,32 @@ int main(int argc,char**argv){
     one(2,0x40400000,0x40400000,0x41100000,"fmul(3,3)=9");
     one(1,0x40000000,0x40000000,0,"fsub(2,2)=+0");
     one(0,0xBF800000,0x3F800000,0,"fadd(-1,+1)=+0");
+
+    // ---- directed: FMA (op 5) — single-rounding differentiators ----
+    // fma(a,a,-1) with a=1+2^-23: exact = 2^-22 + 2^-46 -> fused = 2^-22
+    // (naive double-round would give -(1-2^-22) = 0xBF7FFFFF)
+    one3(5,0x3F800001,0x3F800001,0xBF800000,0x34800000,"fma(a*a-1) fused");
+    one3(5,0x40400000,0x40A00000,0x40E00000,0x41B00000,"fma(3*5+7)=22");
+    // negative addend crossing zero: fma(2,3,-7)=-1 exact
+    one3(5,0x40000000,0x40400000,0xC0E00000,0xBF800000,"fma(2*3-7)=-1");
+    // tie behavior: product exactly representable + half-ulp addend
+    one3(5,0x40000000,0x40000000,0x33800000,0x40800000,"fma(4+quarter-ulp)->4");
+    // full ulp addend: exact
+    one3(5,0x40000000,0x40000000,0x35000000,0x40800001,"fma(4+full-ulp)");
+    one3(5,0x40000000,0x40000000,0x34000000,0x40800000,"fma(4+3/8ulp)->4");
+    // true tie: addend = exactly half-ulp (2^-22) -> ties-to-even keeps 4
+    one3(5,0x40000000,0x40000000,0x35000000,0x40800001,"fma(4+full-ulp)exact");
+    // above tie: 5/8 ulp -> rounds up
+    one3(5,0x40000000,0x40000000,0x35800000,0x40800002,"fma(4+1.5ulp tie)->even up");
+    // subnormal-band result: fma(min_norm^2 + 2sub) ~= 2sub
+    one3(5,0x00800000,0x00800000,0x00000002,0x00000002,"fma(min_norm^2+2sub)");
+    // exact tie: addend = TRUE half-ulp (2^-22) -> ties-to-even keeps 4.0
+    one3(5,0x40000000,0x40000000,0x34800000,0x40800000,"fma(4+TRUE half-ulp tie)");
+    // inf / NaN propagation through FMA
+    one3(5,0x7F800000,0x40000000,0x3F800000,0x7F800000,"fma(inf*2+1)");
+    one3(5,0x7F800000,0x00000000,0x3F800000,0x7FC00000,"fma(inf*0+1)=NaN");
+    one3(5,0x7F800000,0x40000000,0xFF800000,0x7FC00000,"fma(+inf*2-inf)=NaN");
+    one3(5,0x3F800000,0x3F800000,0x7FC00000,0x7FC00000,"fma(NaN c)");
 
     // ---- randomized differential vs host ----
     srand(12345);

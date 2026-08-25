@@ -344,7 +344,7 @@ module scigpu_m6_cu #(
   iclass_e d_cls [N];
   logic [3:0]  d_ctrl_op[N];
   logic [7:0]  d_dst[N], d_src0[N], d_src1[N];
-  logic [7:0]  d_vd[N], d_vs0[N], d_vs1[N];
+  logic [7:0]  d_vd[N], d_vs0[N], d_vs1[N], d_vs2[N];
   logic [4:0]  d_va_op[N]; logic [1:0] d_va_bmux[N]; logic [3:0] d_pred[N];
   logic [3:0]  d_pdst[N];
   logic [31:0] d_imm[N]; logic d_useimm[N];
@@ -363,7 +363,7 @@ module scigpu_m6_cu #(
       .ctrl_op(d_ctrl_op[gj]), .cls(d_cls[gj]),
       .va_op(d_va_op[gj]), .va_bmux(d_va_bmux[gj]),
       .dst(d_dst[gj]), .src0(d_src0[gj]), .src1(d_src1[gj]),
-      .vd(d_vd[gj]), .vs0(d_vs0[gj]), .vs1(d_vs1[gj]),
+      .vd(d_vd[gj]), .vs0(d_vs0[gj]), .vs1(d_vs1[gj]), .vs2(d_vs2[gj]),
       .use_imm(d_useimm[gj]), .imm(d_imm[gj]), .disp24(d_disp[gj]),
       .bmod16(d_bmod[gj]), .cond4(d_cond4[gj]), .cond(d_cond[gj]),
       .getid_sel(d_gsel_w[gj]), .getid_dst(d_gdst_w[gj]),
@@ -406,7 +406,7 @@ module scigpu_m6_cu #(
     .rr_ptr(rr_q), .rr_ptr_next(rr_n));
 
   // granted-slot capture
-  logic [7:0]  g_dst, g_src0, g_src1, g_vd, g_vs0, g_vs1;
+  logic [7:0]  g_dst, g_src0, g_src1, g_vd, g_vs0, g_vs1, g_vs2;
   logic [31:0] g_imm;
   logic [3:0]  g_pred, g_pdst, g_ctrl_op, g_cond4;
   logic [4:0]  g_va_op;
@@ -423,6 +423,7 @@ module scigpu_m6_cu #(
   always_comb begin
     g_dst='0; g_src0='0; g_src1='0; g_vd='0; g_vs0='0; g_vs1='0;
     g_imm='0; g_pred=4'hF; g_va_op='0; g_pdst='0; g_ctrl_op='0; g_cond4='0;
+    g_dst='0; g_src0='0; g_src1='0; g_vd='0; g_vs0='0; g_vs1='0; g_vs2='0;
     g_bmod='0; g_va_bmux='0; g_useimm=1'b0;
     g_cls=CLS_NONE; g_pc='0; g_exec='0; g_wgx='0; g_vq='0; g_sq='0;
     g_isvec=1'b0; g_isctrl=1'b0; g_isvcmp=1'b0; g_legal=1'b0; g_ibuferr=1'b0;
@@ -430,7 +431,7 @@ module scigpu_m6_cu #(
     for (int s = 0; s < N; s++)
       if (g1h[s]) begin
         g_dst=d_dst[s]; g_src0=d_src0[s]; g_src1=d_src1[s];
-        g_vd=d_vd[s]; g_vs0=d_vs0[s]; g_vs1=d_vs1[s];
+        g_vd=d_vd[s]; g_vs0=d_vs0[s]; g_vs1=d_vs1[s]; g_vs2=d_vs2[s];
         g_imm=d_imm[s]; g_pred=d_pred[s]; g_va_op=d_va_op[s];
         g_va_bmux=d_va_bmux[s]; g_useimm=d_useimm[s]; g_cls=d_cls[s];
         g_pc=pc_q[s]; g_exec=exec_q[s]; g_wgx=wgx_q[s];
@@ -445,6 +446,7 @@ module scigpu_m6_cu #(
   end
 
   // validation before any effect
+  wire is_fma_iss = ((g_cls==CLS_VEC_ALU)||(g_cls==CLS_VEC_MUL)) && (g_va_op==5'd21);
   wire v_u0 = (g_cls==CLS_VEC_ALU)||(g_cls==CLS_VEC_MUL);
   wire v_u1 = v_u0 && (g_va_bmux==2'd0);
   wire v_ud = (g_cls==CLS_VEC_PASS)||(g_cls==CLS_VEC_ALU)||
@@ -551,6 +553,7 @@ module scigpu_m6_cu #(
   scigpu_scoreboard_m6 #(.SLOTS(N)) u_sb6 (
     .clk(clk), .rst(rst),
     .chk_slot(gid), .chk_src0(g_vs0), .chk_src1(g_vs1), .chk_pred(g_cond4),
+    .chk_src2(g_vs2), .chk_src2_en(is_fma_iss),
     .vgpr_wait(), .pred_wait(),
     .vec_set(sb_vec_set), .vec_set_slot(sb_vec_slot), .vec_set_reg(sb_vec_reg),
     .pred_set(sb_pred_set), .pred_set_slot(sb_pred_slot),
@@ -584,11 +587,13 @@ module scigpu_m6_cu #(
   logic [4:0]  ve_setup_op; logic [1:0] ve_setup_bmux;
   logic [7:0]  ve_setup_vd, ve_setup_vs0, ve_setup_vs1;
   logic [31:0] ve_setup_imm, ve_setup_bcast, ve_setup_eff;
+  logic [7:0]  ve_setup_vs2;
 
-  logic [7:0]  ve_raddr0, ve_raddr1; logic [4:0] ve_rlane_base;
+  logic [7:0]  ve_raddr0, ve_raddr1, ve_raddr2; logic [4:0] ve_rlane_base;
   logic        ve_we; logic [7:0] ve_wa; logic [4:0] ve_wb;
   logic [SIMD_LANES-1:0] ve_wm; logic [31:0] ve_wd [SIMD_LANES];
   logic [31:0] vg_rdata0 [SIMD_LANES]; logic [31:0] vg_rdata1 [SIMD_LANES];
+  logic [31:0] vg_rdata2 [SIMD_LANES];
   logic        ve_last_commit;
 
   logic [7:0] c_raddr0, c_raddr1;
@@ -604,12 +609,12 @@ module scigpu_m6_cu #(
     .setup_valid(vec_setup_valid), .setup_ready(ve_setup_ready),
     .setup_op(ve_setup_op), .setup_bmux(ve_setup_bmux),
     .setup_vd(ve_setup_vd), .setup_vs0(ve_setup_vs0),
-    .setup_vs1(ve_setup_vs1), .setup_imm(ve_setup_imm),
+    .setup_vs1(ve_setup_vs1), .setup_vs2(ve_setup_vs2), .setup_imm(ve_setup_imm),
     .setup_bcast_data(ve_setup_bcast),
     .setup_effective_mask(ve_setup_eff),
-    .vg_raddr0(ve_raddr0), .vg_raddr1(ve_raddr1),
+    .vg_raddr0(ve_raddr0), .vg_raddr1(ve_raddr1), .vg_raddr2(ve_raddr2),
     .vg_rlane_base(ve_rlane_base),
-    .vg_rdata0(vg_rdata0), .vg_rdata1(vg_rdata1),
+    .vg_rdata0(vg_rdata0), .vg_rdata1(vg_rdata1), .vg_rdata2(vg_rdata2),
     .vg_we(ve_we), .vg_waddr(ve_wa), .vg_wlane_base(ve_wb),
     .vg_wmask(ve_wm), .vg_wdata(ve_wd),
     .beat_valid(beat_valid_u), .beat_index(beat_index_u),
@@ -638,9 +643,10 @@ module scigpu_m6_cu #(
     .init_we(vgpr_init_valid && vgpr_init_ready),
     .init_slot(vgpr_init_slot), .init_vgpr(vgpr_init_addr),
     .init_lane(vgpr_init_lane), .init_data(vgpr_init_data),
-    .rd_slot(ve_own), .raddr0(vg_ra0), .raddr1(vg_ra1),
+    .rd_slot(ve_own), .raddr0(vg_ra0), .raddr1(vg_ra1), .raddr2(ve_raddr2),
     .rlane_base(vg_rb),
-    .rdata0(vg_rdata0), .rdata1(vg_rdata1), .conflict(bank_conflict_ev),
+    .rdata0(vg_rdata0), .rdata1(vg_rdata1), .rdata2(vg_rdata2),
+    .conflict(bank_conflict_ev),
     .we(ve_we), .wslot(ve_own), .waddr(ve_wa), .wlane_base(ve_wb),
     .wmask(ve_wm), .wdata(ve_wd),
     .dbg_slot(dbg_wf_sel), .dbg_vgpr(dbg_vgpr_addr),
@@ -708,6 +714,7 @@ module scigpu_m6_cu #(
     ve_setup_vd    = g_vd;
     ve_setup_vs0   = g_vs0;
     ve_setup_vs1   = g_vs1;
+    ve_setup_vs2   = g_vs2;
     ve_setup_imm   = g_imm;
     ve_setup_bcast = s_rb_data;
     ve_setup_eff   = g_eff;

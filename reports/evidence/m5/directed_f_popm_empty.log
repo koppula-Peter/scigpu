@@ -440,3 +440,8 @@ TBCTRL pc=0 op=7c3 cond=0 P=00000000
 TBPRE pre-P1=00000000 kind=7
 [diff /tmp/opencode/m5dir_397a4rt_/f_popm_empty_l32] PASS (0 mismatches)
 
+l8 PASS
+TBCTRL pc=0 op=7c3 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=7
+[diff /tmp/opencode/m5dir_nefdywdo/f_popm_empty_l8] PASS (0 mismatches)
+
