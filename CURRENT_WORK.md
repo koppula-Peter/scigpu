@@ -98,6 +98,12 @@ Phase 3 progress:
 - Remaining: random FP differential campaigns, V_FMA.F32 single-rounding
   path, VFCMP.* compare class, then M7 gate review -> tag gpu-m7-fp32.
 
+## Repository location
+**/home/peter/Desktop/scigpu** (standalone since 2026-08-25, OI-007 closed).
+The original gpu_dev history was lost to an external IP_dev reorganization;
+current tree was recovered from the 796be88 snapshot and continued. Backup
+remote: /home/peter/Desktop/gpu_dev_backup.git — push after each milestone.
+
 ## Open issues
 OI-006 procurement · OI-007 rename at clean checkpoint · OI-008 tuning studies ·
 OI-009 Vivado 2025.2 unavailable (non-blocking) · OI-010/OI-011/OI-012 closed.

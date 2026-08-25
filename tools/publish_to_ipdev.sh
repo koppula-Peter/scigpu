@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# [STALE since 2026-08-25 standalone move] Publish helper kept for reference.
 # Publish SciGPU working repo -> IP_dev GitHub repo under scigpu/
 # Usage: tools/publish_to_ipdev.sh [commit-message]
 set -e

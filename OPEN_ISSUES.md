@@ -9,7 +9,7 @@ resolution + decision reference + date/revision. New issues are appended with th
 | ID | Description | Severity | Affected component | Status |
 |---|---|---|---|---|
 | OI-006 | Procurement check for FPGA boards (ZCU104-class; Alveo U55C) — availability/pricing must be re-verified before hardware purchase. Not an architecture blocker (ADR-009 defines hierarchy). | Low | FPGA milestones M19+ | Open — action before M19 |
-| OI-007 | Controlled filesystem rename `gpu_dev` → `scigpu` deferred to a clean Git checkpoint (per directive §27). Canonical name recorded everywhere. | Low | Repository | Open — opportunistic |
+| OI-007 | ~~Controlled filesystem rename `gpu_dev` → `scigpu`~~ | Closed: executed 2026-08-25 at clean checkpoint b369e49 — repo relocated out of IP_dev monorepo to /home/peter/Desktop/scigpu as a standalone project after the IP_dev reorganization wiped nested repositories; canonical name now matches filesystem. Backup remote: /home/peter/Desktop/gpu_dev_backup.git (origin). | Directive §27; PROJECT_MAP.md | 2026-08-25, M7 phase 3 |
 | OI-008 | Non-blocking tuning studies tracked in SPEC-000 §15.3 (L2 XOR bit map, L1-I size, TID width, RF geometry, div/sqrt algorithm, SFU polynomials, etc.) are owned by their future documents and are NOT open architecture holes; they are listed here only as a pointer. | Info | Multiple (owners per SPEC §15.3) | Open by design |
 
 | OI-009 | Vivado 2025.2 not installed in current environment → M2 synthesis smoke NOT RUN (recorded per directive §56). Formal FPGA gate remains M19; install or defer to FPGA-A milestone. | Low | GPU-FPGA-REQ-012 smoke | Open — non-blocking |
