@@ -13,10 +13,12 @@
 [PASS] nested_loops l8
 [PASS] early_return l8
 [PASS] mask_ops l8
+[PASS] fp_arith l8
+[PASS] fp_consts l8
 [PASS] f_reconv_empty l8
 [PASS] f_popm_empty l8
 [PASS] f_reconv_mismatch l8
 [PASS] f_break_outside l8
 [PASS] f_continue_outside l8
 [PASS] f_loope_norun l8
-directed: 21 ran, fails=0
+directed: 23 ran, fails=0

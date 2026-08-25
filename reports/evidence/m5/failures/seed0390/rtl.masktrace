@@ -1,4 +1,0 @@
-w=0 k=CBRANCH_IF pc=6 ft=1 pu=1 po=0 f=00
-w=0 k=CBRANCH_IF pc=2c ft=1 pu=1 po=0 f=00
-w=0 k=LOOP_BEGIN pc=31 ft=2 pu=1 po=0 f=00
-w=0 k=CBRANCH_IF pc=35 ft=1 pu=1 po=0 f=00

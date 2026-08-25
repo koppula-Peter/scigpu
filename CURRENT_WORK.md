@@ -89,9 +89,14 @@ Highlights:
   directed, width-equiv, random 1000x4, reset, faults) · M4 GREEN ·
   M5 GREEN (incl. formal) · M6 directed 23/23 @ L8 incl. FP kernels.
 
-Next (phase 3): M7 gate review — random FP differential campaigns
-(structured float kernels), V_FMA.F32 single-rounding path, F32 compare
-(VFCMP.*) class, then tag gpu-m7-fp32.
+Phase 3 progress:
+- M5 random-campaign regression ROOT-CAUSED & FIXED (OI-014 closed):
+  decode_m5/decode_m3 never admitted V_MIN/V_MAX into v_any legality;
+  generator kernels using them faulted illegal in RTL. After fix:
+  random 997/997, crosswidth 248/248 x4 widths, multiwf 250/250,
+  reset clean — zero mismatches; m3/m5/fp suites re-green.
+- Remaining: random FP differential campaigns, V_FMA.F32 single-rounding
+  path, VFCMP.* compare class, then M7 gate review -> tag gpu-m7-fp32.
 
 ## Open issues
 OI-006 procurement · OI-007 rename at clean checkpoint · OI-008 tuning studies ·

@@ -94,7 +94,8 @@ module scigpu_decode_m5 (
        vfcvt_i=(opc==12'h460)&&vfmt, vfcvt_f=(opc==12'h461)&&vfmt;
   wire vsar  =(opc==OPC_V_SAR)&&vfmt;
   wire vmin  =(opc==OPC_V_MIN)&&vfmt, vmax=(opc==OPC_V_MAX)&&vfmt;
-  wire v_any = vmov|vmovi|vbcast|vllane|vadd|vsub|vmul|vand|vor|vxor|vshl|vshr|vsar|vfadd|vfsub|vfmul|vfcvt_i|vfcvt_f;
+  wire v_any = vmov|vmovi|vbcast|vllane|vadd|vsub|vmul|vand|vor|vxor|vshl|vshr|vsar|
+               vmin|vmax|vfadd|vfsub|vfmul|vfcvt_i|vfcvt_f;
   wire vmod_ok = (insn[11:0] == 12'd0);
 
   // ---------------- M5 vector compare (integer, FMT9) ------------------------

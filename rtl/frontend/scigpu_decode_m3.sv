@@ -77,8 +77,10 @@ module scigpu_decode_m3 (
   wire vxor  =(opc==OPC_V_XOR)&&vfmt;
   wire vshl  =(opc==OPC_V_SHL)&&vfmt,  vshr  =(opc==OPC_V_SHR)&&vfmt;
   wire vsar  =(opc==OPC_V_SAR)&&vfmt;
+  wire vmin  =(opc==OPC_V_MIN)&&vfmt,  vmax  =(opc==OPC_V_MAX)&&vfmt;
 
-  wire v_any = vmov|vmovi|vbcast|vllane|vadd|vsub|vmul|vand|vor|vxor|vshl|vshr|vsar;
+  wire v_any = vmov|vmovi|vbcast|vllane|vadd|vsub|vmul|vand|vor|vxor|vshl|vshr|vsar|
+               vmin|vmax;
   wire vmod_ok = (insn[11:0] == 12'd0);        // TYPESEL/ROUND/SAT/ABS/NEG/FLAGS = 0
 
   // ---------------- classify --------------------------------------------------
@@ -106,6 +108,8 @@ module scigpu_decode_m3 (
         OPC_V_SHL : begin cls=scigpu_types_pkg::CLS_VEC_ALU; va_op=5'd7; va_bmux=2'd0; end
         OPC_V_SHR : begin cls=scigpu_types_pkg::CLS_VEC_ALU; va_op=5'd8; va_bmux=2'd0; end
         OPC_V_SAR : begin cls=scigpu_types_pkg::CLS_VEC_ALU; va_op=5'd9; va_bmux=2'd0; end
+        OPC_V_MIN : begin cls=scigpu_types_pkg::CLS_VEC_ALU; va_op=5'd13; va_bmux=2'd0; end
+        OPC_V_MAX : begin cls=scigpu_types_pkg::CLS_VEC_ALU; va_op=5'd14; va_bmux=2'd0; end
         default: ;
       endcase
       if (fmt == FMT_VRI) va_bmux = 2'd1;    // immediate form overrides
