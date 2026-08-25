@@ -25,4 +25,4 @@ rm Vscigpu_fp32_alu__ALL.verilator_deplist.tmp
 make[1]: Leaving directory '/home/peter/Desktop/scigpu/build/fp32_unit'
 - V e r i l a t i o n   R e p o r t: Verilator 5.032 2025-01-01 rev (Debian 5.032-1)
 - Verilator: Built from 0.034 MB sources in 2 modules, into 5.511 MB in 15 C++ files needing 0.000 MB
-- Verilator: Walltime 6.356 s (elab=0.002, cvt=0.591, bld=5.716); cpu 0.726 s on 4 threads; alloced 68.777 MB
+- Verilator: Walltime 7.507 s (elab=0.002, cvt=0.596, bld=6.861); cpu 0.735 s on 4 threads; alloced 68.781 MB
