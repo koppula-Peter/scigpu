@@ -886,3 +886,27 @@ TBCTRL pc=4 op=7cf cond=0 P=000003ff
 TBPRE pre-P1=00000000 kind=12
 [diff /tmp/opencode/m5dir_a3hwe3k3/cmp_lt_l32] PASS (0 mismatches)
 
+l4 PASS
+TBPW w=0 addr=0 val=000003ff
+TBCTRL pc=4 op=7cf cond=0 P=000003ff
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_397a4rt_/cmp_lt_l4] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=000003ff
+TBCTRL pc=4 op=7cf cond=0 P=000003ff
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_397a4rt_/cmp_lt_l8] PASS (0 mismatches)
+
+l16 PASS
+TBPW w=0 addr=0 val=000003ff
+TBCTRL pc=4 op=7cf cond=0 P=000003ff
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_397a4rt_/cmp_lt_l16] PASS (0 mismatches)
+
+l32 PASS
+TBPW w=0 addr=0 val=000003ff
+TBCTRL pc=4 op=7cf cond=0 P=000003ff
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_397a4rt_/cmp_lt_l32] PASS (0 mismatches)
+

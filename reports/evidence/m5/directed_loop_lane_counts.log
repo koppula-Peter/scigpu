@@ -1575,3 +1575,51 @@ TBCTRL pc=10 op=7cf cond=0 P=ffffffff
 TBPRE pre-P1=00000000 kind=12
 [diff /tmp/opencode/m5dir_a3hwe3k3/loop_lane_counts_l32] PASS (0 mismatches)
 
+l4 PASS
+TBCTRL pc=4 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=2
+TBPW w=0 addr=0 val=ffffffff
+TBCTRL pc=6 op=7cb cond=0 P=ffffffff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=9 op=7c9 cond=1 P=00000000
+TBPRE pre-P1=00000000 kind=3
+TBCTRL pc=10 op=7cf cond=0 P=ffffffff
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_397a4rt_/loop_lane_counts_l4] PASS (0 mismatches)
+
+l8 PASS
+TBCTRL pc=4 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=2
+TBPW w=0 addr=0 val=ffffffff
+TBCTRL pc=6 op=7cb cond=0 P=ffffffff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=9 op=7c9 cond=1 P=00000000
+TBPRE pre-P1=00000000 kind=3
+TBCTRL pc=10 op=7cf cond=0 P=ffffffff
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_397a4rt_/loop_lane_counts_l8] PASS (0 mismatches)
+
+l16 PASS
+TBCTRL pc=4 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=2
+TBPW w=0 addr=0 val=ffffffff
+TBCTRL pc=6 op=7cb cond=0 P=ffffffff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=9 op=7c9 cond=1 P=00000000
+TBPRE pre-P1=00000000 kind=3
+TBCTRL pc=10 op=7cf cond=0 P=ffffffff
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_397a4rt_/loop_lane_counts_l16] PASS (0 mismatches)
+
+l32 PASS
+TBCTRL pc=4 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=2
+TBPW w=0 addr=0 val=ffffffff
+TBCTRL pc=6 op=7cb cond=0 P=ffffffff
+TBPRE pre-P1=00000000 kind=5
+TBCTRL pc=9 op=7c9 cond=1 P=00000000
+TBPRE pre-P1=00000000 kind=3
+TBCTRL pc=10 op=7cf cond=0 P=ffffffff
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_397a4rt_/loop_lane_counts_l32] PASS (0 mismatches)
+

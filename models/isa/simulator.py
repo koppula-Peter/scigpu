@@ -891,9 +891,28 @@ class Kernel:
         for k, active in self._vec_active(wf, emask):
             for l in active:
                 if op == OP.VCVT_F32_I32:
-                    dv[l] = f32_bits(float(sv[l]))
+                    # I32 is SIGNED (ISA-001 §V_CVT matrix): interpret bit 31
+                    iv = sv[l] - (1 << 32) if sv[l] & 0x80000000 else sv[l]
+                    dv[l] = f32_bits(float(iv))
                 else:
-                    dv[l] = int(math.trunc(bits_f32(sv[l]))) & MASK32
+                    # F2I: trunc toward zero, out-of-range/NaN saturate
+                    # (FP-001 CVT table; matches scigpu_fp32_alu.fp_f2i)
+                    u = sv[l]
+                    e = (u >> 23) & 0xFF
+                    sg = (u >> 31) & 1
+                    if e < 127:
+                        r = 0
+                    elif e == 255 or e > 158:
+                        r = 0x80000000 if sg else 0x7FFFFFFF
+                    else:
+                        t = int(math.trunc(bits_f32(u)))
+                        if t > 0x7FFFFFFF:
+                            r = 0x7FFFFFFF
+                        elif t < -0x80000000:
+                            r = 0x80000000
+                        else:
+                            r = t & MASK32
+                    dv[l] = r
         return emask
 
     def _mem_op(self, wf, d, op):

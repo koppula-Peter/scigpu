@@ -244,3 +244,7 @@ m6-directed:
 
 m6-regression: m6-build-l8 m6-directed
 	@echo "[make] M6 phase-2 directed GREEN"
+
+fp-campaign:
+	python3 tools/fp_campaign.py 300 8 | tee $(EVID)/m7/fp_campaign_l8.log
+	@grep -q "fails=0" $(EVID)/m7/fp_campaign_l8.log && echo "[make] FP campaign GREEN"

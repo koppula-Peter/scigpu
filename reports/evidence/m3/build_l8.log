@@ -1,6 +1,70 @@
-make[1]: Entering directory '/home/peter/Desktop/IP_dev/gpu_dev/build/m3_l8'
-make[1]: Nothing to be done for 'default'.
-make[1]: Leaving directory '/home/peter/Desktop/IP_dev/gpu_dev/build/m3_l8'
+make[1]: Entering directory '/home/peter/Desktop/scigpu/build/m3_l8'
+g++  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-shadow -Wno-sign-compare -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -Os  -c -o tb_m3.o ../../verification/m3/tb_m3.cpp
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-shadow -Wno-sign-compare -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -c -o verilated.o /usr/share/verilator/include/verilated.cpp
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-shadow -Wno-sign-compare -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -c -o verilated_threads.o /usr/share/verilator/include/verilated_threads.cpp
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-shadow -Wno-sign-compare -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -x c++-header Vscigpu_m3_top__pch.h -o Vscigpu_m3_top__pch.h.fast.gch
+../../verification/m3/tb_m3.cpp: In function ‘std::string trace_line()’:
+../../verification/m3/tb_m3.cpp:115:59: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 13 has type ‘long long unsigned int’ [-Wformat=]
+  115 |         "%016llx %016llx %x %02x %08x %x %x %x %016llx %08x %x %08x %x %02x %08x",
+      |                                                        ~~~^
+      |                                                           |
+      |                                                           unsigned int
+      |                                                        %08llx
+......
+  122 |         (unsigned long long)dut->trace_exec_mask,
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~           
+      |         |
+      |         long long unsigned int
+../../verification/m3/tb_m3.cpp:115:67: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 15 has type ‘long long unsigned int’ [-Wformat=]
+  115 |         "%016llx %016llx %x %02x %08x %x %x %x %016llx %08x %x %08x %x %02x %08x",
+      |                                                                ~~~^
+      |                                                                   |
+      |                                                                   unsigned int
+      |                                                                %08llx
+......
+  124 |         (unsigned long long)dut->trace_effective_mask,
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~              
+      |         |
+      |         long long unsigned int
+../../verification/m3/tb_m3.cpp:115:80: warning: format ‘%x’ expects argument of type ‘unsigned int’, but argument 18 has type ‘long long unsigned int’ [-Wformat=]
+  115 |         "%016llx %016llx %x %02x %08x %x %x %x %016llx %08x %x %08x %x %02x %08x",
+      |                                                                             ~~~^
+      |                                                                                |
+      |                                                                                unsigned int
+      |                                                                             %08llx
+......
+  127 |         (unsigned long long)dut->trace_vgpr_write_mask);
+      |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                          
+      |         |
+      |         long long unsigned int
+../../verification/m3/tb_m3.cpp: In function ‘int run_core(const std::string&, u32, unsigned int, int, int, const std::string&)’:
+../../verification/m3/tb_m3.cpp:189:27: warning: format ‘%lld’ expects argument of type ‘long long int’, but argument 2 has type ‘int’ [-Wformat=]
+  189 |             printf("c%04lld st=%d sV=%d sR=%d bV=%d bI=%u bB=%u wm=%08x vwe=%d wa=%02x\n",
+      |                      ~~~~~^
+      |                           |
+      |                           long long int
+      |                      %04d
+  190 |                 (int)cyc,(int)dut->dbg_state,(int)dut->trace_valid,
+      |                 ~~~~~~~~   
+      |                 |
+      |                 int
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-shadow -Wno-sign-compare -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -x c++-header Vscigpu_m3_top__pch.h -o Vscigpu_m3_top__pch.h.slow.gch
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-shadow -Wno-sign-compare -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -include Vscigpu_m3_top__pch.h.fast -c -o Vscigpu_m3_top.o Vscigpu_m3_top.cpp
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-shadow -Wno-sign-compare -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -include Vscigpu_m3_top__pch.h.fast -c -o Vscigpu_m3_top___024root__DepSet_hdc6cef51__0.o Vscigpu_m3_top___024root__DepSet_hdc6cef51__0.cpp
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-shadow -Wno-sign-compare -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -include Vscigpu_m3_top__pch.h.fast -c -o Vscigpu_m3_top___024root__DepSet_h0f2d5340__0.o Vscigpu_m3_top___024root__DepSet_h0f2d5340__0.cpp
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-shadow -Wno-sign-compare -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -include Vscigpu_m3_top__pch.h.fast -c -o Vscigpu_m3_top___024root__DepSet_h0f2d5340__1.o Vscigpu_m3_top___024root__DepSet_h0f2d5340__1.cpp
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-shadow -Wno-sign-compare -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -include Vscigpu_m3_top__pch.h.fast -c -o Vscigpu_m3_top___024root__DepSet_h0f2d5340__2.o Vscigpu_m3_top___024root__DepSet_h0f2d5340__2.cpp
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-shadow -Wno-sign-compare -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -include Vscigpu_m3_top__pch.h.slow -c -o Vscigpu_m3_top__ConstPool_0.o Vscigpu_m3_top__ConstPool_0.cpp
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-shadow -Wno-sign-compare -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -include Vscigpu_m3_top__pch.h.slow -c -o Vscigpu_m3_top___024root__Slow.o Vscigpu_m3_top___024root__Slow.cpp
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-shadow -Wno-sign-compare -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -include Vscigpu_m3_top__pch.h.slow -c -o Vscigpu_m3_top___024root__DepSet_hdc6cef51__0__Slow.o Vscigpu_m3_top___024root__DepSet_hdc6cef51__0__Slow.cpp
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-shadow -Wno-sign-compare -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -include Vscigpu_m3_top__pch.h.slow -c -o Vscigpu_m3_top___024root__DepSet_h0f2d5340__0__Slow.o Vscigpu_m3_top___024root__DepSet_h0f2d5340__0__Slow.cpp
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-shadow -Wno-sign-compare -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -include Vscigpu_m3_top__pch.h.slow -c -o Vscigpu_m3_top___024root__DepSet_h0f2d5340__1__Slow.o Vscigpu_m3_top___024root__DepSet_h0f2d5340__1__Slow.cpp
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-shadow -Wno-sign-compare -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -include Vscigpu_m3_top__pch.h.slow -c -o Vscigpu_m3_top___024root__DepSet_h0f2d5340__2__Slow.o Vscigpu_m3_top___024root__DepSet_h0f2d5340__2__Slow.cpp
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-shadow -Wno-sign-compare -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable      -include Vscigpu_m3_top__pch.h.slow -c -o Vscigpu_m3_top__Syms.o Vscigpu_m3_top__Syms.cpp
+echo "" > Vscigpu_m3_top__ALL.verilator_deplist.tmp
+g++    tb_m3.o verilated.o verilated_threads.o Vscigpu_m3_top__ALL.a    -pthread -lpthread -latomic   -o tb_m3
+rm Vscigpu_m3_top__ALL.verilator_deplist.tmp
+make[1]: Leaving directory '/home/peter/Desktop/scigpu/build/m3_l8'
 - V e r i l a t i o n   R e p o r t: Verilator 5.032 2025-01-01 rev (Debian 5.032-1)
-- Verilator: Built from 0.000 MB sources in 0 modules, into 0.000 MB in 0 C++ files needing 0.000 MB
-- Verilator: Walltime 0.026 s (elab=0.000, cvt=0.000, bld=0.025); cpu 0.001 s on 4 threads; alloced 7.004 MB
+- Verilator: Built from 0.679 MB sources in 16 modules, into 4.154 MB in 12 C++ files needing 0.000 MB
+- Verilator: Walltime 7.564 s (elab=0.031, cvt=0.609, bld=6.833); cpu 0.839 s on 4 threads; alloced 41.930 MB
