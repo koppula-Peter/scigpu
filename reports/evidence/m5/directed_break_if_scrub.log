@@ -4301,3 +4301,198 @@ TBCTRL pc=15 op=7cf cond=0 P=00000000
 TBPRE pre-P1=aaaaaaaa kind=12
 [diff /tmp/opencode/m5dir_nefdywdo/break_if_scrub_l8] PASS (0 mismatches)
 
+l4 PASS
+TBPW w=0 addr=1 val=aaaaaaaa
+TBPW w=0 addr=2 val=00000000
+TBCTRL pc=7 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=2
+TBPW w=0 addr=2 val=ffffffff
+TBCTRL pc=10 op=7c1 cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=0
+TBCTRL pc=11 op=7ca cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=4
+TBCTRL pc=13 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=1
+TBCTRL pc=14 op=7c9 cond=2 P=ffffffff
+TBPRE pre-P1=aaaaaaaa kind=3
+TBPW w=0 addr=2 val=ffffffff
+TBCTRL pc=10 op=7c1 cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=0
+TBCTRL pc=13 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=1
+TBCTRL pc=14 op=7c9 cond=2 P=ffffffff
+TBPRE pre-P1=aaaaaaaa kind=3
+TBPW w=0 addr=2 val=ffffffff
+TBCTRL pc=10 op=7c1 cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=0
+TBCTRL pc=13 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=1
+TBCTRL pc=14 op=7c9 cond=2 P=ffffffff
+TBPRE pre-P1=aaaaaaaa kind=3
+TBPW w=0 addr=2 val=aaaaaaaa
+TBCTRL pc=10 op=7c1 cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=0
+TBCTRL pc=13 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=1
+TBCTRL pc=14 op=7c9 cond=2 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=3
+TBCTRL pc=15 op=7cf cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=12
+[diff /tmp/opencode/m5dir_0c0hidc8/break_if_scrub_l4] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=1 val=aaaaaaaa
+TBPW w=0 addr=2 val=00000000
+TBCTRL pc=7 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=2
+TBPW w=0 addr=2 val=ffffffff
+TBCTRL pc=10 op=7c1 cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=0
+TBCTRL pc=11 op=7ca cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=4
+TBCTRL pc=13 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=1
+TBCTRL pc=14 op=7c9 cond=2 P=ffffffff
+TBPRE pre-P1=aaaaaaaa kind=3
+TBPW w=0 addr=2 val=ffffffff
+TBCTRL pc=10 op=7c1 cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=0
+TBCTRL pc=13 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=1
+TBCTRL pc=14 op=7c9 cond=2 P=ffffffff
+TBPRE pre-P1=aaaaaaaa kind=3
+TBPW w=0 addr=2 val=ffffffff
+TBCTRL pc=10 op=7c1 cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=0
+TBCTRL pc=13 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=1
+TBCTRL pc=14 op=7c9 cond=2 P=ffffffff
+TBPRE pre-P1=aaaaaaaa kind=3
+TBPW w=0 addr=2 val=aaaaaaaa
+TBCTRL pc=10 op=7c1 cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=0
+TBCTRL pc=13 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=1
+TBCTRL pc=14 op=7c9 cond=2 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=3
+TBCTRL pc=15 op=7cf cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=12
+[diff /tmp/opencode/m5dir_0c0hidc8/break_if_scrub_l8] PASS (0 mismatches)
+
+l16 PASS
+TBPW w=0 addr=1 val=aaaaaaaa
+TBPW w=0 addr=2 val=00000000
+TBCTRL pc=7 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=2
+TBPW w=0 addr=2 val=ffffffff
+TBCTRL pc=10 op=7c1 cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=0
+TBCTRL pc=11 op=7ca cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=4
+TBCTRL pc=13 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=1
+TBCTRL pc=14 op=7c9 cond=2 P=ffffffff
+TBPRE pre-P1=aaaaaaaa kind=3
+TBPW w=0 addr=2 val=ffffffff
+TBCTRL pc=10 op=7c1 cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=0
+TBCTRL pc=13 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=1
+TBCTRL pc=14 op=7c9 cond=2 P=ffffffff
+TBPRE pre-P1=aaaaaaaa kind=3
+TBPW w=0 addr=2 val=ffffffff
+TBCTRL pc=10 op=7c1 cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=0
+TBCTRL pc=13 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=1
+TBCTRL pc=14 op=7c9 cond=2 P=ffffffff
+TBPRE pre-P1=aaaaaaaa kind=3
+TBPW w=0 addr=2 val=aaaaaaaa
+TBCTRL pc=10 op=7c1 cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=0
+TBCTRL pc=13 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=1
+TBCTRL pc=14 op=7c9 cond=2 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=3
+TBCTRL pc=15 op=7cf cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=12
+[diff /tmp/opencode/m5dir_0c0hidc8/break_if_scrub_l16] PASS (0 mismatches)
+
+l32 PASS
+TBPW w=0 addr=1 val=aaaaaaaa
+TBPW w=0 addr=2 val=00000000
+TBCTRL pc=7 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=2
+TBPW w=0 addr=2 val=ffffffff
+TBCTRL pc=10 op=7c1 cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=0
+TBCTRL pc=11 op=7ca cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=4
+TBCTRL pc=13 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=1
+TBCTRL pc=14 op=7c9 cond=2 P=ffffffff
+TBPRE pre-P1=aaaaaaaa kind=3
+TBPW w=0 addr=2 val=ffffffff
+TBCTRL pc=10 op=7c1 cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=0
+TBCTRL pc=13 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=1
+TBCTRL pc=14 op=7c9 cond=2 P=ffffffff
+TBPRE pre-P1=aaaaaaaa kind=3
+TBPW w=0 addr=2 val=ffffffff
+TBCTRL pc=10 op=7c1 cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=0
+TBCTRL pc=13 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=1
+TBCTRL pc=14 op=7c9 cond=2 P=ffffffff
+TBPRE pre-P1=aaaaaaaa kind=3
+TBPW w=0 addr=2 val=aaaaaaaa
+TBCTRL pc=10 op=7c1 cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=0
+TBCTRL pc=13 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=1
+TBCTRL pc=14 op=7c9 cond=2 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=3
+TBCTRL pc=15 op=7cf cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=12
+[diff /tmp/opencode/m5dir_0c0hidc8/break_if_scrub_l32] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=1 val=aaaaaaaa
+TBPW w=0 addr=2 val=00000000
+TBCTRL pc=7 op=7c8 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=2
+TBPW w=0 addr=2 val=ffffffff
+TBCTRL pc=10 op=7c1 cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=0
+TBCTRL pc=11 op=7ca cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=4
+TBCTRL pc=13 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=1
+TBCTRL pc=14 op=7c9 cond=2 P=ffffffff
+TBPRE pre-P1=aaaaaaaa kind=3
+TBPW w=0 addr=2 val=ffffffff
+TBCTRL pc=10 op=7c1 cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=0
+TBCTRL pc=13 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=1
+TBCTRL pc=14 op=7c9 cond=2 P=ffffffff
+TBPRE pre-P1=aaaaaaaa kind=3
+TBPW w=0 addr=2 val=ffffffff
+TBCTRL pc=10 op=7c1 cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=0
+TBCTRL pc=13 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=1
+TBCTRL pc=14 op=7c9 cond=2 P=ffffffff
+TBPRE pre-P1=aaaaaaaa kind=3
+TBPW w=0 addr=2 val=aaaaaaaa
+TBCTRL pc=10 op=7c1 cond=1 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=0
+TBCTRL pc=13 op=7c2 cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=1
+TBCTRL pc=14 op=7c9 cond=2 P=aaaaaaaa
+TBPRE pre-P1=aaaaaaaa kind=3
+TBCTRL pc=15 op=7cf cond=0 P=00000000
+TBPRE pre-P1=aaaaaaaa kind=12
+[diff /tmp/opencode/m5dir_rty24e2o/break_if_scrub_l8] PASS (0 mismatches)
+

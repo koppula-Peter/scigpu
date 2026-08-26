@@ -115,6 +115,7 @@ module scigpu_fp32_alu #(
 
       // align smaller operand into GRS window
       stk_a = 1'b0;
+      stk_n = 1'b0;
       if (d > 27) begin
         stk_a  = (smallv != 27'd0);
         smallv = 27'd0;
@@ -144,17 +145,20 @@ module scigpu_fp32_alu #(
           end
       end
 
-      // round RN-even: G=[2] R=[1] S_d=[0], alignment sticky in stk_n,
-      // tie LSB=[3]. On-grid half behaves differently for add vs eff-sub:
-      // add pushes above half; subtract pulls below.
+      // round RN-even: G=[2] R=[1] S_d=[0]; two tail sources at an exact
+      // grid-half: stk_n = normalize-fold of the result magnitude (pushes
+      // above half -> UP); stk_a = alignment tail of the eff-sub guest
+      // (pulls below half -> DOWN; adds -> UP). Pure tie -> parity.
       if (!acc[2])
         round_up = 1'b0;
       else if (acc[1] || acc[0])
         round_up = 1'b1;
-      else if (sa != sb)
-        round_up = stk_n ? 1'b0 : acc[3];
+      else if (stk_n)
+        round_up = 1'b1;
+      else if (stk_a)
+        round_up = (sa != sb) ? 1'b0 : 1'b1;
       else
-        round_up = stk_n ? 1'b1 : acc[3];
+        round_up = acc[3];
       if (round_up) acc = acc + 28'd8;
       if (acc[26]) begin                                   // normal result
         if (acc[27]) begin                                 // frac carry-out
@@ -247,7 +251,7 @@ module scigpu_fp32_alu #(
   function automatic logic [31:0] fp_fma(input logic [31:0] xa, input logic [31:0] xb,
                                          input logic [31:0] xc);
     logic sa, sb, sc, sp, s_big, s_small, rsign, round_up;
-    logic stk_a;
+    logic stk_a, stk_n;
     logic [7:0]  ea, eb, ec, Ea, Eb, Ec;
     logic [22:0] ma, mb, mc;
     logic [23:0] pa, pb, pcv;
@@ -259,6 +263,8 @@ module scigpu_fp32_alu #(
       sb = xb[31]; eb = xb[30:23]; mb = xb[22:0];
       sc = xc[31]; ec = xc[30:23]; mc = xc[22:0];
       one = 64'd1;
+      stk_a = 1'b0;
+      stk_n = 1'b0;
       sp = sa ^ sb;
 
       // ---- specials ----
@@ -355,8 +361,8 @@ module scigpu_fp32_alu #(
         if ((k == 63) && (((acc >> i) & one) != 64'd0)) k = i;
       if (k > 26) begin
         d = k - 26;
-        if (d <= 60) stk_a = stk_a | ((acc & ((one << d) - one)) != 64'd0);
-        else         stk_a = 1'b1;
+        if (d <= 60) stk_n = (acc & ((one << d) - one)) != 64'd0;
+        else         stk_n = 1'b1;
         acc >>= d;
         u    += d;
         k    = 26;
@@ -392,15 +398,23 @@ module scigpu_fp32_alu #(
           if ((k == 63) && (((acc >> i) & one) != 64'd0)) k = i;
       end
 
-      // ---- round RN-even (fp_add discipline incl. asymmetric half) ----
+      // ---- round RN-even -------------------------------------------------
+      // Two distinct tail sources at an exact grid-half:
+      //   stk_n   - normalize-fold bits of the RESULT magnitude: real mass,
+      //             pushes rem above half -> round UP.
+      //   stk_a   - alignment tail of the ALIGNED (subtracted-on-eff-sub)
+      //             guest: pulls rem below half on eff-sub -> DOWN; adds
+      //             on true-add -> UP.
       if (!acc[2])
         round_up = 1'b0;
       else if (acc[1] || acc[0])
         round_up = 1'b1;
-      else if (sp != sc)
-        round_up = stk_a ? 1'b0 : acc[3];
+      else if (stk_n)
+        round_up = 1'b1;
+      else if (stk_a)
+        round_up = (sp != sc) ? 1'b0 : 1'b1;
       else
-        round_up = stk_a ? 1'b1 : acc[3];
+        round_up = acc[3];
       if (round_up) acc = acc + (one << 3);
 
       // ---- assemble ----
@@ -417,28 +431,21 @@ module scigpu_fp32_alu #(
   endfunction
 
   // ======== lane datapath ================================================
-  genvar g;
-  generate for (g = 0; g < SIMD_LANES; g++) begin : g_lane
-    always_comb begin
+  // Single sequential always_comb: one evaluation context for all lanes so
+  // inlined function temporaries cannot interleave between lanes.
+  integer gi;
+  always_comb begin
+    for (gi = 0; gi < int'(SIMD_LANES); gi++) begin
       case (op)
-        5'd00:   y[g] = fp_add(a[g], b[g]);                                  // FADD
-        5'd01:   y[g] = fp_add(a[g], {~b[g][31], b[g][30:0]});               // FSUB
-        5'd02:   y[g] = fp_mul(a[g], b[g]);                                  // FMUL
-        5'd03:   y[g] = fp_i2f(a[g]);                                        // I2F
-        5'd04:   y[g] = fp_f2i(a[g]);                                        // F2I
-        5'd05:   y[g] = fp_fma(a[g], b[g], c[g]);                            // FMA
-        default: begin
-          y[g] = 32'b0;
-`ifdef SCIGPU_FMA_DBG
-          if (op == 5'd05) $display("DEFAULT-HIT g=%0d", g);
-`endif
-        end
+        5'd00:   y[gi] = fp_add(a[gi], b[gi]);                               // FADD
+        5'd01:   y[gi] = fp_add(a[gi], {~b[gi][31], b[gi][30:0]});           // FSUB
+        5'd02:   y[gi] = fp_mul(a[gi], b[gi]);                               // FMUL
+        5'd03:   y[gi] = fp_i2f(a[gi]);                                      // I2F
+        5'd04:   y[gi] = fp_f2i(a[gi]);                                      // F2I
+        5'd05:   y[gi] = fp_fma(a[gi], b[gi], c[gi]);                        // FMA
+        default: y[gi] = 32'b0;
       endcase
-`ifdef SCIGPU_FMA_DBG
-      if (op == 5'd05)
-        $display("DISP g=%0d a=%h b=%h c=%h y=%h", g, a[g], b[g], c[g], y[g]);
-`endif
     end
-  end endgenerate
+  end
 
 endmodule

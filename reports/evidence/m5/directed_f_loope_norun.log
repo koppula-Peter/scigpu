@@ -745,3 +745,33 @@ TBCTRL pc=3 op=7c9 cond=0 P=00000000
 TBPRE pre-P1=00000000 kind=3
 [diff /tmp/opencode/m5dir_nefdywdo/f_loope_norun_l8] PASS (0 mismatches)
 
+l4 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c9 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=3
+[diff /tmp/opencode/m5dir_0c0hidc8/f_loope_norun_l4] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c9 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=3
+[diff /tmp/opencode/m5dir_0c0hidc8/f_loope_norun_l8] PASS (0 mismatches)
+
+l16 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c9 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=3
+[diff /tmp/opencode/m5dir_0c0hidc8/f_loope_norun_l16] PASS (0 mismatches)
+
+l32 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c9 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=3
+[diff /tmp/opencode/m5dir_0c0hidc8/f_loope_norun_l32] PASS (0 mismatches)
+
+l8 PASS
+TBPW w=0 addr=0 val=00000000
+TBCTRL pc=3 op=7c9 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=3
+[diff /tmp/opencode/m5dir_rty24e2o/f_loope_norun_l8] PASS (0 mismatches)
+

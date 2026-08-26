@@ -445,3 +445,28 @@ TBCTRL pc=0 op=7c3 cond=0 P=00000000
 TBPRE pre-P1=00000000 kind=7
 [diff /tmp/opencode/m5dir_nefdywdo/f_popm_empty_l8] PASS (0 mismatches)
 
+l4 PASS
+TBCTRL pc=0 op=7c3 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=7
+[diff /tmp/opencode/m5dir_0c0hidc8/f_popm_empty_l4] PASS (0 mismatches)
+
+l8 PASS
+TBCTRL pc=0 op=7c3 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=7
+[diff /tmp/opencode/m5dir_0c0hidc8/f_popm_empty_l8] PASS (0 mismatches)
+
+l16 PASS
+TBCTRL pc=0 op=7c3 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=7
+[diff /tmp/opencode/m5dir_0c0hidc8/f_popm_empty_l16] PASS (0 mismatches)
+
+l32 PASS
+TBCTRL pc=0 op=7c3 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=7
+[diff /tmp/opencode/m5dir_0c0hidc8/f_popm_empty_l32] PASS (0 mismatches)
+
+l8 PASS
+TBCTRL pc=0 op=7c3 cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=7
+[diff /tmp/opencode/m5dir_rty24e2o/f_popm_empty_l8] PASS (0 mismatches)
+

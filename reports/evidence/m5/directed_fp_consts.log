@@ -73,3 +73,28 @@ TBCTRL pc=8 op=7cf cond=0 P=00000000
 TBPRE pre-P1=00000000 kind=12
 [diff /tmp/opencode/m5dir_nefdywdo/fp_consts_l8] PASS (0 mismatches)
 
+l4 PASS
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_0c0hidc8/fp_consts_l4] PASS (0 mismatches)
+
+l8 PASS
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_0c0hidc8/fp_consts_l8] PASS (0 mismatches)
+
+l16 PASS
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_0c0hidc8/fp_consts_l16] PASS (0 mismatches)
+
+l32 PASS
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_0c0hidc8/fp_consts_l32] PASS (0 mismatches)
+
+l8 PASS
+TBCTRL pc=8 op=7cf cond=0 P=00000000
+TBPRE pre-P1=00000000 kind=12
+[diff /tmp/opencode/m5dir_rty24e2o/fp_consts_l8] PASS (0 mismatches)
+
