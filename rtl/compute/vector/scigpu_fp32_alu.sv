@@ -86,6 +86,8 @@ module scigpu_fp32_alu #(
     logic [27:0] acc;
     int d;
     begin
+      stk_a = 1'b0;
+      stk_n = 1'b0;
       sa = xa[31]; ea = xa[30:23]; ma = xa[22:0];
       sb = xb[31]; eb = xb[30:23]; mb = xb[22:0];
 
