@@ -78,7 +78,7 @@ module scigpu_fp32_alu #(
 
   // ======== IEEE 754 SP ADD (SUB via operand sign flip) ==================
   function automatic logic [31:0] fp_add(input logic [31:0] xa, input logic [31:0] xb);
-    logic sa, sb, rsign, stk_a, stk_n, round_up;
+    logic sa, sb, rsign, stk_gain, stk_loss, round_up;
     logic [7:0]  ea, eb, Ea, Eb, E;
     logic [22:0] ma, mb;
     logic [23:0] pa, pb;
@@ -86,8 +86,8 @@ module scigpu_fp32_alu #(
     logic [27:0] acc;
     int d;
     begin
-      stk_a = 1'b0;
-      stk_n = 1'b0;
+      stk_gain = 1'b0;
+      stk_loss = 1'b0;
       sa = xa[31]; ea = xa[30:23]; ma = xa[22:0];
       sb = xb[31]; eb = xb[30:23]; mb = xb[22:0];
 
@@ -116,14 +116,16 @@ module scigpu_fp32_alu #(
       end
 
       // align smaller operand into GRS window
-      stk_a = 1'b0;
-      stk_n = 1'b0;
+      stk_gain = 1'b0;
+      stk_loss = 1'b0;
       if (d > 27) begin
-        stk_a  = (smallv != 27'd0);
+        if ((sa != sb)) stk_loss = (smallv != 27'd0);
+        else            stk_gain = (smallv != 27'd0);
         smallv = 27'd0;
       end else if (d > 0) begin
         mask   = (27'd1 << d) - 27'd1;
-        stk_a  = |(smallv & mask);
+        if ((sa != sb)) stk_loss = |(smallv & mask);
+        else            stk_gain = |(smallv & mask);
         smallv = smallv >> d;
       end
 
@@ -134,11 +136,13 @@ module scigpu_fp32_alu #(
 
       if (acc == 28'd0) return 32'b0;                      // exact cancel -> +0
       if (acc[27]) begin                                   // carry out
-        stk_n = stk_a | acc[0];
+        if (acc[0]) begin
+          if ((sa != sb)) stk_loss = 1'b1;
+          else            stk_gain = 1'b1;
+        end
         acc   = {1'b0, acc[27:1]};
         E     = E + 8'd1;
       end else begin
-        stk_n = stk_a;
         // left-normalize (fixed-bound: max 26 shifts)
         for (int i = 0; i < 26; i++)
           if ((acc[26] == 1'b0) && (E > 8'd1)) begin
@@ -155,12 +159,16 @@ module scigpu_fp32_alu #(
         round_up = 1'b0;
       else if (acc[1] || acc[0])
         round_up = 1'b1;
-      else if (stk_n)
+      else if (stk_gain && !stk_loss)
         round_up = 1'b1;
-      else if (stk_a)
+      else if (stk_loss && !stk_gain)
         round_up = (sa != sb) ? 1'b0 : 1'b1;
       else
         round_up = acc[3];
+`ifdef SCIGPU_ADD_DBG
+      $display("FPADD-DEC E=%0d acc=%h G=%b R=%b Sd=%b lsb=%b stk_a=%b stk_n=%b sub=%b ru=%b",
+               E, acc, acc[2], acc[1], acc[0], acc[3], stk_a, stk_n, (sa!=sb), round_up);
+`endif
       if (round_up) acc = acc + 28'd8;
       if (acc[26]) begin                                   // normal result
         if (acc[27]) begin                                 // frac carry-out
@@ -358,6 +366,9 @@ module scigpu_fp32_alu #(
       if (acc == 64'd0) return 32'b0;
 
       // ---- normalize MSB to bit 26 ----
+`ifdef SCIGPU_ADD_DBG
+      $display("FMANORM u=%0d k=%0d acc=%h stk_a=%b", u, k, acc, stk_a);
+`endif
       k = 63;
       for (int i = 62; i >= 0; i--)
         if ((k == 63) && (((acc >> i) & one) != 64'd0)) k = i;
@@ -402,15 +413,21 @@ module scigpu_fp32_alu #(
 
       // ---- round RN-even -------------------------------------------------
       // Two distinct tail sources at an exact grid-half:
-      //   stk_n   - normalize-fold bits of the RESULT magnitude: real mass,
-      //             pushes rem above half -> round UP.
-      //   stk_a   - alignment tail of the ALIGNED (subtracted-on-eff-sub)
-      //             guest: pulls rem below half on eff-sub -> DOWN; adds
-      //             on true-add -> UP.
+      //   stk_n - normalize-fold bits of the RESULT magnitude: real mass,
+      //           pushes rem above half -> UP.
+      //   stk_a - alignment tail of the aligned guest: on effective-sub it
+      //           was subtracted -> pulls below half -> DOWN; on true-add
+      //           it was added -> UP.
+      // When both fire the net direction is genuinely ambiguous (< 1/8 ulp
+      // each); fall back to ties-to-even parity.
       if (!acc[2])
         round_up = 1'b0;
       else if (acc[1] || acc[0])
         round_up = 1'b1;
+      else if (acc[1] || acc[0])
+        round_up = 1'b1;
+      else if (stk_a && stk_n)
+        round_up = acc[3];
       else if (stk_n)
         round_up = 1'b1;
       else if (stk_a)
